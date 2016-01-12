@@ -1,0 +1,47 @@
+<div class="card profile-card">
+  <span class="profile-pic-container">
+    <div class="profile-pic">
+      <img alt="{{ site.author.name }}" src="{{ site.author.image }}" itemprop="image" class="media-object img-circle center-block" />
+    </div>
+    <div class="name-and-profession text-center">
+      <h3 itemprop="name"><b>{{ site.author.name }}</b></h3>
+      <h5 itemprop="jobTitle" class="text-muted">Enginee</h5>
+    </div>
+  </span>
+  <hr/>
+  <div class="contact-details clearfix">
+    <div class="detail">
+      <span class="icon"><i class="icon fs-lg icon-location"></i></span>
+      <span class="info">Da Tien - Xuan Lam, Thuan Thanh, Bac Ninh, VN, 222614</span>
+    </div>
+    <div class="detail">
+      <span class="icon"><i class="icon fs-lg icon-phone"></i></span>
+      <span itemprop="telephone" class="info"><a href="call:+841234743838">(+84) 123-474-3838</a></span>
+    </div>
+    <div class="detail">
+      <span class="icon"><i class="icon fs-lg icon-mail"></i></span>
+      <span class="info">
+        <a href="mailto:{{ site.author.email }}" itemprop="email" class="link-disguise">
+          <span class="__cf_email__">{{ site.author.email }}</span>
+        </a>
+      </span>
+    </div>
+    <div class="detail">
+      <span class="icon"><i class="icon fs-lg icon-link"></i></span>
+      <span class="info"><a href="{{ site.author.url }}" target="_blank">{{ site.author.url }}</a></span>
+    </div>
+    <div class="detail">
+      <span title="Languages I speak" class="icon"><i class="icon fs-lg icon-language"></i></span>
+      <span class="info">Vietname, English, Japanese</span>
+    </div>
+  </div>
+  <hr/>
+  <div class="social-links social-icons text-center">
+    <div>
+      <a href="{{ site.author.github }}" target="_blank" rel="tooltip" title="Oanh Nguyen on Github" class="fs-2x social-link link-github icon-github"></a>
+      <a href="{{ site.author.twitter }}" target="_blank" rel="tooltip" title="Oanh Nguyen on Twitter" class="fs-2x social-link link-twitter icon-twitter"></a>
+      <a href="{{ site.author.rss }}" target="_blank" rel="tooltip" title="Subscript Oanh Nguyen via RSS" class="fa fa-2x fa-rss social-link link-googleplus"></a>
+      <a href="{{ site.author.skype }}" target="_blank" rel="tooltip" title="Contact with Oanh Nguyen by skype" class="fs-2x social-link link-skype icon-skype"></a>
+    </div>
+  </div>
+</div>

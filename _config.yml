@@ -22,8 +22,8 @@ excerpt_separator:   "<!--more-->"
 highlighter:         pygments
 
 syntax-highlighting:
-  enabled : true
-  css: css/syntax.css
+  enabled :          true
+  css:               css/syntax.css
 
 redcarpet:
   extensions: ["tables", "autolink", "strikethrough", "space_after_headers", "with_toc_data", "fenced_code_blocks"]
@@ -60,7 +60,7 @@ author:
   name:              Oanh Nguyen
   url:               https://oanhnn.github.io/about
   email:             oanhnn.bk@gmail.com
-  image:             http://gravatar.com/avatar/fcd38affa74b34ee4d241f91178d406d/?s=100&d=mm
+  image:             https://en.gravatar.com/userimage/35625823/e3d572ec75073250dc4901b93fba3cef.jpg?size=200
   github:            https://github.com/oanhnn
   twitter:           https://twitter.com/oanhnn
   facebook:          https://facebook.com/oanhnn
