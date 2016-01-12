@@ -1,0 +1,72 @@
+# Permalinks
+#
+# Use of `relative_permalinks` ensures post links from the index work properly.
+permalink:           pretty
+relative_permalinks: true
+
+safe:                true
+source:              .
+destination:         _site
+layouts_dir:         _layouts
+data_dir:            _data
+include:             [".htaccess"]
+exclude:             [".git"]
+keep_files:          []
+
+show_drafts:         null
+future:              true
+unpublished:         false
+markdown:            redcarpet
+markdown_ext:        "md"
+excerpt_separator:   "<!--more-->"
+highlighter:         pygments
+
+syntax-highlighting:
+  enabled : true
+  css: css/syntax.css
+
+redcarpet:
+  extensions: ["tables", "autolink", "strikethrough", "space_after_headers", "with_toc_data", "fenced_code_blocks"]
+
+whitelist:           []
+gems:
+#  - jekyll-mentions
+  - jemoji
+  - jekyll-redirect-from
+  - jekyll-sitemap
+  - jekyll-paginate
+sass:
+  sass_dir:          src/_sass
+  style:             :compact
+
+# Setup
+title:               OanhNN
+tagline:             'Sharing anything i know and i think'
+description:         'Sharing anything I know and I think'
+url:                 https://oanhnn.github.io
+baseurl:             ''
+timezone:            Asia/Ho_Chi_Minh
+encoding:            utf-8
+locale:              vi_VN
+paginate:            5
+
+# Default vars
+defaults:
+  layout:            post
+  type:              blog
+
+# About/contact
+author:
+  name:              Oanh Nguyen
+  url:               https://oanhnn.github.io/about
+  email:             oanhnn.bk@gmail.com
+  image:             http://gravatar.com/avatar/fcd38affa74b34ee4d241f91178d406d/?s=100&d=mm
+  github:            https://github.com/oanhnn
+  twitter:           https://twitter.com/oanhnn
+  facebook:          https://facebook.com/oanhnn
+  rss:               https://oanhnn.github.io/atom.xml
+  skype:             skype:ngocoanh.bk52?chat
+
+# Custom vars
+google_analytics:    UA-46600142-1
+disqus_shortname:    oanhnn
