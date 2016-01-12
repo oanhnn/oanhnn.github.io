@@ -8,7 +8,7 @@ About me
 ---
 My name Oanh Nguyen, I am a web developer with many years of experience about
 applications base web, web services, social and HTML5 game.   
-You can see more about me in here[here](https://oanhnn.github.io)
+You can see more about me in [here](https://oanhnn.github.io)
 
 Development
 ---
