@@ -57,14 +57,14 @@ Someone using `isset()` function ti implement it as the following code.
 
 This code works fine, but, it works fine for most of cases only. In some other cases (and it's quite often actually), using this code  to check the existence of an array element can be very DANGEROUS.
 
-# What’s wrong with isset()?
+# What’s wrong with `isset()`?
 Perhaps `isset()` is one of the most frequently used function that do a very frequent task: determine if a variable has been set. It is simple, and more importantly is FAST, is very FAST. However, the returned result of `isset()` can be misleading sometimes.
 
 According to the PHP's manual: [`isset()` -- Determine if a variable is set AND is not NULL](http://php.net/manual/en/function.isset.php)
 
 So the case that the `isset()` cause you danger is: the element does exist in the array but it is set NULL. i.e. `$Arr['MyElemenet'] = NULL;` In this case, `isset()` always return FALSE. Professional programmers should be aware of this.
 
-# The right solution: array_key_exists()
+# The right solution: `array_key_exists()`
 The right way to check  if an element exists in an array is to use `array_key_exists()`. The `array_key_exists()` will tell if the given key or index has been "created" in the array regardless the value of the element. So to tell if elements 'MyElement' exists in the array $Arr, we should use this:
 
 ```php
@@ -74,7 +74,7 @@ The right way to check  if an element exists in an array is to use `array_key_ex
     }
 ```
 
-# Why array_key_exists() still sucks?
+# Why `array_key_exists()` still sucks?
 However, `array_key_exits()` still sucks. Yes, it's more reliable than `isset()`, but it's SLOW.  We benchmarked the `array_key_exists()` and `isset()` methods as shown below and find that `array_key_exists()` is almost 5 times slower than `isset()`.
 
 # A better way
