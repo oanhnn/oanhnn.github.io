@@ -2,6 +2,8 @@
 I have a GitHub account, it is *oanhnn*, but at office, I couldn't use my personal GitHub account. I have to use an other GitHub account, eg *supermen*.
 I want use both two accounts on same computer (use without typing password each times, when git push or pull).
 
+<!--more-->
+
 ## Solution
 Using ssh keys and ssh config file to create an alias host and use multiple GitHub accounts
 
