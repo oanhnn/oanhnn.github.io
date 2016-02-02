@@ -1,5 +1,12 @@
+---
+title:    Using multiple GitHub accounts with SSH keys
+layout:   post
+category: tutorial-tips
+tags:     [skill]
+---
+
 ## Problem
-I have a GitHub account, it is *oanhnn*, but at office, I couldn't use my personal GitHub account. I have to use an other GitHub account, eg *supermen*.
+I have a GitHub account, it is *oanhnn*, but at office, I could not use my personal GitHub account. I have to use an other GitHub account, eg *supermen*.
 I want use both two accounts on same computer (use without typing password each times, when git push or pull).
 
 <!--more-->
@@ -11,7 +18,7 @@ Using ssh keys and ssh config file to create an alias host and use multiple GitH
 1. [Make key pair for each accounts](https://help.github.com/articles/generating-a-new-ssh-key/) and [add it to GitHub accounts](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/).
 2. Make ssh configure file (`~/.ssh/config`) like:
 
-   ```
+   ```conf
    # Default github account: oanhnn
    Host github.com
       HostName github.com
@@ -27,21 +34,21 @@ Using ssh keys and ssh config file to create an alias host and use multiple GitH
    
 3. [Added ssh key to your agent](https://help.github.com/articles/adding-a-new-ssh-key-to-the-ssh-agent/) by command:
 
-   ```
+   ```shell
    $ ssh-add ~/.ssh/oanhnn_private_key
    $ ssh-add ~/.ssh/supermen_private_key
    ```
 
 4. Check that repo recognizes keys.
 
-   ```
+   ```shell
    $ ssh -T git@github.com
    $ ssh -T git@github-supermen
    ```
 
 5. Clone projects
 
-   ```
+   ```shell
    $ git clone git@github-supermen:org2/project2.git /path/to/project2
    $ cd /path/to/project2
    $ git config user.email "supermen@org2.com"

@@ -17,14 +17,14 @@ Here’s how you can fix it and capture the real IP.
 -------------
 Make sure you have http_realip_module with nginx . You can check it this way:
 
-```
+```shell
 nginx -V
 ```
 2. Config module
 -------------
 Open `/etc/nginx/nginx.conf` file and add following parameters inside http block.
 
-```
+```nginx
 # vi /etc/nginx/nginx.conf
 
 http {
@@ -45,27 +45,27 @@ After this reload the nginx and check the access logs.
 > then set IP address assigned to elastic load balancer.
 > Suppose IP address for elastic load balance  is 1.2.3.4, then it should look like
 >
-> ```
-> # vi /etc/nginx/nginx.conf
+>   ```nginx
+>   # vi /etc/nginx/nginx.conf
+>
+>   http {
+>       # ...
+>
+>       ##
+>       # Real IP
+>       ##
+>       real_ip_header X-Forwarded-For;
+>       set_real_ip_from 1.2.3.4; # <- ELB IP
 > 
-> http {
->     # ...
-> 
->     ##
->     # Real IP
->     ##
->     real_ip_header X-Forwarded-For;
->     set_real_ip_from 1.2.3.4; # <- ELB IP
-> 
->     # ...
-> }
-> ```
+>       # ...
+>   }
+>   ```
 
 3. Protecting your site
 -------------
 Open your vhost config file (Eg: `/etc/nginx/site-enabled/default.conf`) and add following parameters inside http block.
 
-```
+```nginx
 # vi /etc/nginx/site-enabled/default.conf
 server {
     # ...

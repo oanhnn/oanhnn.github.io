@@ -30,11 +30,11 @@ Options All -Indexes
 
 Here error page is redirecting to error.html.
 
-```apache
-errorDocument 400 http://www.yourwebsite.com/error.html
-errorDocument 401 http://www.yourwebsite.com/error.html
-errorDocument 404 http://www.yourwebsite.com/error.html
-errorDocument 500 http://www.yourwebsite.com/error.html
+```
+ErrorDocument 400 http://www.yourwebsite.com/error.html
+ErrorDocument 401 http://www.yourwebsite.com/error.html
+ErrorDocument 404 http://www.yourwebsite.com/error.html
+ErrorDocument 500 "Sorry, our script crashed. Oh dear"
 ```
 
 ### RewriteEngine On

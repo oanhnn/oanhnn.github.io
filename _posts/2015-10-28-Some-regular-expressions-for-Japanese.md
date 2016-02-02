@@ -8,6 +8,6 @@ In working with Japanese customers, i found useful regular expressions.
 
 <!--more-->
 
-{% gist 9043867 %}
+{% gist oanhnn/9043867 regex-japanese.txt %}
 
 You can try in here: http://www.regexr.com/

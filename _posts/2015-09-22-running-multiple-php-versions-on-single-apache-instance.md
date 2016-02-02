@@ -23,7 +23,7 @@ You can using google to find: how to install it
 #### Step 3: Config PHP handler
 Making cgi script for each installed PHP versions. This is content of one script (`/var/www/cgi-bin/php53.fcgi`)
 
-```
+```shell
 #!/bin/bash
 PHPRC="/etc/php53/php.ini"
 PHP_CGI=/usr/local/php53/bin/php-cgi
@@ -37,7 +37,7 @@ exec $PHP_CGI
 
 Modified and add below block to Apache config (recommend add to `/etc/httpd/conf.d/fcgi.conf`).
 
-```
+```apache
 # /etc/httpd/conf.d/fcgi.conf
 LoadModule fcgid_module modules/mod_fcgid.so
 
@@ -65,7 +65,7 @@ LoadModule fcgid_module modules/mod_fcgid.so
 
 #### Step 4: Config virtual host
 
-```
+```apache
 <VirtualHost *:80>
     ServerName your-domain.dev
     DocumentRoot /var/www/apps/your-webroot/
