@@ -13,15 +13,16 @@ This makes difficult to analysis the location of IP.
 
 Here’s how you can fix it and capture the real IP.
 
-1. Prerequisite
--------------
+## Prerequisite
+
 Make sure you have http_realip_module with nginx . You can check it this way:
 
 ```shell
-nginx -V
+$ nginx -V
 ```
-2. Config module
--------------
+
+## Config module
+
 Open `/etc/nginx/nginx.conf` file and add following parameters inside http block.
 
 ```nginx
@@ -40,36 +41,37 @@ http {
 }
 ```
 
-After this reload the nginx and check the access logs.   
-> Note : If the traffic  only coming through elastic load balancer, 
+After this reload the nginx and check the access logs.
+
+> Note : If the traffic  only coming through elastic load balancer,
 > then set IP address assigned to elastic load balancer.
 > Suppose IP address for elastic load balance  is 1.2.3.4, then it should look like
 >
->   ```nginx
->   # vi /etc/nginx/nginx.conf
+> ```nginx
+> # vi /etc/nginx/nginx.conf
 >
->   http {
->       # ...
+> http {
+>     # ...
 >
->       ##
->       # Real IP
->       ##
->       real_ip_header X-Forwarded-For;
->       set_real_ip_from 1.2.3.4; # <- ELB IP
-> 
->       # ...
->   }
->   ```
+>     ##
+>     # Real IP
+>     ##
+>     real_ip_header X-Forwarded-For;
+>     set_real_ip_from 1.2.3.4; # <- ELB IP
+>
+>     # ...
+> }
+> ```
 
-3. Protecting your site
--------------
+## Protecting your site
+
 Open your vhost config file (Eg: `/etc/nginx/site-enabled/default.conf`) and add following parameters inside http block.
 
 ```nginx
 # vi /etc/nginx/site-enabled/default.conf
+
 server {
     # ...
-
     location ~ ^/(admin|protected) {
         allow 127.0.0.1;
         allow 54.xx.xx.xx; # <- your IP
@@ -77,10 +79,8 @@ server {
 
         # ...
     }
-
     # ...
 }
-
 ```
 
 Successfully! Goodluck !

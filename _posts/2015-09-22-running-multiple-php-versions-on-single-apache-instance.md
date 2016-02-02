@@ -14,8 +14,6 @@ What do you do that? In this tutorial, i will present 4 steps to setting up mult
 Download PHP source from [Github](https://github.com/php/php-src) or [php.net](http://php.net/downloads.php).
 Build from downloaded source follow below command:
 
-{% gist 213e0e4fc97b87c389f0 %}
-
 
 #### Step 2: Install Apache and `mod_fastcgi`
 You can using google to find: how to install it

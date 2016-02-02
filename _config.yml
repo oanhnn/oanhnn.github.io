@@ -1,26 +1,39 @@
-# Permalinks
+# General Jekyll Config
+title:                My Blog
+subtitle:             Sharing anything I know and I think
+description:          >
+    I am a web developer helping make the world a better place through JavaScript, PHP, and more.
+    I am an open-source contributor and I like making things that help people with their work.
+
+baseurl:              ""                                      # the subpath of your site, e.g. /blog
+url:                  "https://oanhnn.github.io"              # the base hostname & protocol for your site
+timezone:             Asia/Ho_Chi_Minh
+encoding:             utf-8
+locale:               vi_VN
+
+# Build settings
 permalink:            /:year-:month-:day/:title.html
 
+#paginate:             5
+#paginate_path:        "/page:num/"
+
 safe:                 false
+lsi:                  false
 source:               .
 destination:          _site
 layouts_dir:          _layouts
 data_dir:             _data
-include:              [".htaccess"]
-exclude:              [".git"]
+include:              [.htaccess]
+exclude:              [.git, LICENSE.md, CNAME, README.md, .gitignore, Gemfile, Gemfile.lock]
 keep_files:           []
 
-show_drafts:          null
+show_drafts:          false
 future:               true
 unpublished:          false
 markdown:             kramdown
 markdown_ext:         "md"
 excerpt_separator:    "<!--more-->"
 highlighter:          rouge
-
-syntax-highlighting:
-  enabled :           true
-  css:                css/syntax.css
 
 kramdown:
   input:              GFM
@@ -32,50 +45,36 @@ kramdown:
   enable_coderay:     true
   syntax_highlighter: rouge
 
-whitelist:            []
-gems:
-  - jemoji
+#whitelist:            []
+#gems:
+#  - jemoji
 #  - jekyll-mentions
-  - jekyll-redirect-from
-  - jekyll-sitemap
-  - jekyll-feed
-  - jekyll-gist
-  - jekyll-paginate
+#  - jekyll-redirect-from
+#  - jekyll-sitemap
+#  - jekyll-feed
+#  - jekyll-gist
+#  - jekyll-paginate
 #  - jekyll-seo-tag
 
 sass:
-  sass_dir:           src/_sass
+  sass_dir:           _sass
   style:              :compact
-
-# Setup
-title:                OanhNN
-tagline:              'Sharing anything i know and i think'
-description:          'Sharing anything I know and I think'
-url:                  https://oanhnn.github.io
-baseurl:              ''
-timezone:             Asia/Ho_Chi_Minh
-encoding:             utf-8
-locale:               vi_VN
-paginate:             5
-paginate_path:        "/page:num/"
 
 # Default vars
 defaults:
-  layout:            post
-  type:              blog
+  -
+    scope:
+      path:           ""
+      type:           posts
+    values:
+      layout:         post
+      author:         Oanh Nguyen
 
-# About/contact
-author:
-  name:              Oanh Nguyen
-  url:               https://oanhnn.github.io/about
-  email:             oanhnn.bk@gmail.com
-  image:             https://en.gravatar.com/userimage/35625823/e3d572ec75073250dc4901b93fba3cef.jpg?size=200
-  github:            https://github.com/oanhnn
-  twitter:           https://twitter.com/oanhnn
-  facebook:          https://facebook.com/oanhnn
-  rss:               https://oanhnn.github.io/atom.xml
-  skype:             skype:ngocoanh.bk52?chat
+# Site customization
+google_analytics_key: UA-46600142-1             # Google Analytics key, leave blank to ignore
+disqus_shortname:     oanhnn                    # Disqus shortname for comments
+rss_feed:             /feed.xml                 # link to view rss feed (/atom.xml) in sidebar
 
-# Custom vars
-google_analytics:    UA-46600142-1
-disqus_shortname:    oanhnn
+# Color for top bar, links, etc
+colors:
+  highlight:         '#3498db'

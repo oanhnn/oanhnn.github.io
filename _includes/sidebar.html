@@ -1,54 +1,16 @@
-<!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
-     styles, `#sidebar-checkbox` for behavior. -->
-<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
-
-<!-- Toggleable sidebar -->
-<div class="sidebar" id="sidebar">
-  <div class="sidebar-item">
-    <a rel="home" title="{{ site.title }}" href="{{ site.baseurl }}">
-      <img alt="{{ site.author.name }}" src="{{ site.author.image }}" class="site-logo">
-      <h1 class="site-title">{{ site.title }}</h1>
-    </a>
-
-    <p>
-      I am a web developer helping make the world a better place through JavaScript, PHP, and more.<br>
-      I am an open-source contributor and I like making things that help people with their work.<br>
-      You can follow me on:
-    </p>
-
-    <ul class="social-icons">
-      <li class="social-github">
-        <a class="fa fa-github" target="_blank" href="{{ site.author.github }}"></a>
-      </li>
-      <li class="social-twitter">
-        <a class="fa fa-twitter" target="_blank" href="{{ site.author.twitter }}"></a>
-      </li>
-      <!-- <li class="social-facebook">
-        <a class="fa fa-facebook" target="_blank" href="{{ site.author.facebook }}"></a>
-      </li> -->
-      <li class="social-rss">
-        <a class="fa fa-rss" target="_blank" href="{{ site.author.rss }}"></a>
-      </li>
-      <li class="social-skype">
-        <a class="fa fa-skype" target="_blank" href="{{ site.author.skype }}"></a>
-      </li>
-    </ul>
+<nav>
+  <a href="{{ '/' | prepend: site.baseurl }}">
+    {% if site.data.author.image %}
+    <img src="{{ site.data.author.image }}" id="avatar" alt="My photo"/>
+    {% else %}
+    <img src="/logo.png" id="logo" alt="Blog logo"/>
+    {% endif %}
+  </a>
+  <h2>I'm {{ site.data.author.name }}</h2>
+  <div id="bio">
+    <p>{{ site.data.author.bio }}</p>
   </div>
-
-  <nav class="sidebar-nav">
-    <a class="sidebar-nav-item{% if page.url == site.baseurl %} active{% endif %}" href="{{ site.baseurl }}/">Home</a>
-    <a class="sidebar-nav-item" href="{{ site.baseurl }}/about">About me</a>
-    {% for node in (site.pages | sort:"url") %}
-      {% if (node.title != null) and (node.layout == "page") %}
-          <a class="sidebar-nav-item{% if page.url == node.url %} active{% endif %}" href="{{ node.url }}">{{ node.title }}</a>
-      {% endif %}
-    {% endfor %}
-  </nav>
-
-  <div class="sidebar-item">
-    <p>
-      &copy; {{ site.time | date: '%Y' }}. All rights reserved.
-      <br/> Theme by <a target="_blank" href="https://github.com/poole/lanyon">lanyon</a>
-    </p>
+  <div id="social">
+    {% include social.html social=site.data.author.social rss_feed=site.rss_feed %}
   </div>
-</div>
+</nav>
