@@ -6,8 +6,8 @@ tags:     [skill]
 ---
 
 ## Problem
-I have a GitHub account, it is *oanhnn*, but at office, I could not use my personal GitHub account. I have to use an other GitHub account, eg *supermen*.
-I want use both two accounts on same computer (use without typing password each times, when git push or pull).
+I have a GitHub account, it is *oanhnn*, but at office, I could not use my personal GitHub account. I have to use an other GitHub account, eg *superman*.
+I want to use both two accounts on same computer (without typing password every time, when doing git push or pull).
 
 <!--more-->
 
@@ -25,10 +25,10 @@ Using ssh keys and ssh config file to create an alias host and use multiple GitH
       IdentityFile ~/.ssh/oanhnn_private_key
       IdentitiesOnly yes
       
-   # Other github account: supermen
-   Host github-supermen
+   # Other github account: superman
+   Host github-superman
       HostName github.com
-      IdentityFile ~/.ssh/supermen_private_key
+      IdentityFile ~/.ssh/superman_private_key
       IdentitiesOnly yes
    ```
    
@@ -36,23 +36,23 @@ Using ssh keys and ssh config file to create an alias host and use multiple GitH
 
    ```shell
    $ ssh-add ~/.ssh/oanhnn_private_key
-   $ ssh-add ~/.ssh/supermen_private_key
+   $ ssh-add ~/.ssh/superman_private_key
    ```
 
 4. Check that repo recognizes keys.
 
    ```shell
    $ ssh -T git@github.com
-   $ ssh -T git@github-supermen
+   $ ssh -T git@github-superman
    ```
 
 5. Clone projects
 
    ```shell
-   $ git clone git@github-supermen:org2/project2.git /path/to/project2
+   $ git clone git@github-superman:org2/project2.git /path/to/project2
    $ cd /path/to/project2
-   $ git config user.email "supermen@org2.com"
-   $ git config user.name  "Super Men"
+   $ git config user.email "superman@org2.com"
+   $ git config user.name  "Super Man"
    ```
    
 

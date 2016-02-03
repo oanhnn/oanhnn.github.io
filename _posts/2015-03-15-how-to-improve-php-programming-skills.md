@@ -52,8 +52,8 @@ but ultimately you want to know everything from this list.
 **PHP programming**
 
 -   PHP basics: variables, loops and functions
--   Arrays (http://uk1.php.net/manual/en/book.array.php)
--   File system functions (http://uk3.php.net/manual/en/ref.filesystem.php)
+-   [Arrays](http://php.net/manual/en/book.array.php)
+-   [File system functions](http://php.net/manual/en/ref.filesystem.php)
 
 **Font-end basics**
 
@@ -62,14 +62,14 @@ but ultimately you want to know everything from this list.
 
 **Object oriented programming in PHP**
 
--   Classes and Objects (http://php.net/manual/en/language.oop5.php)
--   Exceptions (http://www.php.net/manual/en/language.exceptions.php)
--   Namespaces (http://www.php.net/manual/en/language.namespaces.php)
+-   [Classes and Objects](http://php.net/manual/en/language.oop5.php)
+-   [Exceptions](http://php.net/manual/en/language.exceptions.php)
+-   [Namespaces](http://php.net/manual/en/language.namespaces.php)
 
 **Database basics**
 
 -   SQL basics (select, insert, update, delete)
--   PHP PDO (http://uk3.php.net/manual/en/class.pdo.php)
+-   [PHP PDO](http://php.net/manual/en/class.pdo.php)
 
 **Front-end**
 
@@ -79,16 +79,16 @@ but ultimately you want to know everything from this list.
 
 **PHP**
 
--   XML & DOM (http://uk3.php.net/manual/en/book.dom.php)
--   Regular expressions (http://www.regular-expressions.info/tutorial.html)
--   SPL (http://uk3.php.net/manual/en/book.spl.php)
--   Magic Methods (http://php.net/manual/en/language.oop5.magic.php)
--   GD (http://uk3.php.net/manual/en/book.image.php)
--   JSON (http://uk3.php.net/manual/en/book.json.php)
+-   [XML & DOM](http://php.net/manual/en/book.dom.php)
+-   [Regular expressions](http://www.regular-expressions.info/tutorial.html)
+-   [SPL](http://php.net/manual/en/book.spl.php)
+-   [Magic Methods](http://php.net/manual/en/language.oop5.magic.php)
+-   [GD](http://php.net/manual/en/book.image.php)
+-   [JSON](http://php.net/manual/en/book.json.php)
 
 **Database**
 
--   Database design (http://en.wikipedia.org/wiki/Database_design)
+-   [Database design](http://en.wikipedia.org/wiki/Database_design)
 -   Indexing
 -   Maintenance (manage users, backups)
 -   SQL optimisation
@@ -109,7 +109,7 @@ but ultimately you want to know everything from this list.
 **Code managment**
 
 -   Version control (SVN or GIT)
--   Branching (http://nvie.com/posts/a-successful-git-branching-model/)
+-   [Branching](http://nvie.com/posts/a-successful-git-branching-model)
 -   Bug tracking (any available software)
 -   Coding standards (“[Clean Code: A Handbook of Agile Software Craftsmanship][6]”)
 
@@ -133,11 +133,11 @@ but ultimately you want to know everything from this list.
 
 **Networking**
 
--   OSI Model (http://en.wikipedia.org/wiki/OSI_model)
+-   [OSI Model](http://en.wikipedia.org/wiki/OSI_model)
 -   TCP/IP protocol
 -   HTTP protocol
 -   Working with sniffers (tcpdump or wireshark)
--   CURL (http://uk3.php.net/manual/en/book.curl.php)
+-   [CURL](http://php.net/manual/en/book.curl.php)
 
 **Leading development**
 

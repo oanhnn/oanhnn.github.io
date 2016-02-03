@@ -14,6 +14,7 @@ What do you do that? In this tutorial, i will present 4 steps to setting up mult
 Download PHP source from [Github](https://github.com/php/php-src) or [php.net](http://php.net/downloads.php).
 Build from downloaded source follow below command:
 
+{% gist oanhnn/213e0e4fc97b87c389f0 compiler_php.sh %}
 
 #### Step 2: Install Apache and `mod_fastcgi`
 You can using google to find: how to install it
@@ -35,7 +36,7 @@ exec $PHP_CGI
 
 Modified and add below block to Apache config (recommend add to `/etc/httpd/conf.d/fcgi.conf`).
 
-```apache
+```conf
 # /etc/httpd/conf.d/fcgi.conf
 LoadModule fcgid_module modules/mod_fcgid.so
 
@@ -63,7 +64,7 @@ LoadModule fcgid_module modules/mod_fcgid.so
 
 #### Step 4: Config virtual host
 
-```apache
+```conf
 <VirtualHost *:80>
     ServerName your-domain.dev
     DocumentRoot /var/www/apps/your-webroot/

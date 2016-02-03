@@ -4,9 +4,9 @@ image:              https://gravatar.com/userimage/35625823/e3d572ec75073250dc49
 homepage:           https://oanhnn.github.io
 bio: >
     I am a web developer and<br> an open-source contributor.<br>
-    I like making things that help people with their work and helping make
-    the world to a better place.<br>
-    <strong>I want to share anything<br> I known and I think.</strong>
+    I like making something that help people's work and 
+    I hope those will make a world better.<br>
+    <strong>I want to share anything<br> I know and I think.</strong>
 
 social:
   github:           oanhnn
@@ -15,7 +15,7 @@ social:
   #stackexchange:    ~
   #stackoverflow:    ~
   twitter:          oanhnn
-#  facebook:         oanhnn
+  #facebook:         oanhnn
   #tumblr:           ~
   #linkedin:         ~
   #gplus:            ~

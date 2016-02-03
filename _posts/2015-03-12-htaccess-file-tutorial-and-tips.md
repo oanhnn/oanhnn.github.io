@@ -22,7 +22,7 @@ enable mod_rewrite extension in php.ini file in Apache Web Server configurations
 
 If you want to disable folder files listing, include following code.
 
-```apache
+```conf
 Options All -Indexes
 ```
 
@@ -42,7 +42,7 @@ ErrorDocument 500 "Sorry, our script crashed. Oh dear"
 RewriteEngine On it is turn on Rewrite Rules in Apache Server.
 if you want to turn off, just change the value to off.
 
-```apache
+```conf
 RewriteEngine on
 ```
 
@@ -50,7 +50,7 @@ RewriteEngine on
 
 For example if we want to project like Twitter API URLs (Note: Twitter API Developed in Ruby on Rails)
 
-```apache
+```conf
 RewriteEngine on
 RewriteRule ^(.*)\$ $1.php
 ```
@@ -58,7 +58,7 @@ RewriteRule ^(.*)\$ $1.php
 We can Rewrite `index.php` into `index.html`,`index.asp`,`index.sri` also …
 Below code for `index.php` to `index.html`
 
-```apache
+```conf
 RewriteEngine on
 RewriteRule ^(.*)\.html$ $1.php
 ```
@@ -70,7 +70,7 @@ If you want `.asp` extension just replace `html` to `asp`
 If you type _`www.yourwebsite.com`_ in browser it will be redirected to _`yourwebsite.com`_ .   
 Add this Following Code:
 
-```apache
+```conf
 RewriteEngine On
 RewriteCond %{HTTP_HOST} ^www.yourwebsite.com
 RewriteRule (.*) http://yourwebsite.com/$1 [R=301,L]
@@ -78,7 +78,7 @@ RewriteRule (.*) http://yourwebsite.com/$1 [R=301,L]
 
 Conversely, redirecting _`yourwebsite.com`_ to _`www.yourwebsite.com`_
 
-```apache
+```conf
 RewriteEngine On
 RewriteCond %{HTTP_HOST} ^yourwebsite.com
 RewriteRule (.*) http://www.yourwebsite.com/$1 [R=301,L]
@@ -90,7 +90,7 @@ Sub domain redirection mapping to folder.
 Here _`www.yourwebsite.com`_ is connecting to `website_folder` folder.   
 And _`subdomain.yourwebsite.com`_ is connecting to `subdomain_folder` folder.
 
-```apache
+```conf
 RewriteEngine On
 RewriteCond %{HTTP_HOST} ^www\.yourwebsite\.com$
 RewriteCond %{REQUEST_URI} !^/website_folder/
@@ -106,7 +106,7 @@ Original URL : _`yourwebsite.com/followers.php?id=abc123`_
 to   
 Rewriting URL : _`yourwebsite.com/abc123/followers`_   
 
-```apache
+```conf
 RewriteEngine On
 RewriteRule ^([a-zA-Z0-9_-]+)/followers$ followers.php?id=$1
 RewriteRule ^([a-zA-Z0-9_-]+)/followers/$ following.php?id=$1
@@ -121,7 +121,7 @@ Friendly URL : _`blog.yourwebsite.com/abc123`_
 First `.htaccess` file   
 This code redirects sub domain blog.yourwebsite.com pointing to blog folder.   
 
-```apache
+```conf
 RewriteEngine On
 RewriteCond %{HTTP_HOST} ^blog\.yourwebsite\.com$
 RewriteCond %{REQUEST_URI} !^/blog/
@@ -131,7 +131,7 @@ RewriteRule (.*) /blog/$1
 Second `.htaccess` file   
 This file inside the blog folder. Contains single parameter URL rewriting code.   
 
-```apache
+```conf
 RewriteEngine On
 RewriteBase /blog/
 RewriteEngine On
