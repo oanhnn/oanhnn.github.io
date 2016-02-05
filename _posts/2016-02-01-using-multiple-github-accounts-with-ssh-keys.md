@@ -6,17 +6,17 @@ tags:     [skill]
 ---
 
 ## Problem
-I have a GitHub account, it is *oanhnn*, but at office, I could not use my personal GitHub account. I have to use an other GitHub account, eg *superman*.
-I want to use both two accounts on same computer (without typing password every time, when doing git push or pull).
+I have two Github accounts: *oanhnn* (personal) and *superman* (for work).
+I want to use both accounts on same computer (without typing password everytime, when doing git push or pull).
 
 <!--more-->
 
 ## Solution
-Using ssh keys and ssh config file to create an alias host and use multiple GitHub accounts
+Use ssh keys and define host aliases in ssh config file (each alias for an account).
 
 ## How to?
-1. [Make key pair for each accounts](https://help.github.com/articles/generating-a-new-ssh-key/) and [add it to GitHub accounts](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/).
-2. Make ssh configure file (`~/.ssh/config`) like:
+1. [Generate ssh key pairs for accounts](https://help.github.com/articles/generating-a-new-ssh-key/) and [add them to GitHub accounts](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/).
+2. Edit/Create ssh config file (`~/.ssh/config`):
 
    ```conf
    # Default github account: oanhnn
@@ -32,21 +32,34 @@ Using ssh keys and ssh config file to create an alias host and use multiple GitH
       IdentitiesOnly yes
    ```
    
-3. [Added ssh key to your agent](https://help.github.com/articles/adding-a-new-ssh-key-to-the-ssh-agent/) by command:
+3. [Add ssh private keys to your agent](https://help.github.com/articles/adding-a-new-ssh-key-to-the-ssh-agent/):
 
    ```shell
    $ ssh-add ~/.ssh/oanhnn_private_key
    $ ssh-add ~/.ssh/superman_private_key
    ```
 
-4. Check that repo recognizes keys.
+4. Test your connection
 
    ```shell
    $ ssh -T git@github.com
    $ ssh -T git@github-superman
    ```
+With each command, you may see this kind of warning, type `yes`:
+  ```
+  The authenticity of host 'github.com (192.30.252.1)' can't be established.
+  RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.
+  Are you sure you want to continue connecting (yes/no)?
+  ```
+If everything is OK, you will see these messages:
+  ```
+  Hi oanhnn! You've successfully authenticated, but GitHub does not provide shell access.
+  ```
+  ```
+  Hi superman! You've successfully authenticated, but GitHub does not provide shell access.
+  ```
 
-5. Clone projects
+5. Now all are set, just clone your repositories
 
    ```shell
    $ git clone git@github-superman:org2/project2.git /path/to/project2
@@ -54,6 +67,5 @@ Using ssh keys and ssh config file to create an alias host and use multiple GitH
    $ git config user.email "superman@org2.com"
    $ git config user.name  "Super Man"
    ```
-   
 
-Done! Have goodluck!
+Done! Goodluck!
