@@ -14,7 +14,57 @@ What do you do that? In this tutorial, i will present 4 steps to setting up mult
 Download PHP source from [Github](https://github.com/php/php-src) or [php.net](http://php.net/downloads.php).
 Build from downloaded source follow below command:
 
-{% gist oanhnn/213e0e4fc97b87c389f0 compiler_php.sh %}
+```shell
+$ wget http://us1.php.net/get/php-5.3.29.tar.gz/from/this/mirror
+$ tar -xvzf mirror
+$ cd php-5.3.29
+$ ./configure --prefix=/usr/local/php53 \
+    --with-config-file-path=/etc/php53 \
+    --with-config-file-scan-dir=/etc/php53/php.d \
+    --with-libdir=lib64 \
+    --enable-mbstring \
+    --disable-debug \
+    --disable-rpath \
+    --enable-mbstring \
+    --enable-mbregex \
+    --enable-phar \
+    --enable-posix \
+    --enable-soap \
+    --enable-sockets \
+    --enable-sysvmsg \
+    --enable-sysvsem \
+    --enable-sysvshm \
+    --enable-zip \
+    --enable-inline-optimization \
+    --enable-intl \
+    --with-icu-dir=/usr \
+    --with-curl=/usr/bin \
+    --with-gd \
+    --with-jpeg-dir=/usr \
+    --with-png-dir=shared,/usr \
+    --with-xpm-dir=/usr \
+    --with-freetype-dir=/usr \
+    --with-bz2=/usr \
+    --with-gettext \
+    --with-iconv-dir=/usr \
+    --with-mcrypt=/usr \
+    --with-mhash \
+    --with-zlib-dir=/usr \
+    --with-regex=php \
+    --with-pcre-regex \
+    --with-openssl \
+    --with-openssl-dir=/usr/bin \
+    --with-mysql-sock=/var/run/mysqld/mysqld.sock \
+    --with-mysqli=mysqlnd \
+    --with-sqlite3=/usr \
+    --with-pdo-mysql=mysqlnd \
+    --with-pdo-sqlite=/usr \
+    --enable-cgi
+$ make
+$ make install
+$ mkdir /etc/php53
+$ cp php.ini-production /etc/php53/php.ini
+```
 
 #### Step 2: Install Apache and `mod_fastcgi`
 You can using google to find: how to install it

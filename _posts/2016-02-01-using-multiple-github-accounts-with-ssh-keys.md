@@ -45,19 +45,24 @@ Use ssh keys and define host aliases in ssh config file (each alias for an accou
    $ ssh -T git@github.com
    $ ssh -T git@github-superman
    ```
-With each command, you may see this kind of warning, type `yes`:
-  ```
-  The authenticity of host 'github.com (192.30.252.1)' can't be established.
-  RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.
-  Are you sure you want to continue connecting (yes/no)?
-  ```
-If everything is OK, you will see these messages:
-  ```
-  Hi oanhnn! You've successfully authenticated, but GitHub does not provide shell access.
-  ```
-  ```
-  Hi superman! You've successfully authenticated, but GitHub does not provide shell access.
-  ```
+
+   With each command, you may see this kind of warning, type `yes`:
+
+   ```shell
+   The authenticity of host 'github.com (192.30.252.1)' can't be established.
+   RSA key fingerprint is xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:
+   Are you sure you want to continue connecting (yes/no)?
+   ```
+
+   If everything is OK, you will see these messages:
+
+   ```shell
+   Hi oanhnn! You've successfully authenticated, but GitHub does not provide shell access.
+   ```
+   
+   ```shell
+   Hi superman! You've successfully authenticated, but GitHub does not provide shell access.
+   ```
 
 5. Now all are set, just clone your repositories
 
