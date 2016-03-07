@@ -6,7 +6,7 @@ tags:     [skill]
 ---
 
 ## Problem
-In the most common case, when running your web app behind Amazon Web Service (AWS) Elastic Load Balancing (ELB) with on both HTTP and HTTPS requests.
+In the most common case, when running your web app behind Elastic Load Balancing (ELB) of Amazon Web Service (AWS) with on both HTTP and HTTPS requests.
 The ports configuration is `80 => 80` and `443 => 80` . Sometimes, you may want to rewrite all HTTP requests to HTTPS.
 
 <!--more-->
@@ -72,7 +72,7 @@ In your web server, setting up a rewrite rule:
    </rewrite>
    ```
 
-## What’s wrong?
+## One more thing
 Sometimes, your ELB health check request is HTTP (port 80), you must exclude it form rewrite rule
 or make other port for health check request. Eg with NGINX:
 

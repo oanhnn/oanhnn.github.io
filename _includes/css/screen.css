@@ -101,6 +101,11 @@ ul.posts span {
 .meta {
     color: #aaa;
     margin: 0 0 10px 0;
+    font-size: 14px;
+}
+
+.meta a {
+    font-size: 16px;
 }
 
 .footer {
@@ -144,29 +149,9 @@ nav h1, nav h2 {
     font-weight: bold;
 }
 
-#post pre {
-    border: 1px solid #ddd;
-    background-color: #eef;
-    padding: 0 .4em;
-    margin-bottom: 20px !important;
-}
-
 #post ul,
 #post ol {
     margin-left: 1.35em;
-}
-
-#post code {
-    border: 1px solid #ddd;
-    background-color: #eef;
-    font-size: 85%;
-    padding: .4em .2em .2em;
-}
-
-#post code.highlighter-rouge { border-radius: 2px; -webkit-border-radius: 2px; }
-
-#post pre code {
-    border: none;
 }
 
 #post p > img {
