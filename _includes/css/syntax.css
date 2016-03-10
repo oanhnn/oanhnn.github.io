@@ -6,7 +6,7 @@ code.highlighter-rouge {
     border: 1px solid #ddd;
     background-color: #eef;
     font-size: .9em;
-    padding: .1em;
+    padding: .2em .1em .1em;
 }
 .highlight {
     overflow: auto;
@@ -18,6 +18,7 @@ code.highlighter-rouge {
     margin-bottom: 1em;
     background: #333;
     color: #c1c2c3;
+    font-size: .9em;
 }
 .highlight .lineno { width: 1.2em; padding-right: .3em; border-right: solid 1px #ccc }
 .highlight .code pre { padding: 0 .5em; }

@@ -1,12 +1,12 @@
 ---
-title:      Getting real IP while using nginx working behind Amazon Elastic Load Balancer
+title:      Getting real IP while using nginx working behind AWS ELB
 layout:     post
 category:   tutorial-tips
 tags:       [server, deploy]
 feature:    /assets/img/aws-elb.png
 ---
 
-When placing nginx web servers behind a Elastic load balancer, 
+When placing nginx web servers behind Elastic Load Balancing (ELB) of Amazon Web Service (AWS),
 the client IP address from the browser is replaced with the IP address of the load-balancer. 
 This makes difficult to analysis the location of IP.
 

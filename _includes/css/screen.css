@@ -92,7 +92,7 @@ ul.posts li {
 }
 
 ul.posts span {
-    font-family: 'Lucida Console', 'Andale Mono', monospace;
+    /*font-family: 'Lucida Console', 'Andale Mono', monospace;*/
     color: #aaa;
     padding-right: 5px;
     font-size:14px;
@@ -104,10 +104,8 @@ ul.posts span {
     font-size: 14px;
 }
 
-.meta a {
-    font-size: 16px;
-}
-
+.meta a.home {font-size: 18px; color: #3498db; float: right}
+.meta a.home:hover {text-decoration: none}
 .footer {
     position: absolute;
     bottom: -40px;
@@ -227,16 +225,6 @@ i.fa-hn {
     font-size: 18px !important;
     position: relative;
     color: white;
-}
-
-.home {
-    font-size: 24px;
-    float: right;
-    color: #aaa;
-}
-
-.home:hover {
-    text-decoration: none;
 }
 
 .disclaimer p {
