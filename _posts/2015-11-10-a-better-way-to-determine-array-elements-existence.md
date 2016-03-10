@@ -3,6 +3,7 @@ title:    A better way to determine array elements existence
 layout:   post
 category: tutorial-tips
 tags:     [php, skill]
+feature:  /assets/img/i-love-php.jpg
 ---
 
 In a project PHP, you have implement a method get attribute with default value. Someone using `isset()` function to implement it, other people using `array_key_exist()` function. What is better way?

@@ -3,6 +3,7 @@ title:    Using multiple GitHub accounts with SSH keys
 layout:   post
 category: tutorial-tips
 tags:     [skill]
+feature:  /assets/img/multi-octa-github.gif
 ---
 
 ## Problem

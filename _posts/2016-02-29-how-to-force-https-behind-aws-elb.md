@@ -3,6 +3,7 @@ title: How to force HTTPS behind AWS ELB
 layout:   post
 category: tutorial-tips
 tags:     [skill]
+feature:  /assets/img/aws-elb.png
 ---
 
 ## Problem

@@ -3,6 +3,7 @@ title:      Getting real IP while using nginx working behind Amazon Elastic Load
 layout:     post
 category:   tutorial-tips
 tags:       [server, deploy]
+feature:    /assets/img/aws-elb.png
 ---
 
 When placing nginx web servers behind a Elastic load balancer, 

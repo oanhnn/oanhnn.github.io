@@ -68,7 +68,7 @@ user@host:/path/to/project $ git commit -am "Added changes"
 Starting unit tests...
 All tests for 'Training PHPUnit 01' passed.
  
-[master 3c473de] Added changes
+[master xxxxxxx] Added changes
  1 files changed, 1 insertions(+), 1 deletions(-)
 user@host:/path/to/project $
 ```

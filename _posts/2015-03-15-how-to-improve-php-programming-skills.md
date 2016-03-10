@@ -4,6 +4,7 @@ layout:     post
 author:     Lukasz Kujawa
 category:   programming
 tags:       [php, skill]
+feature:    /assets/img/i-love-php.jpg
 ---
 
 “How do I improve my PHP skills?” is a recurring question on various boards and chats.

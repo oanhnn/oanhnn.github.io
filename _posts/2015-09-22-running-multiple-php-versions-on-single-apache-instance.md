@@ -3,6 +3,7 @@ title:      Running multiple PHP versions on single Apache instance
 layout:     post
 category:   tutorial-tips
 tags:       [server, php]
+feature:    /assets/img/i-love-php.jpg
 ---
 
 Im more case, you need run multiple applications on single server (single Apache instance) with multiple PHP versions.
