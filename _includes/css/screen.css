@@ -152,6 +152,11 @@ nav h1, nav h2 {
     margin-left: 1.35em;
 }
 
+#post p,
+#post ul,
+#post blockquote {
+    text-align: justify;
+}
 #post p > img {
     max-width: 100%;
 }
@@ -236,6 +241,15 @@ i.fa-hn {
 .footnotes {
     font-size: 14px;
     font-style: italic;
+    text-align: justify;
+}
+.footnotes:before {
+    content: '';
+    border-top: solid 1px #ccc;
+    max-width: 250px;
+    height: 0px;
+    display: block;
+    margin-bottom: 10px;
 }
 
 .icon-overlay {

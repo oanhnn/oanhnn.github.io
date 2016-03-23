@@ -12,7 +12,7 @@ What do you do that? In this tutorial, i will present 4 steps to setting up mult
 <!--more-->
 
 #### Step 1: Build multiple PHP versions from source
-Download PHP source from [Github](https://github.com/php/php-src) or [php.net](http://php.net/downloads.php).
+Download PHP source from [Github][github-php-src] or [php.net][php-home-page].
 Build from downloaded source follow below command:
 
 ```shell
@@ -134,3 +134,6 @@ LoadModule fcgid_module modules/mod_fcgid.so
     </Directory>
 </VirtualHost>
 ```
+
+[github-php-src]: https://github.com/php/php-src
+[php-home-page]:  http://php.net/downloads.php

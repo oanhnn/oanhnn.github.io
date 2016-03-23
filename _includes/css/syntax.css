@@ -19,6 +19,7 @@ code.highlighter-rouge {
     background: #333;
     color: #c1c2c3;
     font-size: .9em;
+    font-style: normal;
 }
 .highlight .lineno { width: 1.2em; padding-right: .3em; border-right: solid 1px #ccc }
 .highlight .code pre { padding: 0 .5em; }
@@ -34,7 +35,7 @@ code.highlighter-rouge {
 .highlight .cp { color: #75715e } /* Comment.Preproc */
 .highlight .c1 { color: #75715e } /* Comment.Single */
 .highlight .cs { color: #75715e } /* Comment.Special */
-.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .ge { font-style: italic!important } /* Generic.Emph */
 .highlight .gs { font-weight: bold } /* Generic.Strong */
 .highlight .kc { color: #66d9ef } /* Keyword.Constant */
 .highlight .kd { color: #66d9ef } /* Keyword.Declaration */

@@ -7,12 +7,15 @@ feature:  /assets/img/aws-elb.png
 ---
 
 ## Problem
-In the most common case, when running your web app behind Elastic Load Balancing (ELB) of Amazon Web Service (AWS) with on both HTTP and HTTPS requests.
-The ports configuration is `80 => 80` and `443 => 80` . Sometimes, you may want to rewrite all HTTP requests to HTTPS.
+In the most common case, when running your web app behind Elastic Load Balancing (ELB)
+of Amazon Web Service (AWS) with on both HTTP and HTTPS requests.
+The ports configuration is `80 => 80` and `443 => 80` . Sometimes, you may want to rewrite
+all HTTP requests to HTTPS.
 
 <!--more-->
 
-![The most common ELB configuration](/assets/img/https-aws-elb.png)*The most common ELB configuration with both HTTP and HTTPS*
+![The most common ELB configuration](/assets/img/https-aws-elb.png)*The most common
+ELB configuration with both HTTP and HTTPS*
 
 ## Solution
 The ELB supports a HTTP header called `X-FORWARDED-PROTO`. All the HTTPS requests
@@ -74,8 +77,8 @@ In your web server, setting up a rewrite rule:
    ```
 
 ## One more thing
-Sometimes, your ELB health check request is HTTP (port 80), you must exclude it form rewrite rule
-or make other port for health check request. Eg with NGINX:
+Sometimes, your ELB health check request is HTTP (port 80), you must exclude it
+from rewrite rule or make other port for health check request. Eg with NGINX:
 
 ```conf
 server {

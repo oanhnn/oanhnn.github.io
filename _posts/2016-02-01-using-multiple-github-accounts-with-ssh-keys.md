@@ -8,7 +8,8 @@ feature:  /assets/img/multi-octa-github.gif
 
 ## Problem
 I have two Github accounts: *oanhnn* (personal) and *superman* (for work).
-I want to use both accounts on same computer (without typing password everytime, when doing git push or pull).
+I want to use both accounts on same computer (without typing password everytime,
+when doing git push or pull).
 
 <!--more-->
 
@@ -16,7 +17,7 @@ I want to use both accounts on same computer (without typing password everytime,
 Use ssh keys and define host aliases in ssh config file (each alias for an account).
 
 ## How to?
-1. [Generate ssh key pairs for accounts](https://help.github.com/articles/generating-a-new-ssh-key/) and [add them to GitHub accounts](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/).
+1. [Generate ssh key pairs for accounts][github-gen-key] and [add them to GitHub accounts][github-add-key].
 2. Edit/Create ssh config file (`~/.ssh/config`):
 
    ```conf
@@ -33,7 +34,7 @@ Use ssh keys and define host aliases in ssh config file (each alias for an accou
       IdentitiesOnly yes
    ```
    
-3. [Add ssh private keys to your agent](https://help.github.com/articles/adding-a-new-ssh-key-to-the-ssh-agent/):
+3. [Add ssh private keys to your agent][github-use-agent]:
 
    ```shell
    $ ssh-add ~/.ssh/oanhnn_private_key
@@ -75,3 +76,8 @@ Use ssh keys and define host aliases in ssh config file (each alias for an accou
    ```
 
 Done! Goodluck!
+
+
+[github-gen-key]:   https://help.github.com/articles/generating-a-new-ssh-key/
+[github-add-key]:   https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/
+[github-use-agent]: https://help.github.com/articles/adding-a-new-ssh-key-to-the-ssh-agent/

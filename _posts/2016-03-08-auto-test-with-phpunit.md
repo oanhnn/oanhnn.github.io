@@ -3,7 +3,7 @@ title: Auto test with PHPUnit
 layout:   post
 category: tutorial-tips
 tags:     [skill, php, unit test]
-feature:  /assets/img/aws-elb.png
+feature:  /assets/img/PHPUnit-logo.png
 ---
 
 Mình là một developer, mình muốn tạo ra nhũng thứ tốt đẹp cho thế giới này
@@ -84,10 +84,11 @@ Tiếp theo, chúng ta bắt đầu viết các class test và đừng quên đ�
 
 ## Conventions
 
-1. Tên các class test sẽ bắt đầu bằng `Test` và thường tên giống với tên class cần test
+1. Tên các class test sẽ bắt đầu hoặc kết thúc bằng `Test` và thường tên giống với tên class cần test
 2. Tên file giống với tên class test
 3. Class test phải kế thừa từ class `PHPUnit_Framework_TestCase`
-4. Method test cũng bắt đầu bằng `test`. Ví dụ method `testVerifyAccount()` để test cho method `verifyAccount()`
+4. Method test phải bắt đầu bằng `test` và các method này phải là `public`.
+   Ví dụ method `testVerifyAccount()` để test cho method `verifyAccount()`
 
 ## Làm thế nào để test không sót case?
 

@@ -106,6 +106,8 @@ Regex for matching Japanese fixed line phone numbers
 /^\d{1,4}-\d{4}$|^\d{2,5}-\d{1,4}-\d{4}$/
 ```
 
-You can try in here: [http://www.regexr.com/](http://www.regexr.com/)
+You can try in here: [http://www.regexr.com/][regexr]
 
 [^1]: Katakana without mentioning "full-width" or "half-width" means "full-width katakana".
+
+[regexr]: http://www.regexr.com/
