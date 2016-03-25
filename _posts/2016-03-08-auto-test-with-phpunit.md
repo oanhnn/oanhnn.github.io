@@ -84,7 +84,7 @@ Tiếp theo, chúng ta bắt đầu viết các class test và đừng quên đ�
 
 ## Conventions
 
-1. Tên các class test sẽ bắt đầu hoặc kết thúc bằng `Test` và thường tên giống với tên class cần test
+1. Tên các class test sẽ kết thúc bằng `Test` và thường tên giống với tên class cần test
 2. Tên file giống với tên class test
 3. Class test phải kế thừa từ class `PHPUnit_Framework_TestCase`
 4. Method test phải bắt đầu bằng `test` và các method này phải là `public`.

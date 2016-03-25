@@ -36,8 +36,7 @@ nâng cao.
 > ```
 
 Bạn vào trang https://phar.phpunit.de/ và download file PHAR của bản PHPUnit bạn cần về máy.
-Copy vào thư mục project, thế là bạn đã có thể dùng bởi lệnh `php phpunit.phar`.
-
+Copy vào thư mục project, thế là bạn đã có thể dùng bởi lệnh `php phpunit.phar`.   
 Tuy nhiên để có thể sử dụng được trong nhiều project thì bạn cần làm như sau:
 
 - Với UNIX OS:
@@ -84,108 +83,11 @@ Tuy nhiên để có thể sử dụng được trong nhiều project thì bạn
 
 Bạn có thể chạy `phpunit -v` để xem phiên bản và các options. Xem thêm tại [đây][run-options].
 
-```
-$ phpunit -v
-PHPUnit 5.2.12 by Sebastian Bergmann and contributors.
-
-Usage: phpunit [options] UnitTest [UnitTest.php]
-       phpunit [options] <directory>
-
-Code Coverage Options:
-
-  --coverage-clover <file>  Generate code coverage report in Clover XML format.
-  --coverage-crap4j <file>  Generate code coverage report in Crap4J XML format.
-  --coverage-html <dir>     Generate code coverage report in HTML format.
-  --coverage-php <file>     Export PHP_CodeCoverage object to file.
-  --coverage-text=<file>    Generate code coverage report in text format.
-                            Default: Standard output.
-  --coverage-xml <dir>      Generate code coverage report in PHPUnit XML format.
-  --whitelist <dir>         Whitelist <dir> for code coverage analysis.
-  --disable-coverage-ignore Disable annotations for ignoring code coverage.
-
-Logging Options:
-
-  --log-junit <file>        Log test execution in JUnit XML format to file.
-  --log-tap <file>          Log test execution in TAP format to file.
-  --log-teamcity <file>     Log test execution in TeamCity format to file.
-  --log-json <file>         Log test execution in JSON format.
-  --testdox-html <file>     Write agile documentation in HTML format to file.
-  --testdox-text <file>     Write agile documentation in Text format to file.
-  --reverse-list            Print defects in reverse order
-
-Test Selection Options:
-
-  --filter <pattern>        Filter which tests to run.
-  --testsuite <pattern>     Filter which testsuite to run.
-  --group ...               Only runs tests from the specified group(s).
-  --exclude-group ...       Exclude tests from the specified group(s).
-  --list-groups             List available test groups.
-  --test-suffix ...         Only search for test in files with specified
-                            suffix(es). Default: Test.php,.phpt
-
-Test Execution Options:
-
-  --report-useless-tests    Be strict about tests that do not test anything.
-  --strict-coverage         Be strict about @covers annotation usage.
-  --strict-global-state     Be strict about changes to global state
-  --disallow-test-output    Be strict about output during tests.
-  --disallow-resource-usage Be strict about resource usage during small tests.
-  --enforce-time-limit      Enforce time limit based on test size.
-  --disallow-todo-tests     Disallow @todo-annotated tests.
-
-  --process-isolation       Run each test in a separate PHP process.
-  --no-globals-backup       Do not backup and restore $GLOBALS for each test.
-  --static-backup           Backup and restore static attributes for each test.
-
-  --colors=<flag>           Use colors in output ("never", "auto" or "always").
-  --columns <n>             Number of columns to use for progress output.
-  --columns max             Use maximum number of columns for progress output.
-  --stderr                  Write to STDERR instead of STDOUT.
-  --stop-on-error           Stop execution upon first error.
-  --stop-on-failure         Stop execution upon first error or failure.
-  --stop-on-warning         Stop execution upon first warning.
-  --stop-on-risky           Stop execution upon first risky test.
-  --stop-on-skipped         Stop execution upon first skipped test.
-  --stop-on-incomplete      Stop execution upon first incomplete test.
-  --fail-on-warning         Treat tests with warnings as failures.
-  --fail-on-risky           Treat risky tests as failures.
-  -v|--verbose              Output more verbose information.
-  --debug                   Display debugging information during test execution.
-
-  --loader <loader>         TestSuiteLoader implementation to use.
-  --repeat <times>          Runs the test(s) repeatedly.
-  --tap                     Report test execution progress in TAP format.
-  --teamcity                Report test execution progress in TeamCity format.
-  --testdox                 Report test execution progress in TestDox format.
-  --printer <printer>       TestListener implementation to use.
-
-Configuration Options:
-
-  --bootstrap <file>        A "bootstrap" PHP file that is run before the tests.
-  -c|--configuration <file> Read configuration from XML file.
-  --no-configuration        Ignore default configuration file (phpunit.xml).
-  --no-coverage             Ignore code coverage configuration.
-  --include-path <path(s)>  Prepend PHP's include_path with given path(s).
-  -d key[=value]            Sets a php.ini value.
-
-Miscellaneous Options:
-
-  -h|--help                 Prints this usage information.
-  --version                 Prints the version and exits.
-  --atleast-version <min>   Checks that version is greater than min and exits.
-
-  --check-version           Check whether PHPUnit is the latest version.
-  --self-update             Update PHPUnit to the latest version within the same
-                            release series.
-
-  --self-upgrade            Upgrade PHPUnit to the latest version.
-```
-
 > Nếu bạn muốn tạo một tài liệu mô tả dạng TestDox cho class thì bạn có thể sử dụng tính năng [testdox][testdox].
 
 ## Organizing Tests
 
-Ở bài trước, mình cũng đã giới thiệu [conventions][conventions] cho PHPUnit.
+Ở bài trước, mình cũng đã giới thiệu [conventions][conventions] cho PHPUnit.   
 Dự vào đó mình tổ chức project như sau:
 
 ```
@@ -194,31 +96,48 @@ project
 ├── composer.lock
 ├── phpunit.xml.dist
 ├── src
-│   ├── Currency.php
-│   ├── Formatter
-│   │   ├── FormatterInterface.php
-│   │   └── IntlFormatter.php
-│   └── Money.php
+│   └── Calculator.php
 ├── tests
 │   ├── bootstrap.php
-│   ├── CurrencyTest.php
-│   ├── Formatter
-│   │   └── IntlFormatterTest.php
-│   └── MoneyTest.php
+│   └── CalculatorTest.php
 └── vendor
 ```
 
-Các bạn chú ý đến 3 file: `composer.json`, `phpunit.xml.dist`, `tests/bootstrap.php`.
-
+Các bạn chú ý đến 3 file: `composer.json`, `phpunit.xml.dist`, `tests/bootstrap.php`.   
+Nội dung chi tiết cả từng file, bạn xem tại [demo repository][demo-repos].
 
 ## Write first test
 
+Chúng ta cùng bắt đầu viết class `CalculatorTest.php` nào:
+
 > Đừng quên [conventions][conventions] nhé các bạn!
 
+```php
+<?php
+namespace Demo\Calculator\Tests;
+
+class CalculatorTest extends \PHPUnit_Framework_TestCase
+{
+    public function testAdd()
+    {
+        $this->assertSame(10, Calculator::add(5, 5));
+    }
+}
+```
+
+Trong method `testAdd` trên, mình đã dùng method `assertSame` để check kết quả trả về 
+của method `Calculator::add(5, 5)` có phải là 10 không?   
+Sử dụng `assertSame` để check cả về giá trị và kiểu dữ liệu. Ngoài ra còn có thể 
+sử dụng nhiều method `assert*` khác để check, bạn xem chi tiết ở [đây][assertions].
+
+Bây giờ bạn thử chạy `phpunit` xem nào? Wow. Thật đơn giản, bạn đã viết đc rồi đấy.
 
 ## Test dependencies
 
+
+
 ## Data providers
+
 Sử dụng annotation[^1] `@dataProvider`
 
 ## Testing Exception, PHP errors, output
@@ -252,3 +171,4 @@ Sử dụng annotation[^1] `@dataProvider`
 [testdox]:           https://phpunit.de/manual/5.2/en/other-uses-for-tests.html#other-uses-for-tests.agile-documentation
 [assertions]:        https://phpunit.de/manual/5.2/en/appendixes.assertions.html
 [annotations]:       https://phpunit.de/manual/5.2/en/appendixes.annotations.html
+[demo-repos]:        https://github.com/oanhnn/demo-phpunit-calculator.git

@@ -275,5 +275,5 @@ sup {
 #related h3, #comments h3 {
     color: #aaa;
 }
-
+#related { page-break-inside: avoid }
 #comments { min-height: 170px; }
