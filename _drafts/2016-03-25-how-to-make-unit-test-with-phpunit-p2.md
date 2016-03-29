@@ -20,6 +20,8 @@ viết unit test phức tạp hơn.
 
 ## Database testing
 
+## Skip test
+
 ## Code coverage analysis
 
 ## Extending PHPUnit
