@@ -1,9 +1,9 @@
 <nav>
   <a href="{{ '/' | prepend: site.baseurl }}">
     {% if site.data.author.image %}
-    <img src="{{ site.data.author.image }}" id="avatar" alt="My photo"/>
+    <img src="{{ site.data.author.image }}" id="avatar" alt="{{ site.data.author.name }}" title="{{ site.data.author.name }}"/>
     {% else %}
-    <img src="/logo.png" id="logo" alt="Blog logo"/>
+    <img src="/logo.png" id="logo" alt="Blog logo" title="{{ site.data.author.name }}"/>
     {% endif %}
   </a>
   <h2>I'm {{ site.data.author.name }}</h2>

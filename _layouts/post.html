@@ -4,8 +4,11 @@ layout: default
 
 <p class="meta">
   <i class="fa fa-calendar"></i> {{ page.date | date: "%B %d, %Y" }}
-  <a class="home" href="{{'/' | prepend: site.baseurl }}">
+  <a class="home" title="Home" href="{{'/' | prepend: site.baseurl }}">
     <i class="fa fa-home"></i>
+  </a>
+  <a class="archive" title="Archive posts" href="{{'/archive.html' | prepend: site.baseurl }}">
+    <i class="fa fa-bookmark"></i>
   </a>
 </p>
 

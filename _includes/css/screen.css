@@ -104,8 +104,10 @@ ul.posts span {
     font-size: 14px;
 }
 
-.meta a.home {font-size: 18px; color: #3498db; float: right}
-.meta a.home:hover {text-decoration: none}
+.meta a.home, .meta a.archive {font-size: 18px; color: #3498db; float: right; margin-left: 12px}
+.meta a.home:hover, .meta a.archive:hover {text-decoration: none}
+sup {vertical-align: super; font-size: 0.7em; font-weight: bold; padding: 0 2px}
+
 .footer {
     position: absolute;
     bottom: -40px;
@@ -188,7 +190,7 @@ nav h1, nav h2 {
 }
 
 #home h2 {
-    color: {{ site.colors.highlight }};
+    color: #aaa;
 }
 
 #logo, #avatar {
