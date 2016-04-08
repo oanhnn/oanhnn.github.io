@@ -187,7 +187,8 @@ class StackTest extends PHPUnit_Framework_TestCase
 }
 ```
 
-// TODO
+Khi sử dụng dependencies thì các test dependency methods phải return về kết quả. 
+Chúng sẽ là tham số cho method test của chúng ta.
 
 ## Data providers
 
@@ -326,7 +327,7 @@ Tương tự với `PHPUnit_Framework_Error_Notice` và `PHPUnit_Framework_Error
 ## Test PHP output
 
 Thỉnh thoảng bạn cũng phải test PHP's Output Buffering xem nó có như mòng đợi không?
-Trong trường hượ này, hai method `expectOutputString()` và `expectOutputRegex()` 
+Trong trường hợp này, hai method `expectOutputString()` và `expectOutputRegex()` 
 sẽ giúp bạn thục hiện điều đó.
 
 ```php
