@@ -274,8 +274,69 @@ sup {
     font-size: smaller;
 }
 
-#related h3, #comments h3 {
+#related h3, #comments h3, #tags h3 {
     color: #aaa;
 }
 #related { page-break-inside: avoid }
 #comments { min-height: 170px; }
+#home h2.tag { cursor: pointer; color: {{ site.colors.highlight }}; }
+#home h2.tag.selected { cursor: default; color: #aaa; }
+.tag.selected { cursor: default }
+
+.tags {
+    list-style:none;
+    clear: both;
+    position: relative;
+    margin-bottom: 10px;
+}
+.tags a{
+    float:left;
+    height:1.7em;
+    line-height:1.7em;
+    position:relative;
+    font-size:0.8em;
+}
+.tags a{
+    margin-left: 1.2em;
+    margin-bottom: 0.3em;
+    padding:0 8px 0 12px;
+    background:{{ site.colors.highlight }};
+    color:#fff;
+    text-decoration:none;
+    -moz-border-radius-bottomright:3px;
+    -webkit-border-bottom-right-radius:3px;	
+    border-bottom-right-radius:3px;
+    -moz-border-radius-topright:3px;
+    -webkit-border-top-right-radius:3px;	
+    border-top-right-radius:3px;	
+} 
+.tags a:before{
+    content:'';
+    float:left;
+    position:absolute;
+    top:0px;
+    left:-10px;
+    width:0;
+    height:0;
+    border-color:transparent {{ site.colors.highlight }} transparent transparent;
+    border-style:solid;
+    border-width:11px 10px 11px 0;
+}
+.tags a:after{
+    content:"";
+    position:absolute;
+    top:9px;
+    left:0;
+    float:left;
+    width:5px;
+    height:5px;
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    border-radius:3px;
+    background:#fff;
+    -moz-box-shadow:-1px -1px 2px #004977;
+    -webkit-box-shadow:-1px -1px 2px #004977;
+    box-shadow:-1px -1px 2px #004977;
+}
+.tags a:hover,.tags a.selected{background:#aaa;}	
+.tags a:hover:before,.tags a.selected:before{border-color:transparent #aaa transparent transparent;}

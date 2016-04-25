@@ -1,0 +1,68 @@
+---
+layout: default
+---
+
+<div id="home">
+  <h2 class="tag" data-filter="*"><i class="fa fa-tags"></i> All tags</h2>
+  <p class="tags">
+    {% for tag in site.tags %}
+    {% assign t = tag | first %}
+    {% assign p = tag | last %}
+    <a href="#tag={{ t | replace:' ','-' | url_encode }}" class="tag" data-filter="{{t | downcase | replace:' ','-' }}">{{t | downcase | replace:' ','-' }}</a>
+    {% endfor %}
+  </p>
+  <hr>
+  <h3 class="current-tag">All posts</h3>
+  <ul id="blog-posts" class="posts">
+    {% for post in site.posts %}
+    <li data-tags="{{ post.tags | join: ',' | replace:' ','-' }}"><span><i class="fa fa-calendar"></i> {{ post.date | date_to_string }} &raquo;</span><a href="{{ post.url }}">{{ post.title }}</a></li>
+    {% endfor %}
+  </ul>
+  <script src="{{ '/assets/js/jquery-1.11.2.min.js' | prepend: site.baseurl }}" type="text/javascript"></script>
+  <script src="{{ '/assets/js/isotope.pkgd.min.js' | prepend: site.baseurl }}" type="text/javascript"></script>
+  <script type="text/javascript">
+$(function(){
+  var $posts = $('.posts');
+  var $filters = $('[data-filter]').on('click', function(e){
+    e.preventDefault();
+    var tag = $(this).data('filter');
+    location.hash = 'tag=' + encodeURIComponent(tag);
+  });
+  var isIsotopeInit = false;
+
+  function getTagFilter() {
+    var matches = location.hash.match(/tag=([^&]+)/i);
+    var tag = matches && matches[1];
+    return tag && decodeURIComponent(tag);
+  }
+
+  function onHashChanged() {
+    var tag = getTagFilter();
+    if (!tag && isIsotopeInit) {
+      return;
+    }
+    isIsotopeInit = true;
+    $filters.removeClass('selected');
+    $('[data-filter="'+tag+'"]').addClass('selected');
+    if ('*' == tag || null == tag) {
+      $('.current-tag').text('All posts');
+      var hashFilter = '*';
+    } else {
+      $('.current-tag').text('Posts are tagged ' + tag);
+      hashFilter = function () {
+        return $(this).data('tags').match(new RegExp((tag + '').replace(/[.?*+^$[\]\\(){}|-]/g, "\\$&")));
+      };
+    }
+    // filter isotope
+    $posts.isotope({
+      itemSelector: '[data-tags]',
+      filter: hashFilter
+    });
+  }
+
+  $(window).on( 'hashchange', onHashChanged);
+  // trigger event handler to init Isotope
+  onHashChanged();
+});
+  </script>
+</div>

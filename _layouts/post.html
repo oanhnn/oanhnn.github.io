@@ -14,6 +14,10 @@ layout: default
 
 <h1 class="title">{{ page.title }}</h1>
 
+<p class="tags clearfix">
+  {% for tag in page.tags %}<a class="tag" href="{{ tag | replace:' ','-' | url_encode | prepend: '/tags.html#tag=' | prepend: site.baseurl }}">{{tag}}</a> {% endfor %}
+</p>
+
 <div id="post">
   {{ content }}
 </div>
