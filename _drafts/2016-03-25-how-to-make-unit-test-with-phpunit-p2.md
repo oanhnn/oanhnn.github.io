@@ -49,7 +49,17 @@ Bạn cũng có thể tạo report ra file với các optíon `coverage-text`, `
 và protected methods. Vậy thì làm thế nào để viết unit test cho chúng trong khi
 chúng ta không thể call chúng từ ngoài class của chúng?
 
+Mình sẽ giới thiệu một cách test các private và protected methods mà mình vẫn hay dùng,
+đó là sử dụng extension [reflection][php-reflection].
 
+```php
+
+public function callProtectedMethod($obj, $methodName, $args = [])
+{
+    
+}
+
+```
 
 ## 100% code coverage and Why it is not enough?
 
@@ -67,3 +77,4 @@ chúng ta không thể call chúng từ ngoài class của chúng?
 
 [prev-post]:              /2016-03-24/how-to-make-unit-test-with-phpunit-p1.html
 [code-coverage-analysis]: https://phpunit.de/manual/current/en/code-coverage-analysis.html
+[php-reflection]:         http://php.net/manual/en/book.reflection.php
