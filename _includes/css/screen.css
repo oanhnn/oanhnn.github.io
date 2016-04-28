@@ -313,14 +313,12 @@ sup {
 }
 .tags a{
     float:left;
-    height:1.7em;
-    line-height:1.7em;
+    height:22px;
+    line-height:22px;
     position:relative;
     font-size:0.8em;
-}
-.tags a{
-    margin-left: 1.2em;
-    margin-bottom: 0.3em;
+    margin-left: 14px;
+    margin-bottom: 5px;
     padding:0 8px 0 12px;
     background:{{ site.colors.highlight }};
     color:#fff;
