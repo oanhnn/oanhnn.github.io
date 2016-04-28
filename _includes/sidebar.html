@@ -1,4 +1,10 @@
 <nav>
+  <div id="navigation">
+      <a href="{{ '/' | prepend: site.baseurl }}"><i class="fa fa-home"></i></a>
+      <a href="{{ '/archive.html' | prepend: site.baseurl }}"><i class="fa fa-bookmark"></i></a>
+      <a href="{{ '/tags.html' | prepend: site.baseurl }}"><i class="fa fa-tags"></i></a>
+      <!--<a href="{{ '/about.html' | prepend: site.baseurl }}"><i class="fa fa-user"></i></a>-->
+  </div>
   <a href="{{ '/' | prepend: site.baseurl }}">
     {% if site.data.author.image %}
     <img src="{{ site.data.author.image }}" id="avatar" alt="{{ site.data.author.name }}" title="{{ site.data.author.name }}"/>

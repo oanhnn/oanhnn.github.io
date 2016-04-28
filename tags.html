@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: page
 ---
 
 <div id="home">
@@ -10,8 +10,9 @@ layout: default
     {% assign p = tag | last %}
     <a href="#tag={{ t | replace:' ','-' | url_encode }}" class="tag" data-filter="{{t | downcase | replace:' ','-' }}">{{t | downcase | replace:' ','-' }}</a>
     {% endfor %}
+    <span class="clearfix"></span>
   </p>
-  <hr>
+  <hr style="margin: 10px 0;">
   <h3 class="current-tag">All posts</h3>
   <ul id="blog-posts" class="posts">
     {% for post in site.posts %}

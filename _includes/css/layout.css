@@ -11,15 +11,18 @@
 @media only screen and (max-width: 959px) {
     #logo {
         font-size: 21px;
-        margin-bottom: 15px; }
+        margin-bottom: 15px;
+    }
     nav .button {
-        padding: 9px 20px 11px; }
+        padding: 9px 20px 11px;
+    }
 }
 
 /* Tablet Portrait size to standard 960 (devices and browsers) */
 @media only screen and (min-width: 768px) and (max-width: 959px) {
     nav {
-        width: 160px; }
+        width: 160px;
+    }
     .sidebar h2 {
         font-size: 18px;
     }
@@ -33,11 +36,9 @@
 @media only screen and (max-width: 767px) {
     header h1 { font-size: 34px; line-height: 37px; }
     nav { position: relative; }
-    nav ul,
-    #logo { text-align: left; }
-    .sidebar {
-        display: none;
-    }
+    nav ul, #logo { text-align: left; }
+    .sidebar { display: none; }
+    .meta a.home, .meta a.archive { display: block; }
     .content {
         border: 0px;
         padding-left: 0px;

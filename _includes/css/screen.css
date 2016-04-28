@@ -104,7 +104,7 @@ ul.posts span {
     font-size: 14px;
 }
 
-.meta a.home, .meta a.archive {font-size: 18px; color: #3498db; float: right; margin-left: 12px}
+.meta a.home, .meta a.archive {font-size: 18px; color: #3498db; float: right; margin-left: 12px; display: none; }
 .meta a.home:hover, .meta a.archive:hover {text-decoration: none}
 sup {vertical-align: super; font-size: 0.7em; font-weight: bold; padding: 0 2px}
 
@@ -127,6 +127,11 @@ sup {vertical-align: super; font-size: 0.7em; font-weight: bold; padding: 0 2px}
     overflow: hidden;
 }
 
+nav {
+    position: fixed;
+    width: 220px;
+}
+
 nav h1, nav h2 {
     text-align: center;
 }
@@ -147,6 +152,7 @@ nav h1, nav h2 {
     margin-bottom: 10px;
     font-size: 15px;
     font-weight: bold;
+    text-align: right;
 }
 
 #post ul,
@@ -164,7 +170,7 @@ nav h1, nav h2 {
 }
 
 .sidebar {
-    padding-top: 25px;
+    padding-top: 15px;
     font-family: "open sans", sans-serif;
 }
 
@@ -204,6 +210,22 @@ nav h1, nav h2 {
     border-radius: 50%;
 }
 
+#navigation {
+    height: 28px;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: dotted 1px #ddd;
+    text-align: center;
+}
+
+#navigation a {
+    display: inline-block;
+    width: 50px;
+    height: 28px;
+    font-size: 28px;
+    text-align: center;
+}
+
 #stalker {
     display: inline-block;
     height: 18px;
@@ -211,14 +233,14 @@ nav h1, nav h2 {
 }
 
 #stalker a {
-    width: 29px;
+    width: 28px;
+    height: 28px;
     overflow: hidden;
     float: left;
 }
 
 #stalker i {
     font-size: 28px;
-    margin-right: 5px;
 }
 
 #stalker a:hover {
