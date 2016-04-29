@@ -9,14 +9,12 @@ html {
 }
 
 body {
-    font-size: 16px;
-    background-color: white;
+    background: #fff;
     color: #222222;
+    border-top: 5px solid {{ site.colors.highlight }};
+    font-size: 16px;
     line-height: 24px;
     margin: 0;
-    margin-bottom: 60px;
-    border-top: 5px solid {{ site.colors.highlight }};
-    position: relative;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -111,12 +109,10 @@ sup {vertical-align: super; font-size: 0.7em; font-weight: bold; padding: 0 2px}
 .footer {
     position: absolute;
     bottom: -60px;
-    width: 100%;
+    width: inherit;
     height: 60px;
-    font-size: 80%;
-    background-color: #f5f5f5;
-    color: #666;
-    border-top: 4px solid #eee;
+    border-top: 2px solid rgba(0,39,59,.2);
+    color: #3f4549;
     overflow: hidden;
 }
 
@@ -137,14 +133,12 @@ nav h1, nav h2 {
 }
 
 #bio {
-    margin-top: 10px;
-    margin-bottom: 15px;
+    margin: 10px 0;
+    padding: 15px 0;
     border: dotted #ddd;
     border-width: 1px 0;
-    padding-top: 15px;
     font-size: 15px;
     font-style: italic;
-    font-weight: bold;
     text-align: right;
 }
 
@@ -153,6 +147,7 @@ nav h1, nav h2 {
     font-size: 15px;
     font-weight: bold;
     text-align: right;
+    color: #aaa;
 }
 
 #post ul,
@@ -176,6 +171,7 @@ nav h1, nav h2 {
 
 .sidebar p {
     font-weight: 200;
+    margin-bottom: 0;
 }
 
 .sidebar a {
@@ -187,7 +183,9 @@ nav h1, nav h2 {
     border-left: 1px solid #ddd;
     padding-left: 40px;
     padding-top: 25px;
-    min-height: 610px;
+    min-height: 595px;
+    margin-bottom: 60px;
+    position: relative;
 }
 
 .aside {
@@ -200,11 +198,10 @@ nav h1, nav h2 {
 }
 
 #logo, #avatar {
-    margin-bottom: 25px;
-}
-
-#avatar {
-    width: 180px;
+    width: 200px;
+    height: auto;
+    margin: 15px auto;
+    max-width: 100%;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
@@ -213,7 +210,7 @@ nav h1, nav h2 {
 #navigation {
     height: 28px;
     margin-bottom: 10px;
-    padding-bottom: 5px;
+    padding-bottom: 10px;
     border-bottom: dotted 1px #ddd;
     text-align: center;
 }
@@ -227,16 +224,14 @@ nav h1, nav h2 {
 }
 
 #stalker {
-    display: inline-block;
-    height: 18px;
-    margin-left: 5px;
+    display: block;
+    margin: 5px 0 0;
 }
 
 #stalker a {
     width: 28px;
     height: 28px;
     overflow: hidden;
-    float: left;
 }
 
 #stalker i {
@@ -257,8 +252,8 @@ i.fa-hn {
 }
 
 .disclaimer p {
-    margin-top: 5px;
-    font-size: 11px;
+    margin-top: 10px;
+    font-size: 12px;
     text-align: center;
 }
 
@@ -311,10 +306,10 @@ sup {
     position: relative;
     margin-bottom: 10px;
 }
-.tags a{
+.tags a {
     float:left;
     height:22px;
-    line-height:22px;
+    line-height:22px!important;
     position:relative;
     font-size:0.8em;
     margin-left: 14px;
@@ -330,8 +325,8 @@ sup {
     -webkit-border-top-right-radius:3px;
     border-top-right-radius:3px;
 }
-.tags a:before{
-    content:'';
+.tags a:before {
+    content:"";
     float:left;
     position:absolute;
     top:0px;
@@ -342,7 +337,7 @@ sup {
     border-style:solid;
     border-width:11px 10px 11px 0;
 }
-.tags a:after{
+.tags a:after {
     content:"";
     position:absolute;
     top:9px;
@@ -358,5 +353,5 @@ sup {
     -webkit-box-shadow:-1px -1px 2px #004977;
     box-shadow:-1px -1px 2px #004977;
 }
-.tags a.selected{background:#aaa;}
-.tags a.selected:before{border-color:transparent #aaa transparent transparent;}
+.tags a.selected { background:#aaa; }
+.tags a.selected:before { border-color:transparent #aaa transparent transparent; }

@@ -18,3 +18,18 @@ title: 404 Page Not Found
     {% endfor %}
   </ul>
 </div>
+<script src="{{ '/assets/js/jquery-1.11.2.min.js' | prepend: site.baseurl }}" type="text/javascript"></script>
+<script src="{{ '/assets/js/typed.min.js' | prepend: site.baseurl }}" type="text/javascript"></script>
+<script type="text/javascript">
+$(function(){
+  $('nav>h2').typed({
+    strings: ['Hi', 'I\'m {{ site.data.author.name }}', 'Web developer'],
+    typeSpeed: 3,
+    backSpeed: 0,
+    backDelay: 1000,
+    loop: true,
+    showCursor: false,
+    contentType: 'html',
+  });
+});
+</script>

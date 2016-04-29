@@ -55,6 +55,10 @@ methods mà mình vẫn hay dùng, đó là sử dụng extension [reflection][p
 Đầu tiên bạn thêm ba methods sau vào class test của bạn.
 
 ```php
+<?php
+
+class MyTestCase extends \PHPUnit_Framework_TestCase
+{
     /**
      * Get a non public property of an object
      *
@@ -110,13 +114,15 @@ methods mà mình vẫn hay dùng, đó là sử dụng extension [reflection][p
 
         return $ref->invokeArgs($obj, $params);
     }
+}
 ```
 
 Bây giờ thì bạn có thể dễ dàng test các private/protected methods và property rồi phải không?
 Ví dụ để test protected method `cryptPassword` của class User thì chúng ta làm như sau:
 
 ```php
-
+<?php
+// ...
     public function testCryptPassword($expectedCryptedPassword, $rawPassword)
     {
         $user = new User();
@@ -130,16 +136,17 @@ Ví dụ để test protected method `cryptPassword` của class User thì chún
 Vậy là chúng ta có thể viết test đến 100% code coverage rồi phải không nào?
 Nhưng liệu như vậy đã đủ chưa?   
 Theo cá nhân mình là chưa đủ. Bởi vì code coverage chỉ cho thấy tất cả các phần code
-đã được test chạy qua, nhưng chưa phải là đã test được hết tất cả các trường hợp.   
+đã được test chạy qua, nhưng chưa phải là đã test được hết tất cả các trường hợp.
 Ví dụ như truờng hợp sau:
 
 ```php
-
+<?php
+// ...
     /**
      * Return 'XY' when $x >= 0 and $y >= 0
-     * Return 'xY' when $x < 0 and $y >= 0
-     * Return 'Xy' when $x >= 0 and $y < 0
-     * Return 'xy' when $x < 0 and $y < 0
+     * Return 'xY' when $x <  0 and $y >= 0
+     * Return 'Xy' when $x >= 0 and $y <  0
+     * Return 'xy' when $x <  0 and $y <  0
      *
      * @param int $x
      * @param int $y
@@ -159,11 +166,14 @@ Ví dụ như truờng hợp sau:
 ```
 
 Như với method trên, ta thấy chỉ với 3 truờng hợp (1, 1), (-1, 1) và (1, -1),
-nó đã cho code coverage 100% và test là pass. Nhưng với truờng hợp (-1, -1) nó lại sai! @@
+nó đã cho code coverage 100% và test là pass. Nhưng với truờng hợp (-1, -1) nó lại sai! @@   
 Vì vậy chúng ta nên tạo matrix test để có thể bao phủ hết tất cả các truờng hợp.
 
 ## Stubbing & Mocking
 
+Trong một số trường hợp, chúng ta phải cover cả dữ liệu ngẫu nhiên, dữ liệu `time()`,
+hay từ hãng thứ ba, vậy thì làm thế nào mình có thể test được các case theo
+mong muốn của mình chứ?   
 
 
 ## Fixtures

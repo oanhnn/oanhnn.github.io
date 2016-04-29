@@ -12,11 +12,11 @@
     <img src="/logo.png" id="logo" alt="Blog logo" title="{{ site.data.author.name }}"/>
     {% endif %}
   </a>
-  <h2>I'm {{ site.data.author.name }}</h2>
+  <h2 style="height: 30px">I'm {{ site.data.author.name }}</h2>
   <div id="bio">
     <p>{{ site.data.author.bio }}</p>
   </div>
   <div id="social">
-    {% include social.html social=site.data.author.social rss_feed=site.rss_feed %}
+    {% include social.html social=site.data.author.social rss_feed=site.rss_feed name=site.data.author.name %}
   </div>
 </nav>

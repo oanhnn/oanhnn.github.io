@@ -2,8 +2,9 @@
 title:                OanhNN's blog
 subtitle:             Sharing anything I know and I think
 description:          >
-    I am a web developer helping make the world a better place through JavaScript, PHP, and more.
-    I am an open-source contributor and I like making things that help people with their work.
+    I am a web developer and an open-source contributor.
+    I like making something that help people's work and
+    I hope those will make a world better.
 
 baseurl:              ""                                      # the subpath of your site, e.g. /blog
 url:                  "https://oanhnn.github.io"              # the base hostname & protocol for your site

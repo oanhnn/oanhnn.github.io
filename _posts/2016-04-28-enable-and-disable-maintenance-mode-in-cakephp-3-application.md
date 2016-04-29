@@ -63,7 +63,7 @@ class AppController extends Controller
 Tuy đơn giản nhưng mình thấy nó còn có nhiều hạn chế, đặc biệt nó vẫn phải chạy
 sau nhiều xử lý khác hoặc có thể bị AuthComponent chặn, bắt login, ...
 
-## Find best solution
+## Find better solution
 
 Mình tiếp tục nghiên cứu thêm thì thấy cái dispatcher nó có hệ thống event
 chạy trước khi dispatch. Hay quá, nếu bắt event này và chạy thì nó sẽ chưa cần phải dispatch,
