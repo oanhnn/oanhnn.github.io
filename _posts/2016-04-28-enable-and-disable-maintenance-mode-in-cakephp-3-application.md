@@ -2,13 +2,13 @@
 title:    Enable and disable maintenance mode in CakePHP 3 application
 layout:   post
 category: tutorial-tips
-tags:     [skill, cakephp]
+tags:     [skill, cakephp, php]
 feature:  /assets/img/cakephp-maintenance.png
 ---
 
 Mình đã làm việc với cả hai frameworks là Laravel 5.x và CakePHP 3.x (trong bài này
 mình không so sánh hai frameworks đó). Mình thấy trong Laravel 5.x có một tính năng
-rất hay là có thể bật và tắt chế độ bảo trì bằng CLI, đó là `artisan dơwn` và `artisan up`.
+rất hay là có thể bật và tắt chế độ bảo trì bằng CLI, đó là `artisan down` và `artisan up`.
 Trong CakePHP 3.x mình không thấy có tính năng này và mình bắt đầu tìm hiểu để
 tích hợp thêm tính năng này cho CakePHP.
 

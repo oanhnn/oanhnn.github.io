@@ -1,5 +1,5 @@
 # General Jekyll Config
-title:                My Blog
+title:                OanhNN's blog
 subtitle:             Sharing anything I know and I think
 description:          >
     I am a web developer helping make the world a better place through JavaScript, PHP, and more.
@@ -24,7 +24,7 @@ destination:          _site
 layouts_dir:          _layouts
 data_dir:             _data
 include:              [.htaccess]
-exclude:              
+exclude:
   - LICENSE.md
   - CNAME
   - README.md
