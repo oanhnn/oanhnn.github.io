@@ -1,0 +1,326 @@
+---
+layout: slide
+title: demo
+---
+
+<section>
+  <section id="cover">
+    <h3>RikkeiSoft Co. Ltd.,</h3>
+    <h2>Auto test with PHPUnit</h2>
+    <p>
+      <small>Created by <a href="https://oanhnn.github.io">OanhNN</a></small>
+    </p>
+    <aside class="notes">
+
+    </aside>
+  </section>
+  <section id="contents">
+    <h3>Nội dung</h3>
+    <ol>
+      <li><a href="#/2">PHPUnit là gì?</a></li>
+      <li><a href="">Bắt đầu với PHPUnit</a></li>
+      <li><a href="">Tự động test trước khi git commit</a></li>
+      <li><a href="">TDD là cái gì?</a></li>
+    </ol>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2>Hello</h2>
+    <img data-src="img/thinking.gif" alt="me" style="border: none; background: transparent; box-shadow: none; float: right">
+    <ul style="list-style: none; text-align: left">
+      <li class="fragment">Mình là một <strong>developer</strong></li>
+      <li class="fragment">Muốn tạo nhưng thứ <strong>tốt nhất</strong> = <strong>code</strong></li>
+      <li class="fragment">Không muốn sản phẩm của mình có <strong>bug</strong></li>
+      <li class="fragment">Nhưng mình ngại <strong>test</strong>!</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Tại sao?</h2>
+    <ul style="list-style: none; text-align: left">
+      <li class="fragment">Tốn thời gian</li>
+      <li class="fragment">Setup phức tạp</li>
+      <li class="fragment">Lặp đi lặp lại => nhàm chán</li>
+    </ul>
+  </section>
+  <section data-transition="zoom">
+    <p>Giải pháp?</p>
+    <h2 class="fragment">PHPUnit</h2>
+    <img class="fragment" width="400" height="344" data-src="img/amazing.gif" alt="Amazing">
+  </section>
+</section>
+
+<section id="phpunit">
+  <section>
+    <h2>PHPUnit là gì?</h2>
+    <blockquote class="fragment" cite="https://en.wikipedia.org/wiki/PHPUnit">
+      <div style="text-align: left">&ldquo;PHPUnit is a unit testing framework for the PHP programming
+        language.
+        It is an instance of the xUnit architecture for unit testing frameworks.
+        PHPUnit was created by Sebastian Bergmann and its development is hosted on GitHub.&rdquo;</div>
+      <div style="text-align: right"><strong style="text-align: right">-- Wikipedia --</strong></div>
+    </blockquote>
+  </section>
+  <section>
+    <h2>PHPUnit là ...</h2>
+    <ul>
+      <li class="fragment">A unit testing framework for PHP</li>
+      <li class="fragment">An open source software</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Unit?</h2>
+    <ul>
+      <li class="fragment">Meters is a unit</li>
+      <li class="fragment">Micrometers is a unit</li>
+      <li class="fragment">And kilometers is also a unit</li>
+    </ul>
+    <p><img class="fragment" width="400" height="344" data-src="img/wtf.gif" alt="WTF"></p>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2>Bắt đầu với PHPUnit</h2>
+    <p>Sử dụng <a class="fragment grow" href="https://getcomposer.org">Composer</a></p>
+    <img class="fragment" data-src="img/logo-composer-transparent.png" alt="Composer logo">
+  </section>
+  <section>
+    <h3>phpunit.xml & phpunit.xml.dist</h3>
+    <p class="fragment">Độ ưu tiên: <code>phpunit.xml</code> &gt; <code>phpunit.xml.dist</code></p>
+    <pre class="fragment">
+          <code class="hljs" style="max-height: 500px">
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+<phpunit colors="false" verbose="true" stopOnError="false"
+    stopOnFailure="false" bootstrap="tests/bootstrap.php">
+  <!-- Change php settings -->
+  <php>
+    <ini name="memory_limit" value="-1"/>
+    <ini name="apc.enable_cli" value="1"/>
+  </php>
+
+  <!-- Add any test suites you want to run here -->
+  <testsuites>
+    <testsuite name="Test Source">
+      <directory>tests</directory>
+    </testsuite>
+  </testsuites>
+
+  <!-- Ignore vendor tests in code coverage reports -->
+  <filter>
+    <blacklist>
+      <directory>vendor</directory>
+      <directory>bin</directory>
+    </blacklist>
+    <whitelist>
+      <directory suffix=".php">src</directory>
+    </whitelist>
+  </filter>
+</phpunit>
+          </code>
+    </pre>
+  </section>
+  <section>
+    <h2>Bootstrap</h2>
+    <pre>
+          <code class="hljs" style="max-height: 500px">
+&lt;?php
+// tests/bootstrap.php
+
+// Enable Composer autoloader
+$autoloader = require dirname(__DIR__) . '/vendor/autoload.php';
+// Register test classes
+$autoloader->addPsr4('YourOrg\\YourProject\\Tests\\', __DIR__);
+
+          </code>
+    </pre>
+  </section>
+
+  <section>
+    <h2>Conventions</h2>
+    <ol style="text-align: left">
+      <li>Tên class test sẽ bắt đầu bằng <code class="fragment grow">Test</code> và thường giống với tên class cần test</li>
+      <li>Tên file giống với tên class test</li>
+      <li>Class test phải kế thừa từ class <code class="fragment grow">PHPUnit_Framework_TestCase</code></li>
+      <li>Method test cũng bắt đầu bằng <code class="fragment grow">test</code></li>
+    </ol>
+  </section>
+</section>
+
+<section>
+  <section data-background="img/thinking2.gif" style="text-align: right">
+    <h2>Làm thế nào để</h2>
+    <h2>test không sót case?</h2>
+  </section>
+  <section>
+    <h2>Lập bảng matrix test case</h2>
+    <img class="fragment" data-src="img/table-matrix-for-test.jpg" alt="Table matrix" style="width: 250%">
+  </section>
+  <section>
+    <h2>Sử dụng @dataProvider</h2>
+    <pre class="fragment">
+          <code class="hljs" style="max-height: 500px;" data-trim contenteditable>
+&lt;?php
+//...
+/**
+ * Test `matchingAccount()` method
+ *
+ * @param string  $username
+ * @param string  $password
+ * @param boolean $expected
+ * @dataProvider dataTestMatchingAccount
+ */
+public function testMatchingAccount($username, $password, $expected)
+{
+    $result = $this->authenticator->matchingAccount($username, $password);
+    $this->assertSame($expected, $result);
+}
+
+/**
+ * Data for test `matchingAccount()` method
+ *
+ * @return array
+ */
+public function dataTestMatchingAccount()
+{
+    return [
+        ['',       '',         false],
+        ['',       'abc12345', false],
+        ['oanhnn', '',         false],
+        ['oanhnn', 'abc12345', true],
+        ['oanhnn', '12345678', false],
+        ['oanh',   '',         false],
+        ['oanh',   'abc12345', false],
+        ['oanh',   '12345678', false],
+    ];
+}
+          </code>
+    </pre>
+  </section>
+</section>
+
+<section>
+  <h2>Chạy PHPUnit</h2>
+  <img class="fragment" style="width: 300%" data-src="img/run-phpunit.gif">
+</section>
+
+<section>
+  <section>
+    <h4>Tự động test trước khi git commit</h4>
+    <p class="fragment">1. Tạo file <code class="fragment grow">.git/hooks/pre-commit</code> với nội dung:</p>
+    <pre class="fragment">
+          <code class="hljs" style="max-height: 500px;" data-trim contenteditable>
+#!/usr/bin/php
+&lt;?php
+// Hook configuration
+$project = 'Training PHPUnit 01';
+
+// Tell the commiter what the hook is doing
+echo PHP_EOL;
+echo "Starting unit tests...\n";
+
+// Execute project unit tests
+exec('phpunit', $output, $returnCode);
+
+// if the build failed, output a summary and fail
+if ($returnCode !== 0) {
+  // find the line with the summary; this might not be the last
+  while (($minimalTestSummary = array_pop($output)) !== null) {
+    if (strpos($minimalTestSummary, 'Tests:') !== false) {
+      break;
+    }
+  }
+
+  // output the status and abort the commit
+  echo "Test suite for '{$project}' failed:\n";
+  echo $minimalTestSummary;
+  echo PHP_EOL;
+  exit(1);
+}
+
+echo "All tests for '{$project}' passed.\n";
+echo PHP_EOL;
+exit(0);
+          </code>
+    </pre>
+  </section>
+  <section>
+    <h3>Tự động test trước khi git commit (tiếp)</h3>
+    <p>2. Thêm quyền thực thi và <code>commit</code> thử</p>
+    <pre class="fragment">
+          <code class="hljs" style="max-height: 500px;" data-trim contenteditable>
+$ cd /path/to/project
+$ vi .git/hooks/pre-commit
+$ chmod a+x .git/hooks/pre-commit
+$ git commit -am "Added changes"
+
+Starting unit tests...
+All tests for 'Training PHPUnit 01' passed.
+
+[master xxxxxxx] Added changes
+1 files changed, 1 insertions(+), 1 deletions(-)
+          </code>
+    </pre>
+  </section>
+  <section >
+    <img width="400" height="344" data-src="img/amazing.gif" alt="Amazing">
+    <p class="fragment">Tuyệt hơn nếu nó thành <strong class="fragment grow">quy trình sản xuất phần mềm</strong>
+    </p>
+  </section>
+</section>
+
+<section data-transition="zoom">
+  <section>
+    <h2>TDD là gì?</h2>
+    <blockquote class="fragment" cite="https://en.wikipedia.org/wiki/PHPUnit">
+      <div style="text-align: left">&ldquo;Test-driven development (TDD) is a software development process
+        that relies on the repetition of a very short development cycle: first the developer writes an (initially failing)
+        automated test case that defines a desired improvement or new function, then produces the minimum amount of code
+        to pass that test, and finally refactors the new code to acceptable standards.&rdquo;</div>
+      <div style="text-align: right"><strong style="text-align: right">-- Wikipedia --</strong></div>
+    </blockquote>
+  </section>
+  <section>
+    <h2>TDD là ...</h2>
+    <ul>
+      <li class="fragment">A software development process</li>
+      <li class="fragment">Sử dụng auto test</li>
+      <li class="fragment">Code chạy được, chạy đúng <span class="fragment">=> chuẩn hóa</span></li>
+    </ul>
+  </section>
+  <section>
+    <h2>TDD gồm các bước</h2>
+    <ol>
+      <li>Tạo script test</li>
+      <li>Chạy test và chỉnh sửa script test theo đúng spec</li>
+      <li>Viết code chương trình</li>
+      <li>Chạy test</li>
+      <li>Chỉnh sửa lại code để sửa lỗi</li>
+      <li>Lặp lại các bước khi có thêm yêu cầu</li>
+    </ol>
+  </section>
+  <section data-background="img/TDD_Global_Lifecycle.png"></section>
+</section>
+
+<section>
+  <h3>Tổng kết</h3>
+  <ol>
+    <li><a href="#/2">PHPUnit là gì?</a></li>
+    <li><a href="">Bắt đầu với PHPUnit</a></li>
+    <li><a href="">Tự động test trước khi git commit</a></li>
+    <li><a href="">TDD là cái gì?</a></li>
+  </ol>
+</section>
+<section>
+  <h1>Q & A</h1>
+</section>
+
+<section style="text-align: left;">
+  <h3>THE END</h3>
+  <p>
+    - <a href="https://phpunit.de/">PHPUnit site</a><br>
+    - <a href="https://en.wikipedia.org/wiki/PHPUnit">Wikipedia about PHPUnit</a><br>
+    - <a href="https://jtreminio.com/2013/03/unit-testing-tutorial-introduction-to-phpunit">Tutorial about PHPUnit of Juan Tremini</a>
+  </p>
+</section>

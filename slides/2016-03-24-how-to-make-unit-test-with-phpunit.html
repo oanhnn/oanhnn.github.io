@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>How to make unit test with PHPUnit (p1)</title>
+  <meta name="description" content="How to make unit test with PHPUnit (p1)">
+  <meta name="author" content="Oanh Nguyen">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+  <link rel="stylesheet" href="css/reveal.css">
+  <link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+  <!-- Code syntax highlighting -->
+  <link rel="stylesheet" href="lib/css/zenburn.css">
+  <style>
+    .reveal pre {box-shadow: none}
+  </style>
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+    document.getElementsByTagName('head')[0].appendChild(link);
+  </script>
+
+  <!--[if lt IE 9]>
+  <script src="lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+<div class="reveal">
+  <!-- Any section element inside of this container is displayed as a slide -->
+  <div class="slides">
+
+    <section>
+      <section id="cover">
+        <h3>RikkeiSoft Co. Ltd.,</h3>
+        <h2>How to make unit test with PHPUnit</h2>
+        <p>
+          <small>Created by <a href="https://oanhnn.github.io">OanhNN</a></small>
+        </p>
+
+        <aside class="notes">
+          <ul>
+            <li>Nhắc lại bài trước</li>
+            <li>Giới thiệu bài này</li>
+            <li>Giới thiệu nội dung</li>
+          </ul>
+        </aside>
+      </section>
+      <section id="contents">
+        <h3>Nội dung</h3>
+        <ol style="min-width: 360px">
+          <li><a href="">Cài đặt PHPUnit</a></li>
+          <li><a href="">Tổ chức test suite</a></li>
+          <li><a href="">Viết test class cơ bản</a></li>
+        </ol>
+      </section>
+    </section>
+
+    <section>
+      <section>
+        <h2>Yêu cầu</h2>
+        <ul style="text-align: left">
+          <li class="fragment">PHPUnit 5.2 yêu cầu PHP 5.6+</li>
+          <li class="fragment">Enable các extensions:
+            <a href="http://php.net/manual/en/dom.setup.php">dom</a>,
+            <a href="http://php.net/manual/en/json.installation.php">json</a>,
+            <a href="http://php.net/manual/en/pcre.installation.php">pcre</a>,
+            <a href="http://php.net/manual/en/reflection.installation.php">reflection</a> and
+            <a href="http://php.net/manual/en/spl.installation.php">spl</a>
+          </li>
+          <li class="fragment">Feature code coverage require:
+            <a href="https://xdebug.org/">Xdebug</a>,
+            <a href="http://php.net/manual/en/tokenizer.installation.php">tokenizer</a> and
+            <a href="http://php.net/manual/en/xmlwriter.installation.php">xmlwriter</a>
+          </li>
+        </ul>
+        <pre class="fragment" style="width: auto"><code class="hljs" style="max-height: 500px">user@host~$ php -v
+PHP 5.6.19 (cli) (built: Mar  3 2016 06:29:24)
+Copyright (c) 1997-2016 The PHP Group
+Zend Engine v2.6.0, Copyright (c) 1998-2016 Zend Technologies
+    with Xdebug v2.3.3, Copyright (c) 2002-2015, by Derick Rethans
+
+user@host~$ php -m | grep 'dom\|json\|pcre\|Xdebug\|tokenizer\|xmlwriter'
+dom
+json
+pcre
+tokenizer
+xmlwriter
+Xdebug</code></pre>
+      </section>
+
+      <section>
+        <h3>Download PHP Archive (PHAR)</h3>
+        <ul style="text-align: left">
+          <li class="fragment">Download PHAR file from <a href="https://phar.phpunit.de/">https://phar.phpunit.de/</a></li>
+          <li class="fragment">Global installation:</li>
+        </ul>
+        <div class="fragment">
+          <p style="margin: 5px 0">Unix OS</p>
+          <pre style="margin: 0 auto"><code class="hljs">user@host~$ chmod +x phpunit.phar
+user@host~$ sudo mv phpunit.phar /usr/local/bin/phpunit
+user@host~$ phpunit --version</code></pre>
+          <p style="margin: 5px 0">Windows OS</p>
+          <pre style="margin: 0 auto"><code class="hljs">C:\Downloads> mkdir C:\bin
+C:\Downloads> copy phpunit.phar C:\bin
+C:\Downloads> cd C:\bin
+C:\bin> echo @php "%~dp0phpunit.phar" %* > phpunit.cmd
+C:\bin> set PATH=%PATH%;C:\bin
+C:\bin> phpunit --version</code></pre>
+        </div>
+      </section>
+
+      <section>
+        <h3>Using composer (recommend)</h3>
+        <p class="fragment" style="text-align: left">Cần cài <a href="https://getcomposer.org">Composer</a> trước</p>
+        <div class="fragment">
+          <p style="margin: 5px 0; text-align: left">Local installation</p>
+          <pre style="margin: 0 auto"><code class="hljs">user@host~$ composer require --dev "phpunit/phpunit=5.2.*"
+user@host~$ ./vendor/bin/phpunit --version</code></pre><br>
+          <p style="margin: 5px 0; text-align: left">Global installation</p>
+          <pre style="margin: 0 auto"><code class="hljs">user@host~$ composer global require "phpunit/phpunit=5.2.*"
+user@host~$ phpunit --version</code></pre>
+        </div>
+      </section>
+    </section>
+
+    <section>
+      <h2>Chạy PHPUnit</h2>
+      <img class="fragment" style="width: 300%" data-src="img/run-phpunit.gif">
+    </section>
+      
+    <section>
+      <section data-background="img/black-broad.jpg">
+        <h2>Organizing Tests</h2>
+      </section>
+      <section>
+        <h2>PHPUnit conventions</h2>
+        <ul>
+          <li class="fragment">Tên class với tên file test phải giống nhau</li>
+          <li class="fragment">Tên test class phải kết thúc bằng từ <code>Test</code> và thuờng giống tên class</li>
+          <li class="fragment">Test class phải kế thừa từ class <code>PHPUnit_Framework_TestCase</code></li>
+          <li class="fragment">Test methods phải bắt đầu bằng <code>test</code> và là <b>public methods</b></li>
+        </ul>
+      </section>
+      <section>
+        <h2>Project example</h2>
+        <pre class="fragment" style="margin: 0 auto"><code class="hljs">project
+├── composer.json
+├── composer.lock
+├── phpunit.xml.dist
+├── src
+│   └── Calculator.php
+├── tests
+│   ├── bootstrap.php
+│   └── CalculatorTest.php
+└── vendor</code></pre>
+      </section>
+      
+    </section>
+    <section>
+      <h2>Begin write first test</h2>
+      <pre class="fragment" style="margin: 0 auto"><code class="hljs">&lt?php
+namespace Demo\Calculator\Tests;
+
+class CalculatorTest extends \PHPUnit_Framework_TestCase
+{
+    public function testAdd()
+    {
+        $this->assertSame(10, Calculator::add(5, 5));
+    }
+}</code></pre>
+    </section>
+    <section>
+      <h2>Using <code>assert*</code> methods</h2>
+      <ul>
+        <li class="fragment">assertNull, assertEmpty, assertNan, assertInstanceOf, ...</li>
+        <li class="fragment">assertEquals, assertGreaterThan, assertGreaterThanOrEqual, assertSame, ...</li>
+        <li class="fragment">assertStringMatchesFormat, assertStringStartsWith, assertStringEndsWith, assertRegExp, ...</li>
+        <li class="fragment">assertArrayHasKey, assertArraySubset, assertContains, assertCount, ...</li>
+        <li class="fragment">assertInstanceOf, assertObjectHasAttribute, assertClassHasAttribute, ...</li>
+      </ul>
+      <aside class="notes">
+        <ul>
+          <li>Check return type</li>
+          <li>Compare result value</li>
+          <li>Check string</li>
+          <li>Check array</li>
+          <li>Check object & class</li>
+          <li>More and more</li>
+        </ul>
+      </aside>
+    </section>
+    <section>
+      <h2>Test dependencies</h2>
+      <pre class="fragment" style="margin: 0 auto"><code class="hljs">&lt?php
+class StackTest extends PHPUnit_Framework_TestCase
+{
+    public function testEmpty()
+    {
+        $stack = array();
+        $this->assertEmpty($stack);
+
+        return $stack;
+    }
+
+    /**
+     * @depends testEmpty
+     */
+    public function testPush(array $stack)
+    {
+        array_push($stack, 'foo');
+        $this->assertEquals('foo', $stack[count($stack)-1]);
+        $this->assertNotEmpty($stack);
+
+        return $stack;
+    }
+
+    /**
+     * @depends testPush
+     */
+    public function testPop(array $stack)
+    {
+        $this->assertEquals('foo', array_pop($stack));
+        $this->assertEmpty($stack);
+    }
+}</code></pre>
+    </section>
+    <section>
+      <section>
+        <h2>Data providers</h2>
+        <pre class="fragment" style="margin: 0 auto"><code class="hljs">/**
+ * @dataProvider providerMethodName
+ */</code></pre>
+        <p class="fragment"><code>providerMethodName</code> là public method</p>
+      </section>
+      <section>
+        <h2>Not using data providers</h2>
+        <pre style="margin: 0 auto"><code class="hljs">&lt?php
+namespace Demo\Calculator\Tests;
+
+class CalculatorTest extends \PHPUnit_Framework_TestCase
+{
+    public function testAdd()
+    {
+        $this->assertSame(10, Calculator::add(5, 5));
+        $this->assertSame(10, Calculator::add(-5, 15));
+        $this->assertSame(10, Calculator::add(0, 10));
+    }
+}</code></pre>
+      </section>
+      <section>
+        <h2>Using data providers</h2>
+        <pre style="margin: 0 auto"><code class="hljs">&lt??php
+namespace Demo\Calculator\Tests;
+
+class CalculatorTest extends \PHPUnit_Framework_TestCase
+{
+    /**
+     * @dataProvider dataForTestAdd
+     */
+    public function testAdd($a, $b, $expected)
+    {
+        $this->assertSame($expected, Calculator::add($a, $b));
+    }
+
+    public function dataForTestAdd
+    {
+        return [
+            //[$a, $b, $expected],
+            [5, 5, 10],
+            [-5, 15, 10],
+            [0, 10, 10],
+        ];
+    }
+}</code></pre>
+      </section>
+    </section>
+    <section>
+      <section>
+        <h2>Testing Exception</h2>
+        <pre class="fragment" style="margin: 0 auto"><code class="hljs">&lt;?php
+namespace Demo\Calculator\Tests;
+
+class CalculatorTest extends PHPUnit_Framework_TestCase
+{
+    public function testDivByZero()
+    {
+        $this->expectException(\InvalidArgumentException::class); // exception class name
+        $this->expectExceptionMessage('Division by zero');        // exception mesage
+        Calculator::div(10, 0);
+    }
+}</code></pre>
+      </section>
+      <section>
+        <h2>Testing Exception with annotations</h2>
+        <pre class="fragment" style="margin: 0 auto"><code class="hljs">&lt;?php
+namespace Demo\Calculator\Tests;
+
+class CalculatorTest extends PHPUnit_Framework_TestCase
+{
+    /**
+     * Test case dividing by zero
+     *
+     * @expectedException \InvalidArgumentException
+     * @expectedExceptionMessage Division by zero
+     */
+    public function testDivByZero()
+    {
+        Calculator::div(10, 0);
+    }
+}</code></pre>
+      </section>
+    </section>
+    <section>
+      <section>
+        <h3>Testing PHP errors, warnings and notices</h3>
+        <p class="fragment" style="text-align: justify">PHPUnit chuyển các PHP errors, warnings và notices xuất hiện trong quá trình thực thi test thành các exception</p>
+        <ul style="list-style: none">
+          <li class="fragment"><code>PHPUnit_Framework_Error</code></li>
+          <li class="fragment"><code>PHPUnit_Framework_Warning</code></li>
+          <li class="fragment"><code>PHPUnit_Framework_Notice</code></li>
+        </ul>
+      </section>
+      <section>
+        <h2>Testing PHP errors</h2>
+        <pre class="fragment" style="margin: 0 auto"><code class="hljs">&lt;?php
+namespace Demo\Calculator\Tests;
+
+class CalculatorTest extends PHPUnit_Framework_TestCase
+{
+    public function testDivByZero()
+    {
+        $this->expectException(\InvalidArgumentException::class); // exception class name
+        $this->expectExceptionMessage('Division by zero');        // exception mesage
+        Calculator::div(10, 0);
+    }
+}</code></pre>
+      </section>
+      <section>
+        <h2>Testing PHP warnings & notices</h2>
+        <p class="fragment">Tương tự với PHP error nhưng sử dụng <code>PHPUnit_Framework_Error_Notice</code>
+          và <code>PHPUnit_Framework_Error_Warning</code>.</p>
+      </section>
+    </section>
+    
+    <section>
+      <section data-background="img/thinking2.gif">
+        <h2>Test PHP output</h2>
+        <p class="fragment">Làm sao để test được method có print hay echo?</p>
+        <p class="fragment">Sử dụng 2 method <code>expectOutputString()</code> và <code>expectOutputRegex()</code></p>
+      </section>
+      <section>
+        <h2>Test PHP output</h2>
+        <pre style="margin: 0 auto"><code class="hljs">&lt;?php
+class OutputTest extends PHPUnit_Framework_TestCase
+{
+    public function testExpectFooActualFoo()
+    {
+        $this->expectOutputString('foo');
+        print 'foo';
+    }
+
+    public function testExpectBarActualBaz()
+    {
+        $this->expectOutputRegex('/^baz(\d*)$/');
+        print 'baz' . rand(1, 1000);
+    }
+}</code></pre>
+      </section>
+    </section>
+    
+    <section>
+      <h3>Tổng kết</h3>
+      <ol style="min-width: 360px">
+        <li class="fragment"><a href="">Cài đặt PHPUnit</a></li>
+        <li class="fragment"><a href="">Tổ chức test suite</a></li>
+        <li class="fragment"><a href="">Viết test class cơ bản</a></li>
+      </ol>
+    </section>
+
+    <section>
+      <h1>Q & A</h1>
+      <p class="fragment">Documents may be found in <a href="http://oanhnn.github.io">http://oanhnn.github.io</a></p>
+      <p class="fragment">Example may be found in <a href="https://github.com/oanhnn/demo-phpunit-calculator">Github</a></p>
+    </section>
+
+    <section style="text-align: left;">
+      <h3>THE END</h3>
+      <p>
+        - <a href="https://phpunit.de/">PHPUnit site</a><br>
+        - <a href="https://en.wikipedia.org/wiki/PHPUnit">Wikipedia about PHPUnit</a><br>
+        - <a href="https://jtreminio.com/2013/03/unit-testing-tutorial-introduction-to-phpunit">Tutorial about PHPUnit of Juan Tremini</a>
+      </p>
+    </section>
+  </div>
+  <img class="logo" src="img/logo.png" style="position: absolute; left: 20px; top: 20px;">
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+<script src="js/jquery-1.12.0.min.js"></script>
+<script>
+  $(document).ready(function () {
+    // Full list of configuration options available at:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+      controls: true,
+      progress: true,
+      history: true,
+      center: true,
+      transition: 'slide', // none/fade/slide/convex/concave/zoom
+      slideNumber: 'c/t',
+      // Optional reveal.js plugins
+      dependencies: [{
+          src: 'lib/js/classList.js',
+          condition: function () {
+            return !document.body.classList;
+          }
+      }, {
+        src: 'plugin/markdown/marked.js',
+        condition: function () {
+          return !!document.querySelector('[data-markdown]');
+        }
+      }, {
+        src: 'plugin/markdown/markdown.js',
+        condition: function () {
+          return !!document.querySelector('[data-markdown]');
+        }
+      }, {
+        src: 'plugin/highlight/highlight.js',
+        async: true,
+        callback: function () {
+          hljs.initHighlightingOnLoad();
+        }
+      }, {
+        src: 'plugin/zoom-js/zoom.js',
+        async: true
+      }, {
+        src: 'plugin/notes/notes.js',
+        async: true
+      }]
+    });
+
+    $('#themes a').on('click', function (evt) {
+      evt.preventDefault();
+      $('#theme').attr('href', 'css/theme/' + $(this).data('theme') + '.css');
+      return false;
+    });
+  });
+</script>
+</body>
+</html>
