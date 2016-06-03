@@ -6,6 +6,12 @@
   </a>
   {% endif %}
 
+  {% if include.social.gitlab %}
+  <a target="_blank" title="{{ include.name }} on Gitlab" href="https://gitlab.com/{{ include.social.gitlab }}">
+    <i class="fa fa-gitlab"></i>
+  </a>
+  {% endif %}
+
   {% if include.social.bitbucket %}
   <a target="_blank" title="{{ include.name }} on Bitbucket" href="https://bitbucket.com/{{ include.social.bitbucket }}/">
     <i class="fa fa-bitbucket-square"></i>
