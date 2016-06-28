@@ -11,7 +11,7 @@ html {
 body {
     background: #fff;
     color: #222222;
-    border-top: 5px solid {{ site.colors.highlight }};
+    border-top: 3px solid {{ site.colors.highlight }};
     font-size: 16px;
     line-height: 24px;
     margin: 0;
@@ -183,7 +183,7 @@ nav h1, nav h2 {
     border-left: 1px solid #ddd;
     padding-left: 40px;
     padding-top: 25px;
-    min-height: 595px;
+    min-height: 590px;
     margin-bottom: 60px;
     position: relative;
 }
