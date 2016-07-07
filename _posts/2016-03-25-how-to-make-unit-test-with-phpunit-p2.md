@@ -2,7 +2,7 @@
 title:    How to make unit test with PHPUnit (p2)
 layout:   post
 category: tutorial-tips
-tags:     [skill, php, unit test]
+tags:     [skill, php, unit-test, dev-ops]
 feature:  /assets/img/PHPUnit-logo.png
 ---
 
@@ -184,8 +184,21 @@ mong muốn của mình chứ?
 
 ## Extending PHPUnit
 
+## Resources
+
+<i class="fa fa-file-powerpoint-o"></i> [Slide][slide]   
+
+## Tài liệu tham khảo
+
+- [PHPUnit site][3]
+- [Wikipedia about PHPUnit][4]
+- [Unit testing tutorial of Juan Treminio][5]
 
 
 [prev-post]:              /2016-03-24/how-to-make-unit-test-with-phpunit-p1.html
 [code-coverage-analysis]: https://phpunit.de/manual/current/en/code-coverage-analysis.html
 [php-reflection]:         http://php.net/manual/en/book.reflection.php
+[slide]:                  /slides/2016-03-24-how-to-make-unit-test-with-phpunit.html
+[3]: https://phpunit.de
+[4]: https://en.wikipedia.org/wiki/PHPUnit
+[5]: https://jtreminio.com/2013/03/unit-testing-tutorial-introduction-to-phpunit

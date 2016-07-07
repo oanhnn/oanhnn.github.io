@@ -9,7 +9,7 @@
     {% if site.data.author.image %}
     <img src="{{ site.data.author.image }}" id="avatar" alt="{{ site.data.author.name }}" title="{{ site.data.author.name }}"/>
     {% else %}
-    <img src="/logo.png" id="logo" alt="Blog logo" title="{{ site.data.author.name }}"/>
+    <img src="{{ '/assets/img/apple-touch-icon-180x180.png'  | prepend: site.baseurl }}" id="logo" alt="Blog logo" title="{{ site.data.author.name }}"/>
     {% endif %}
   </a>
   <h2 style="height: 30px">I'm {{ site.data.author.name }}</h2>

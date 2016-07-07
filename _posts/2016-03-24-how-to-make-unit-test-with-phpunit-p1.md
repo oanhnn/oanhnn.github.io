@@ -2,7 +2,7 @@
 title:    How to make unit test with PHPUnit (p1)
 layout:   post
 category: tutorial-tips
-tags:     [skill, php, unit test]
+tags:     [skill, php, unit-test, dev-ops]
 feature:  /assets/img/PHPUnit-logo.png
 ---
 
@@ -125,28 +125,28 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
 }
 ```
 
-Trong method `testAdd` trên, mình đã dùng method `assertSame` để check kết quả trả về 
+Trong method `testAdd` trên, mình đã dùng method `assertSame` để check kết quả trả về
 của method `Calculator::add(5, 5)` có phải là 10 không?   
-Sử dụng `assertSame` để check cả về giá trị và kiểu dữ liệu. Ngoài ra còn có thể 
+Sử dụng `assertSame` để check cả về giá trị và kiểu dữ liệu. Ngoài ra còn có thể
 sử dụng nhiều method `assert*` khác để check, bạn xem chi tiết ở [đây][assertions].
 
 Bây giờ bạn thử chạy `phpunit` xem nào? Wow. Thật đơn giản, bạn đã viết đc rồi đấy.
 
 ## Test dependencies
 
-> Unit Tests are primarily written as a good practice to help developers identify and 
-> fix bugs, to refactor code and to serve as documentation for a unit of software under 
-> test. To achieve these benefits, unit tests ideally should cover all the possible paths 
-> in a program. One unit test usually covers one specific path in one function or method. 
-> However a test method is not necessary an encapsulated, independent entity. Often 
+> Unit Tests are primarily written as a good practice to help developers identify and
+> fix bugs, to refactor code and to serve as documentation for a unit of software under
+> test. To achieve these benefits, unit tests ideally should cover all the possible paths
+> in a program. One unit test usually covers one specific path in one function or method.
+> However a test method is not necessary an encapsulated, independent entity. Often
 > there are implicit dependencies between test methods, hidden in the implementation scenario of a test.
 > --- **Adrian Kuhn et. al.**
 
-Mình tạm dịch đoạn trên như sau: _Mục đích chính của Unit Tests là để giúp deverlopers 
+Mình tạm dịch đoạn trên như sau: _Mục đích chính của Unit Tests là để giúp deverlopers
 xác định và sửa lỗi, để tái cấu trúc lại code và làm tài liệu cho kiểm thử một đơn vị phần mềm.
 Để đạt được điều đó, các Unit Tests nen covers tất cả các possible paths trong chương trình.
 Mỗi unit test thường xuyên cover một path cụ thể của một function hoặc method. Tuy nhiên,
-Một method test không cần thiết phải là một sự đóng gói, thực thể độc lập. 
+Một method test không cần thiết phải là một sự đóng gói, thực thể độc lập.
 Chúng thường phụ thuộc vào nhau, và ẩn trong kịch bản triển khai một thử nghiệm._
 
 Như vậy thì làm thế nào để khai báo test method này phụ thuộc vào các test method khác?
@@ -187,14 +187,14 @@ class StackTest extends PHPUnit_Framework_TestCase
 }
 ```
 
-Khi sử dụng dependencies thì các test dependency methods phải return về kết quả. 
+Khi sử dụng dependencies thì các test dependency methods phải return về kết quả.
 Chúng sẽ là tham số cho method test của chúng ta.
 
 ## Data providers
 
-Bây giờ quay lại với method `testAdd` ở trên, chúng ta thấy là có một vấn đề là 
+Bây giờ quay lại với method `testAdd` ở trên, chúng ta thấy là có một vấn đề là
 nó chỉ test có một trường hợp nên không chắc các trường hợp khác, method `add` đã chạy đúng.
-Do đó chúng ta cần test thêm nhiều trường hợp khác. 
+Do đó chúng ta cần test thêm nhiều trường hợp khác.
 
 ```php
 <?php
@@ -211,11 +211,11 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
 }
 ```
 
-Khoan, từ từ đã. Có gì không ổn ở đây. Đó là đây chỉ là test đơn giản và chúng ta 
-đang sử dụng cách lặp lại phần code test. Nếu như với những test phức tạp thì sao? 
+Khoan, từ từ đã. Có gì không ổn ở đây. Đó là đây chỉ là test đơn giản và chúng ta
+đang sử dụng cách lặp lại phần code test. Nếu như với những test phức tạp thì sao?
 Chúng ta không thể làm như vậy được. Vậy phải làm thế nào?   
 PHPUnit cũng đã tính đến điều này, và cho phép bạn sử dụng annotation `@dataProvider`
-để thực hiện việc test với nhiều trường hợp dữ liệu. Và bây giờ trong method test 
+để thực hiện việc test với nhiều trường hợp dữ liệu. Và bây giờ trong method test
 của bạn chỉ cần định nghĩa cách thức test mà thôi.
 
 ```php
@@ -244,18 +244,18 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
 }
 ```
 
-> Syntax: `@dataProvider methodName`, chỉ định một public method của class test 
-> sẽ cung cấp các trường hợp dữ liệu cho test. Method này sẽ return một array, 
-> với mỗi phần tử là một trường hợp dữ liệu, là một mãng các tham số cho method test 
+> Syntax: `@dataProvider methodName`, chỉ định một public method của class test
+> sẽ cung cấp các trường hợp dữ liệu cho test. Method này sẽ return một array,
+> với mỗi phần tử là một trường hợp dữ liệu, là một mãng các tham số cho method test
 > theo đúng thứ tự.
 
 Thật là đơn giản và clear phải không?
 
 ## Testing Exception
 
-Trong một số trường hợp, bạn cần phải test throw ra các exception. Bạn có thể sử dụng 
-method `expectException()`, `expectExceptionCode()`, `expectExceptionMessage()` 
-và `expectExceptionMessageRegExp()` đã được thêm sẵn trong PHPUnit để test trong 
+Trong một số trường hợp, bạn cần phải test throw ra các exception. Bạn có thể sử dụng
+method `expectException()`, `expectExceptionCode()`, `expectExceptionMessage()`
+và `expectExceptionMessageRegExp()` đã được thêm sẵn trong PHPUnit để test trong
 các trường hợp này.
 
 ```php
@@ -296,8 +296,8 @@ class CalculatorTest extends PHPUnit_Framework_TestCase
 
 ## Testing PHP errors, warnings and notices
 
-Bời mặc định PHPUnit chuyển các PHP errors, warnings và notices xuất hiện trong quá trình 
-thực thi test thành các exception, nên bạn cũng có thể sử dụng cách trên để test method 
+Bời mặc định PHPUnit chuyển các PHP errors, warnings và notices xuất hiện trong quá trình
+thực thi test thành các exception, nên bạn cũng có thể sử dụng cách trên để test method
 sẽ sinh ra PHP errors.
 
 ```php
@@ -321,13 +321,13 @@ class CalculatorTest extends PHPUnit_Framework_TestCase
 
 Tương tự với `PHPUnit_Framework_Error_Notice` và `PHPUnit_Framework_Error_Warning`.
 
-> Chú ý: Setting `error_reporting` của PHP có thể giới hạn các kiểu error được 
+> Chú ý: Setting `error_reporting` của PHP có thể giới hạn các kiểu error được
 > đưa ra cũng như convert thành exception
 
 ## Test PHP output
 
 Thỉnh thoảng bạn cũng phải test PHP's Output Buffering xem nó có như mòng đợi không?
-Trong trường hợp này, hai method `expectOutputString()` và `expectOutputRegex()` 
+Trong trường hợp này, hai method `expectOutputString()` và `expectOutputRegex()`
 sẽ giúp bạn thục hiện điều đó.
 
 ```php

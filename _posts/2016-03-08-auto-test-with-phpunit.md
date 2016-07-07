@@ -2,31 +2,32 @@
 title: Auto test with PHPUnit
 layout:   post
 category: tutorial-tips
-tags:     [skill, php, unit test]
+tags:     [skill, php, unit-test, dev-ops]
 feature:  /assets/img/PHPUnit-logo.png
 ---
 
 Mình là một developer, mình muốn tạo ra nhũng thứ tốt đẹp cho thế giới này
 bằng những dòng code (nói quá lên chút :D). Và mình cũng như các bạn,
 không muốn sản phẩm của mình tạo ra đầy những bug, phải không? Nhưng tạo sao
-chúng ta lại ngại việc test đến như vậy? Một phần nguyên nhân là việc test tốn nhiều time, 
+chúng ta lại ngại việc test đến như vậy? Một phần nguyên nhân là việc test tốn nhiều time,
 setup phức tạp và luôn phải lặp đi lặp lại công việc nhàn chán này. Mình đã
 đi tìm cách thực hiện việc này 1 cách tự động. Và thật tuyệt vời, mình đã tìm thấy __PHPUnit__.
 
 <!--more-->
 
 ## PHPUnit là gì?
-_Định nghĩa của Wikipedia:_
 
-> PHPUnit is a unit testing framework for the PHP programming language. 
+> PHPUnit is a unit testing framework for the PHP programming language.
 > It is an instance of the xUnit architecture for unit testing frameworks.
 > PHPUnit was created by Sebastian Bergmann and its development is hosted on GitHub.
+> --- **Wikipedia**
 
 Mình hiểu nôm na thì nó là một thư viện, một công cụ giúp ta tạo ra các script unit test.
 Còn **_unit_** là đơn vị, mà đơn vị to hay nhỏ thì tuỳ vào trường hợp,
 như là **_met_**, **_minimet_** và **_kilomet_** vậy.
 
 ## Bắt đầu với PHPUnit
+
 Có nhiều cách để bắt đầu với PHPUnit. Ở đây mình giới thiệu 1 cách sử dụng [`composer`][1] để cài đặt PHPUnit.
 
 ```shell
@@ -39,7 +40,7 @@ Bạn tạo file `phpunit.xml` để thiết lập các tham số cho PHPUnit kh
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<phpunit colors="false" verbose="true" stopOnError="false" 
+<phpunit colors="false" verbose="true" stopOnError="false"
     stopOnFailure="false" bootstrap="tests/bootstrap.php">
     <!-- Change php settings -->
     <php>
@@ -67,7 +68,7 @@ Bạn tạo file `phpunit.xml` để thiết lập các tham số cho PHPUnit kh
 </phpunit>
 ```
 
-Trong file `phpunit.xml` trên, mình có khai báo là sẽ dùng file `tests/bootstrap.php` 
+Trong file `phpunit.xml` trên, mình có khai báo là sẽ dùng file `tests/bootstrap.php`
 để khởi tạo các yếu tố cần thiết cho việc giả lập môi trường test và load các class test.
 
 ```php
@@ -142,6 +143,7 @@ $ ./vendor/bin/phpunit
 ```
 
 ## Tự động test trước khi git commit
+
 Có nhiều cách để thêm trigger cho phép chúng ta tự động chạy script test,
 ở đây mình xin giới thiệu 1 cách là sử dụng git hook `pre-commit`. Sau khi
 đã có đoạn script test, bạn tìm đến thư mục `/path/to/project/.git/hooks/` và tạo file `pre-commit`
@@ -191,7 +193,7 @@ $ git commit -am "Added changes"
 
 Starting unit tests...
 All tests for 'Training PHPUnit 01' passed.
- 
+
 [master xxxxxxx] Added changes
  1 files changed, 1 insertions(+), 1 deletions(-)
 ```
@@ -200,11 +202,12 @@ Thật tuyệt vời phải không, sao chúng ta không làm việc này thành
 Thật ra từ lâu người ta đã nghĩ tới việc này và tạo ra mô hình TDD.
 
 ## TDD là cái gì?
+
 _Định nghĩa của Wikipedia:_
 
-> Test-driven development (TDD) is a software development process that relies on the repetition of a very short development cycle: 
-> first the developer writes an (initially failing) automated test case that defines a desired improvement or new function, 
-> then produces the minimum amount of code to pass that test, and finally refactors the new code to acceptable standards. 
+> Test-driven development (TDD) is a software development process that relies on the repetition of a very short development cycle:
+> first the developer writes an (initially failing) automated test case that defines a desired improvement or new function,
+> then produces the minimum amount of code to pass that test, and finally refactors the new code to acceptable standards.
 
 Có thể hiểu nôm na nó là một quá trình phát triển phần mềm mà trong đó người ta sẽ viết
 script auto test để mô tả yêu cầu của tính năng mới rồi mới đi tạo lượng code tối thiểu để pass qua phần test đó.
@@ -221,10 +224,12 @@ Các bước trong quá trình TDD:
 ![TDD Global Lifecycle](https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/TDD_Global_Lifecycle.png/1024px-TDD_Global_Lifecycle.png)*TDD Global Lifecycle*
 
 ## Tổng kết
-Như vậy chúng ta đã biết cách tạo script test đơn giản với PHPUnit, biết cách thêm trigger tự động test trước mỗi lần commit với git, 
+
+Như vậy chúng ta đã biết cách tạo script test đơn giản với PHPUnit, biết cách thêm trigger tự động test trước mỗi lần commit với git,
 và biết TDD là gì, áp dụng nó và công việc gồm những bước nào. Ở bài sau, cũng ta sẽ cùng trao đổi sâu hơn về cách viết unit test với PHPUnit.
 
 ## Bài tập
+
 Mình đã tạo 1 repository trên github [https://github.com/rikkeisoft/training-phpunit-01.git][2].
 Trong đó, mình đã viết sẵn các class unit test với PHPUnit test, nhiệm vụ của các bạn là:
 
@@ -233,6 +238,10 @@ Trong đó, mình đã viết sẵn các class unit test với PHPUnit test, nhi
 3. Thực hiện viết nội dung các class để thực hiện yêu cầu
 4. Test lại code với PHPUnit
 5. Cuối cùng là sẽ tạo Pull request tới repository gốc
+
+## Resources
+
+<i class="fa fa-file-powerpoint-o"></i> [Slide][7]   
 
 ## Tài liệu tham khảo
 
@@ -246,3 +255,4 @@ Trong đó, mình đã viết sẵn các class unit test với PHPUnit test, nhi
 [4]: https://en.wikipedia.org/wiki/PHPUnit
 [5]: https://jtreminio.com/2013/03/unit-testing-tutorial-introduction-to-phpunit
 [6]: https://phpunit.de/manual/current/en/writing-tests-for-phpunit.html#writing-tests-for-phpunit.data-providers
+[7]: /slides/2016-03-08-auto-test-with-phpunit.html

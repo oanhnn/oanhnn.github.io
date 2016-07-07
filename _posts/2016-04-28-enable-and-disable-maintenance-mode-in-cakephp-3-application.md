@@ -2,7 +2,7 @@
 title:    Enable and disable maintenance mode in CakePHP 3 application
 layout:   post
 category: tutorial-tips
-tags:     [skill, cakephp, php]
+tags:     [cakephp, php]
 feature:  /assets/img/cakephp-maintenance.png
 ---
 

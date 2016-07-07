@@ -1,8 +1,8 @@
 ---
-title:    Git Basic
+title:    Basic knowledge about Git
 layout:   post
 category: tutorial-tips
-tags:     [skill, git]
+tags:     [skill, git, dev-ops]
 ---
 
 Trong quá trình phát triển phần mềm, chắc hẳn chúng ta không thể nào tránh được việc quản lý các phiên bản của mã nguồn.

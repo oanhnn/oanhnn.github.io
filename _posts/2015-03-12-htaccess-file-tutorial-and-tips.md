@@ -95,7 +95,7 @@ RewriteEngine On
 RewriteCond %{HTTP_HOST} ^www\.yourwebsite\.com$
 RewriteCond %{REQUEST_URI} !^/website_folder/
 RewriteRule (.*) /website_folder/$1
- 
+
 RewriteCond %{HTTP_HOST} ^subdomain\.yourwebsite\.com$
 RewriteCond %{REQUEST_URI} !^/subdomain_folder/
 RewriteRule (.*) /subdomain_folder/$1
@@ -117,7 +117,7 @@ RewriteRule ^([a-zA-Z0-9_-]+)/followers/$ following.php?id=$1
 Original URL : _`www.yourwebsite.com/blog/index.php?id=abc123`_   
 to   
 Friendly URL : _`blog.yourwebsite.com/abc123`_   
-   
+
 First `.htaccess` file   
 This code redirects sub domain blog.yourwebsite.com pointing to blog folder.   
 

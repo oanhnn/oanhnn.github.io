@@ -2,7 +2,7 @@
 title:    Using Deployer on Homestead to deploy a PHP application
 layout:   post
 category: tutorial-tips
-tags:     [skill, php, deployment]
+tags:     [skill, php, deployment, dev-ops]
 feature:  /assets/img/i-love-php.jpg
 ---
 
@@ -13,4 +13,3 @@ feature:  /assets/img/i-love-php.jpg
 ## Prepare
 
 ## How to do?
-
