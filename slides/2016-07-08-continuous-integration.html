@@ -25,7 +25,7 @@ title: Continuous Integration
 <section id="contents">
   <h3>Nội dung</h3>
   <ol>
-    <li><a href="#/2">CI là gì?</a></li>
+    <li><a href="">CI là gì?</a></li>
     <li><a href="">Tại sao nên dùng CI</a></li>
     <li><a href="">Workflow cỉa CI</a></li>
     <li><a href="">Triển khai trên Travis CI</a></li>
@@ -47,21 +47,46 @@ title: Continuous Integration
 
 <section>
   <section>
-    <h1>Chuyện của Tý</h1>
+    <h1>Chuyện của Nam</h1>
+    <a href="https://toidicodedao.com/2015/08/27/giai-thich-don-gian-ve-ci-continuous-integration-tich-hop-lien-tuc/">
+      https://toidicodedao.com</a>
   </section>
 
   <section>
     <ul>
-      <li>Sinh viên IT năm cuối của trường X</li>
-      <li>Làm bài tập nhóm</li>
-      <li>Cơn ác mộng khi cả nhóm tích hợp code</li>
+      <li class="fragment">Sinh viên IT năm cuối của trường A</li>
+      <li class="fragment">Làm bài tập nhóm</li>
+      <li class="fragment">Phân tích module nhỏ, giao cho từng người</li>
+      <li class="fragment">Cơn ác mộng khi cả nhóm <b>ráp</b> code</li>
     </ul>
     <p>
       <img class="fragment" src="{{ '/assets/img/workgroup.jpg' | prepend: site.baseurl }}" style="border:none;box-shadow:none">
     </p>
   </section>
 
-  
+  <section>
+    <ul>
+      <li class="fragment">Ra trường</li>
+      <li class="fragment">Được nhận vào công ty B</li>
+      <li class="fragment">Biết dùng SVN/Git và tích hợp code</li>
+      <li class="fragment">OT để suẳ lỗi tích hợp</li>
+    </ul>
+  </section>
+
+  <section data-background="{{ '/assets/img/fail.jpg' | prepend: site.baseurl }}" data-background-size="auto 90%" data-background-transition="zoom"></section>
+
+  <section>
+    <b>Công ty C</b>
+    <ul>
+      <li class="fragment">Áp dụng Agile, CI</li>
+      <li class="fragment">Code được viết Unit Test đầy đủ</li>
+      <li class="fragment">Code được tự động test với hệ thống CI khi commit</li>
+      <li class="fragment">Code lỗi hoặc build bị lỗi sẽ có mail thông báo</li>
+      <li class="fragment">Tích hợp liên tục và đơn giản</li>
+    </ul>
+    <p class="fragment" style="text-align:left;margin-left:1.5em;color:red">=> Thời gian phát triển giảm xuống</p>
+  </section>
+
 </section>
 
 <section data-background="{{ '/assets/img/ci.jpg' | prepend: site.baseurl }}" data-background-size="auto 90%">
@@ -82,17 +107,30 @@ title: Continuous Integration
 </section>
 
 <section>
-  <h2>CI dùng để làm gì?</h2>
+  <p>Tóm lại: CI là gi?</p>
+  <p>Phương pháp các team Agile sử dụng nhằm:</p>
   <ul>
-    <li class="fragment">Tích hợp liên tục</li>
-    <li class="fragment">Build không có lỗi</li>
+    <li class="fragment">Đảm bảo code luôn build được, luôn chạy đúng</li>
     <li class="fragment">Tăng tốc đô phát triển</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Hiện tại các công ty thường áp dụng CI thông qua frameword</h2>
+  <ul>
+    <li class="fragment">Team Foundation Server - Microsoft</li>
+    <li class="fragment">TeamCity - Jet Brains</li>
+    <li class="fragment">Hudson</li>
+    <li class="fragment">Jenkin</li>
+    <li class="fragment">Travis</li>
+    <li class="fragment">GitLab CI</li>
+    <li class="fragment"><a href="https://github.com/ligurio/Continuous-Integration-services/blob/master/continuous-integration-services-list.md">other sercives</a></li>
   </ul>
 </section>
 
 <section data-background="{{ '/assets/img/ci-workflow.jpg' | prepend: site.baseurl }}" data-background-size="auto 90%" data-background-transition="zoom">
   <aside class="notes">
-    Đây là work flow của CI. Như các bạn thấy, khi developer 2 đưa các thay đổi của mình
+    Đây là workflow của CI. Như các bạn thấy, khi developer 2 đưa các thay đổi của mình
     lên source control server, thì hệ thống build cũng tự động lấy phần thay đổi đó về, build và test.
     Sau đó sẽ thông báo đến manager và các developer khác đang theo dõi về tình trạng bản build.
   </aside>
@@ -122,19 +160,143 @@ title: Continuous Integration
 </section>
 
 <section>
-  <h2>Triển khai trên Travis CI</h2>
-  <p>Chuẩn bị:</p>
-  <ul>
-    <li>Tài khoản github</li>
-    <li>Open source project</li>
-    <li>Unit tests</li>
-  </ul>
+  <section>
+    <h2>Triển khai trên Travis CI</h2>
+    <p>Chuẩn bị:</p>
+    <ul>
+      <li>Tài khoản github</li>
+      <li>Open source project</li>
+      <li>Unit tests</li>
+    </ul>
+  </section>
+
+  {% for i in (1..5) %}
+  <section data-background="{{ '/assets/img/travisci/step0' | prepend: site.baseurl | append: i | append: '.jpg' }}"
+   data-background-size="auto 90%"></section>
+  {% endfor %}
+
+  <section>
+    <p>Tạo file <code>.travis.yml</code></p>
+    <pre><code class="hljs" data-trim contenteditable>
+language: php
+php:
+- 5.5
+- 5.6
+- 7.0
+- hhvm
+sudo: false
+addons:
+  mariadb: '10.1'
+before_install:
+- composer self-update
+install:
+- composer install
+- composer require satooshi/php-coveralls '~1.0'
+before_script:
+- composer run-script post-create-project-cmd
+- mysql -u root -e 'CREATE DATABASE IF NOT EXISTS testdb;'
+script:
+- php vendor/bin/phpcs
+- php vendor/bin/phpunit --coverage-clover build/logs/clover.xml
+after_script:
+- php vendor/bin/coveralls -v
+notifications:
+  slack:
+    oanhnn:xxxxxxxxxxxxxxxxxxxxxxxxxx
+		</code></pre>
+    <p class="fragment">Tham khảo <a href="https://docs.travis-ci.com/">https://docs.travis-ci.com/</a></p>
+  </section>
+
+  <section>
+    <p>Kiểm tra trong settings projects trên github</p>
+    <p>Push code và xem kết quả build & test</p>
+  </section>
+
+  <section data-background="{{ '/assets/img/travisci/step06.jpg' | prepend: site.baseurl }}"
+   data-background-size="auto 90%"></section>
+
+  <section data-background="{{ '/assets/img/travisci/success.jpg' | prepend: site.baseurl }}"
+   data-background-size="auto 90%"></section>
+
+  <section data-background="{{ '/assets/img/travisci/error.jpg' | prepend: site.baseurl }}"
+   data-background-size="auto 90%"></section>
 </section>
 
 <section>
-  <h2>Other CI services</h2>
-  <ul>
-    <li></li>
-    <li><a href="https://github.com/ligurio/Continuous-Integration-services/blob/master/continuous-integration-services-list.md">And more</a></li>
-  </ul>
+  <section>
+    <h2>Triển khai trên GitLab CI</h2>
+    <p>Chuẩn bị:</p>
+    <ul>
+      <li>Gitlab 8.0+ và cài đặt GitLab Runner</li>
+      <li>Tài khoản gitlab</li>
+      <li>Unit tests</li>
+    </ul>
+  </section>
+
+  <section>
+    <ol>
+      <li>Tạo project</li>
+      <li>Bật GitLab CI cho project</li>
+      <li>Chuẩn bị source code và script Unit test</li>
+      <li>Viết config cho GitLab CI</li>
+      <li>Push code và xem kết quả build & test</li>
+    </ol>
+  </section>
+
+  <section>
+    <p>Tạo file <code>.gitlab-ci.yml</code></p>
+    <pre><code class="hljs" data-trim contenteditable>
+# Select image from https://hub.docker.com/r/_/php/
+image: php:5.5
+
+# Select what we should cache
+cache:
+  paths:
+  - vendor/
+
+# Install dependencies
+before_script:
+  # Install git, the php image doesn't have installed
+  - apt-get update -yqq
+  - apt-get install git -yqq
+  # Install mysql driver
+  - docker-php-ext-install pdo_mysql
+  # Install composer
+  - curl -sS https://getcomposer.org/installer | php
+  - php composer.phar install
+
+services:
+  - mysql
+
+# Variables
+variables:
+  GIT_STRATEGY: clone
+  GIT_DEPTH: "3"
+  # Configure mysql service (https://hub.docker.com/_/mysql/)
+  MYSQL_DATABASE: testdb
+  MYSQL_ROOT_PASSWORD: mysql
+
+# We test PHP5.5 (the default) with MySQL
+test:php55:
+  script:
+    - php vendor/bin/phpcs
+    - php vendor/bin/phpunit
+
+# We test PHP5.5 (the default) with MySQL
+test:php56:
+  image: php:5.6
+  script:
+    - php vendor/bin/phpcs
+    - php vendor/bin/phpunit
+
+# We test PHP7 with MySQL, but we allow it to fail
+test:php7:
+  image: php:7
+  script:
+    - php vendor/bin/phpcs
+    - php vendor/bin/phpunit
+  allow_failure: true
+		</code></pre>
+    <p class="fragment">Tham khảo <a href="http://docs.gitlab.com/ce/ci/quick_start/README.html">http://doc.gitlab.com/ce/ci/</a></p>
+  </section>
 </section>
