@@ -3,17 +3,18 @@ layout: slide
 title: Continuous Integration
 ---
 
+<style type="text/css">
+  ul.logos {list-style: none}
+  ul.logos > li {display: inline-block}
+  ul.logos img {box-shadow: none; background: transparent; border: solid 2px transparent}
+  ul.logos img.github {background: #fff; border-color: #fff; border-radius: 80px}
+</style>
+
 <section id="cover">
   <h3>Continuous Integration</h3>
   <p>
     <small>Created by <a href="{{ site.data.author.homepage }}">{{ site.data.author.name }}</a></small>
   </p>
-  <style type="text/css">
-    ul.logos {list-style: none}
-    ul.logos > li {display: inline-block}
-    ul.logos img {box-shadow: none; background: transparent; border: solid 2px transparent}
-    ul.logos img.github {background: #fff; border-color: #fff; border-radius: 80px}
-  </style>
   <ul class="logos">
     <li><img src="{{ '/assets/img/lg-git.png' | prepend: site.baseurl }}"></li>
     <li><img class="github" src="{{ '/assets/img/lg-github.png' | prepend: site.baseurl }}"></li>
@@ -25,11 +26,11 @@ title: Continuous Integration
 <section id="contents">
   <h3>Nội dung</h3>
   <ol>
-    <li><a href="">CI là gì?</a></li>
-    <li><a href="">Tại sao nên dùng CI</a></li>
-    <li><a href="">Workflow cỉa CI</a></li>
-    <li><a href="">Triển khai trên Travis CI</a></li>
-    <li><a href="">Làm việc với Gitlab builder</a></li>
+    <li class="fragment"><a href="">CI là gì?</a></li>
+    <li class="fragment"><a href="">Tại sao nên dùng CI?</a></li>
+    <li class="fragment"><a href="">Workflow cỉa CI</a></li>
+    <li class="fragment"><a href="">Triển khai trên Travis CI</a></li>
+    <li class="fragment"><a href="">Làm việc với Gitlab CI</a></li>
   </ol>
 </section>
 
@@ -107,8 +108,7 @@ title: Continuous Integration
 </section>
 
 <section>
-  <p>Tóm lại: CI là gi?</p>
-  <p>Phương pháp các team Agile sử dụng nhằm:</p>
+  <h3>Tại sao nên dùng CI ?</h3>
   <ul>
     <li class="fragment">Đảm bảo code luôn build được, luôn chạy đúng</li>
     <li class="fragment">Tăng tốc đô phát triển</li>
@@ -116,7 +116,8 @@ title: Continuous Integration
 </section>
 
 <section>
-  <h2>Hiện tại các công ty thường áp dụng CI thông qua frameword</h2>
+  <h3>Framework thực hiện CI</h3>
+  <p class="fragment" style="color: red">CI Không phải là CodeIgniter</p>
   <ul>
     <li class="fragment">Team Foundation Server - Microsoft</li>
     <li class="fragment">TeamCity - Jet Brains</li>
@@ -136,14 +137,8 @@ title: Continuous Integration
   </aside>
 </section>
 
-<section data-background="{{ '/assets/img/ci-architecture.png' | prepend: site.baseurl }}" data-background-size="auto 90%" data-background-transition="zoom">
-  <aside class="notes">
-    Đây là mô hình triển khai thực tế với Github và TravisCI. Để tạo ra một hệ thống tự động như thế này, mời các bạn theo dõi phàn tiếp theo.
-  </aside>
-</section>
-
 <section>
-  <h2>Travis CI là gi?</h2>
+  <h2>Travis CI là gì?</h2>
   <img class="logo" src="{{ '/assets/img/lg-travisci.png' | prepend: site.baseurl }}">
   <ul style="list-style: none">
     <li class="fragment">Travis CI - <a href="https://travis-ci.org">travis-ci.org</a></li>
@@ -157,6 +152,12 @@ title: Continuous Integration
   <section data-background="{{ '/assets/img/travisci/' | prepend: site.baseurl | append: i | append: '.png' }}"
    data-background-size="auto 90%" data-background-transition="none"></section>
   {% endfor %}
+</section>
+
+<section data-background="{{ '/assets/img/ci-architecture.png' | prepend: site.baseurl }}" data-background-size="auto 90%" data-background-transition="zoom">
+  <aside class="notes">
+    Đây là mô hình triển khai thực tế với Github và TravisCI. Để tạo ra một hệ thống tự động như thế này, mời các bạn theo dõi phàn tiếp theo.
+  </aside>
 </section>
 
 <section>
@@ -220,6 +221,32 @@ notifications:
 
   <section data-background="{{ '/assets/img/travisci/error.jpg' | prepend: site.baseurl }}"
    data-background-size="auto 90%"></section>
+</section>
+
+<section style="text-align: left">
+  <h3 style="text-align: center">Đánh giá</h3>
+  <p>Ưu điểm:</p>
+  <ul>
+    <li>Dễ dàng setup & configure</li>
+    <li>Free for open source project</li>
+    <li>Hỗ trợ nhiều ngôn ngữ, nhiều mỗi trường, với các phiên bản khác nhau</li>
+    <li>Tài liệu hỗ trợ tốt</li>
+  </ul>
+  <p>Nhược điểm:</p>
+  <ul>
+    <li>Chỉ hỗ trợ Github</li>
+    <li>Phải trả phí với private project</li>
+    <li>Chưa support môi trường Windows</li>
+  </ul>
+</section>
+
+<section>
+  <h2>GitLab CI là gì?</h2>
+  <img class="logo" src="{{ '/assets/img/lg-gitlab.png' | prepend: site.baseurl }}">
+  <ul style="list-style: none">
+    <li class="fragment">GitLab 8.0+</li>
+    <li class="fragment"><a href="http://docs.gitlab.com/ce/ci/">http://docs.gitlab.com/ce/ci/</a></li>
+  </ul>
 </section>
 
 <section>
@@ -300,3 +327,20 @@ test:php7:
     <p class="fragment">Tham khảo <a href="http://docs.gitlab.com/ce/ci/quick_start/README.html">http://doc.gitlab.com/ce/ci/</a></p>
   </section>
 </section>
+
+<section style="text-align: left">
+  <h3 style="text-align: center">Đánh giá</h3>
+  <p>Ưu điểm:</p>
+  <ul>
+    <li>Free and open source</li>
+    <li>Hỗ trợ nhiều ngôn ngữ, nhiều mỗi trường, với các phiên bản khác nhau</li>
+    <li>Hỗ trợ sử dụng Docker image</li>
+  </ul>
+  <p>Nhược điểm:</p>
+  <ul>
+    <li>Chỉ hỗ trợ GitLab</li>
+  </ul>
+</section>
+
+<section data-background="{{ '/assets/img/qa3.png' | prepend: site.baseurl }}"
+   data-background-size="auto 60%"></section>

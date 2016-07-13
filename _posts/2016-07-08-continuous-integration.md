@@ -22,13 +22,44 @@ Hôm nay mình sẽ giúp các bạn hiểu thế nào là CI và vận dụng n
 
 ![Continuous Integration](/assets/img/ci.jpg)*Vòng đời phát triển phần mềm theo phương pháp CI*
 
-## Tại sao nên dùng CI
+## Tại sao nên dùng CI ?
 
-## Workflow cỉa CI
+Sử dụng phương pháp CI giúp cho hệ thống luôn đảm bảo là build được và chạy đúng 
+(do phải pass qua toàn bộ test case). Mặt khác các công đoạn test sẽ được hệ thống CI server 
+thực hiện tự dộng giúp cho ta có thể dễ dàng biết được tình trạng của một branch, 
+một commit nào đó và không cần lấy source về test thử. Do đó tốc độ phát triển được tăng lên.
+Đây cũng là lý do mà nhiều team phát triển theo mô hình Agile lựa chọn phương pháp này.
+
+Hiện tại các công ty lớn thường triển khai các hệ thống CI cho riêng mình hoặc sử dụng dịch vụ của hãng thứ 3.
+Một số framework được sử dụng phổ biến như:
+
+- Team Foundation Server - Microsoft
+- TeamCity - Jet Brains
+- Hudson
+- Jenkin
+- Travis CI
+- GitLab CI
+
+Ngoài ra còn nhiều dịch vụ khác, bạn có thể tham khảo tại [đây][ci-services]
+
+## Workflow của CI
+
+Workflow của phương pháp CI được chia thành 6 bước như sau:
+
+**Bước 1** Các người phát triển sẽ đưa phần source mà họ đã thay đổi lên Source Control Server. 
+Khi đó Source Control Server sẽ thông báo với CI Server là có bản source mới.
+
+**Bước 2** CI Server lấy source mới về
+
+**Bước 3, 4 & 5** CI Server sẽ build, test và cập nhật lại trạng thái build của bản source đó.
+
+**Bước 6** CI Server sẽ thông báo đến người quản lý và các người phát triển về tình trạng của bản code mới.
+
+![Continuous Integration Workflow](/assets/img/ci-workflow.jpg)*Workflow của phương pháp CI*
 
 ## Làm việc với Travis CI
 
-## Làm việc với
+## Làm việc với GitLab CI
 
 ## Resources
 <i class="fa fa-file-powerpoint-o"></i> [Slide][slide-03]   
@@ -46,3 +77,4 @@ Hôm nay mình sẽ giúp các bạn hiểu thế nào là CI và vận dụng n
 [slide-02]: http://www.slideshare.net/mostofreddy/travisci-continuos-integration-in-the-cloud-for-php
 [slide-03]: /slides/2016-07-08-continuous-integration.html
 [source]:   https://github.com/oanhnn/slim-skeleton
+[ci-services]: https://github.com/ligurio/Continuous-Integration-services/blob/master/continuous-integration-services-list.md
