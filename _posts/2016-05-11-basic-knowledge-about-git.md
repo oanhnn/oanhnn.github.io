@@ -1,5 +1,5 @@
 ---
-title:    Basic knowledge about Git
+title:    Basic knowledge about Git (p1)
 layout:   post
 category: tutorial-tips
 tags:     [skill, git, dev-ops]
@@ -91,4 +91,6 @@ Vì thế, để ghi lại trạng thái của file bằng commit thì trước 
 Với việc chèn index vào giữa như thế này, bạn có thể thực hiện commit không bao gồm
 những file không cần thiết trong working tree, hay có thể đăng ký chỉ một phần thay đổi của file trong index rồi commit.
 
-*-- còn tiếp --*
+*-- [còn tiếp][next-post] --*
+
+[next-post]: /2016-08-17/basic-knowledge-about-git-p2.md.html
