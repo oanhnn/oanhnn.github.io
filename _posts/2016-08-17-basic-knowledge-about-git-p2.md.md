@@ -59,16 +59,16 @@ rồi đưa nội dung đó vào local repository của mình.
 
 ## Merge lịch sử thay đổi
 
-![Push bị từ chối](http://backlogtool.com/git-guide/vn/img/post/intro/capture_intro5_1_1.png)
-
 Trường hợp trong khoảng thời gian từ sau khi pull lần cuối cho đến khi push lần tiếp theo,
 mà có người khác lỡ push rồi cập nhật remote repository, thì push của chính mình sẽ bị từ chối.
 
-![Push sau khi đã merge](http://backlogtool.com/git-guide/vn/img/post/intro/capture_intro5_1_2.png)
+![Push bị từ chối](http://backlogtool.com/git-guide/vn/img/post/intro/capture_intro5_1_1.png)
 
 Trong trường hợp này, cho đến khi thực hiện merge rồi tiếp nhận thay đổi của phần lịch sử khác,
 thì việc bản thân push lên sẽ bị từ chối. Lý do là vì khi không merge mà cứ ghi đè lên lịch sử,
 thì những thay đổi mà người khác đã push (commit C trong sơ đồ) sẽ bị mất.
+
+![Push sau khi đã merge](http://backlogtool.com/git-guide/vn/img/post/intro/capture_intro5_1_2.png)
 
 Bằng cách merge, Git sẽ tự động tích hợp chổ thay đổi! Nhưng, cũng có trường hợp không thể tự tích hợp được.
 
