@@ -8,7 +8,7 @@ feature:  /assets/img/ImageMagick-logo.png
 Bạn đang có một loạt ảnh tĩnh (png, jpeg image) và bạn muốn tạo 1 cái ảnh động (gif image) từ chúng?   
 Tôi xin giới thiêu với các bạn đang dùng Linux một cách đơn giản đó là dùng ImageMagick.
 
-<!-- more -->
+<!--more-->
 
 1. Đầu tiên là bạn phải cài gói [ImageMagick](http://www.imagemagick.org/script/index.php)
 

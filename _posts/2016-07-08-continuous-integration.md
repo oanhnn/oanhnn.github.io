@@ -9,7 +9,7 @@ feature:  /assets/img/ci.jpg
 Với nhiều bạn khái niệm Continuous Integration (Tích hợp liên tục - CI) là một cái gì đó xa lạ.
 Hôm nay mình sẽ giúp các bạn hiểu thế nào là CI và vận dụng nó vào trong công việc phát triển phần mềm.
 
-<!-- more -->
+<!--more-->
 
 ## CI là gì?
 

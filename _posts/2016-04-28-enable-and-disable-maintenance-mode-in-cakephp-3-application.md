@@ -12,7 +12,7 @@ rất hay là có thể bật và tắt chế độ bảo trì bằng CLI, đó 
 Trong CakePHP 3.x mình không thấy có tính năng này và mình bắt đầu tìm hiểu để
 tích hợp thêm tính năng này cho CakePHP.
 
-<!-- more -->
+<!--more-->
 
 ## Requirements
 

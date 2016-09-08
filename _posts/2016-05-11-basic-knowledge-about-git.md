@@ -10,7 +10,7 @@ Sử dụng các hệ thống quản lý phiên bản sẽ giúp bạn quản l�
 Git là một trong những hệ thống quản lý phiên bản phân tán. Nó đang đuợc nhiều khách hàng của chúng ta lựa chọn sử dụng.
 Hôm nay mình sẽ giới thiệu các khái niệm cơ bản về Git để khi bước vào dự án có sử dụng Git, các bạn khỏi bỡ ngỡ.
 
-<!-- more -->
+<!--more-->
 
 ![Xung đột mã nguồn trong làm việc nhóm](http://backlogtool.com/git-guide/vn/img/post/intro/capture_intro1_1_2.png)
 

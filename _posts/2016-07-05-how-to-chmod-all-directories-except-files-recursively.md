@@ -12,7 +12,7 @@ Did you chmod all directories and files recursively by command
 chmod -R 777 /path/to/base/dir
 ```
 
-<!-- more -->
+<!--more-->
 
 To recursively give directories read & execute privileges:
 

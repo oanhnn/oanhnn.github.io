@@ -7,7 +7,7 @@ feature:  /assets/img/terminal.gif
 ---
 Trong bài này, mình chia sẻ với các bạn một số lệnh cơ bản dành cho các nhà quản trị máy chủ.
 
-<!-- more -->
+<!--more-->
 
 ## Các lệnh kiểm tra thông số máy chủ
 

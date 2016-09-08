@@ -8,7 +8,7 @@ tags:     [skill, git, dev-ops]
 Trong [phần trước][prev-post] mình đã giới thiệu một số khái niệm căn bản trong git cho các bạn.
 Ở bài này, mình sẽ giới thiệu tiếp các khái niệm về chia sẻ repository và merge lịch sử thay đổi.
 
-<!-- more -->
+<!--more-->
 
 ![Làm việc với remote repository](http://backlogtool.com/git-guide/vn/img/post/intro/capture_intro1_2_2.png)
 

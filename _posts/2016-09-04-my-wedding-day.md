@@ -9,7 +9,7 @@ feature:  https://oanhnn.github.io/wedding/albums/photo_book/bia.jpg
 Ngày 04/09/2016 vừa qua mình đã có đám cưới hạnh phúc cùng cô dâu [Nguyễn Chanh](http://facebook.com/axitcitric)
 tại Nhà văn hóa làng mình. 
 
-<!-- more -->
+<!--more-->
 
 <p>
   <div class="embed-container">
