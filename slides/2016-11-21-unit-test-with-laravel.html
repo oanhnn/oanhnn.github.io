@@ -1,0 +1,730 @@
+---
+layout: slide
+title: Unit test with Laravel
+---
+<style type="text/css">
+  .blur {
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);
+  }
+  li > code, p > code {color: greenyellow}
+  .must, .should {text-transform: uppercase; color: red; font-weight: bold}
+</style>
+
+<section>
+  <h2>Unit test with Laravel</h2>
+  <p>
+    <small>Created by <a href="https://oanhnn.github.io">Oanh Nguyen</a> / <a href="http://twitter.com/oanhnn">@oanhnn</a></small>
+  </p>
+</section>
+
+<section id="contents">
+  <h3>Nội dung</h3>
+  <ol>
+    <li class="fragment"><a href="">Giới thiệu về PHPUnit</a></li>
+    <li class="fragment"><a href="">Viết unit test đơn giản cho PHP</a></li>
+    <li class="fragment"><a href="">Viết unit test trong Laravel</a></li>
+    <li class="fragment"><a href="">TDD & CI là gì?</a></li>
+    <li class="fragment"><a href="">Dự án này chúng ta cần phải làm gi?</a></li>
+  </ol>
+</section>
+
+<section>
+  <section>
+    <h2>PHPUnit</h2>
+  </section>
+  <section>
+    <h3>Yêu cầu</h3>
+    <ul style="text-align: left">
+      <li class="fragment">PHPUnit 5.2 yêu cầu PHP 5.6+</li>
+      <li class="fragment">Enable các extensions:
+        <a href="http://php.net/manual/en/dom.setup.php">dom</a>,
+        <a href="http://php.net/manual/en/json.installation.php">json</a>,
+        <a href="http://php.net/manual/en/pcre.installation.php">pcre</a>,
+        <a href="http://php.net/manual/en/reflection.installation.php">reflection</a> and
+        <a href="http://php.net/manual/en/spl.installation.php">spl</a>
+      </li>
+      <li class="fragment">Feature code coverage require:
+        <a href="https://xdebug.org/">Xdebug</a>,
+        <a href="http://php.net/manual/en/tokenizer.installation.php">tokenizer</a> and
+        <a href="http://php.net/manual/en/xmlwriter.installation.php">xmlwriter</a>
+      </li>
+    </ul>
+    <pre class="fragment" style="width: auto"><code class="hljs" style="max-height: 500px">user@host~$ php -v
+PHP 5.6.19 (cli) (built: Mar  3 2016 06:29:24)
+Copyright (c) 1997-2016 The PHP Group
+Zend Engine v2.6.0, Copyright (c) 1998-2016 Zend Technologies
+with Xdebug v2.3.3, Copyright (c) 2002-2015, by Derick Rethans
+
+user@host~$ php -m | grep 'dom\|json\|pcre\|Xdebug\|tokenizer\|xmlwriter'
+dom
+json
+pcre
+tokenizer
+xmlwriter
+Xdebug</code></pre>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2>Cài đặt</h2>
+  </section>
+  
+  <section>
+    <h3>Download PHP Archive (PHAR)</h3>
+    <ul style="text-align: left">
+      <li class="fragment">Download PHAR file from <a href="https://phar.phpunit.de/">https://phar.phpunit.de/</a></li>
+      <li class="fragment">Global installation:</li>
+    </ul>
+    <div class="fragment">
+      <p style="margin: 5px 0">Unix OS</p>
+      <pre style="margin: 0 auto"><code class="hljs">user@host~$ chmod +x phpunit.phar
+user@host~$ sudo mv phpunit.phar /usr/local/bin/phpunit
+user@host~$ phpunit --version</code></pre>
+      <p style="margin: 5px 0">Windows OS</p>
+      <pre style="margin: 0 auto"><code class="hljs">C:\Downloads> mkdir C:\bin
+C:\Downloads> copy phpunit.phar C:\bin
+C:\Downloads> cd C:\bin
+C:\bin> echo @php "%~dp0phpunit.phar" %* > phpunit.cmd
+C:\bin> set PATH=%PATH%;C:\bin
+C:\bin> phpunit --version</code></pre>
+    </div>
+  </section>
+
+  <section>
+    <h3>Sử dụng composer (khuyên dùng)</h3>
+    <p class="fragment" style="text-align: left">Cần cài <a href="https://getcomposer.org">Composer</a> trước</p>
+    <div class="fragment">
+      <p style="margin: 5px 0; text-align: left">Local installation</p>
+      <pre style="margin: 0 auto"><code class="hljs">user@host~$ composer require --dev "phpunit/phpunit=5.2.*"
+user@host~$ ./vendor/bin/phpunit --version</code></pre><br>
+      <p style="margin: 5px 0; text-align: left">Global installation</p>
+      <pre style="margin: 0 auto"><code class="hljs">user@host~$ composer global require "phpunit/phpunit=5.2.*"
+user@host~$ phpunit --version</code></pre>
+    </div>
+  </section>
+</section>
+
+<section>
+  <section data-background="img/black-broad.jpg" data-background-class="blur">
+    <h2 style="color: greenyellow">Organizing Tests</h2>
+  </section>
+  <section>
+    <h2>PHPUnit conventions</h2>
+    <ul>
+      <li class="fragment">Class test <span class="should">nên</span> giống tên class và thêm hậu tố <code>Test</code></li>
+      <li class="fragment">Tên file test <span class="should">nên</span> giống với tên class test</li>
+      <li class="fragment">Class test <span class="should">phải</span> kế thừa từ class <code>PHPUnit_Framework_TestCase</code></li>
+      <li class="fragment">Methods test <span class="should">phải</span> là <code>public method</code>, có tên bắt đầu bằng tiền tố <code>test</code></li>
+    </ul>
+  </section>
+  <section>
+    <h2>Project example</h2>
+    <pre class="fragment" style="margin: 0 auto"><code class="hljs">project
+├── composer.json
+├── composer.lock
+├── phpunit.xml.dist
+├── src
+│   └── Calculator.php
+├── tests
+│   ├── bootstrap.php
+│   └── CalculatorTest.php
+└── vendor
+    ├── bin
+    │   └── phpunit
+    └── ...</code></pre>
+  </section>
+  <section>
+    <h3>phpunit.xml & phpunit.xml.dist</h3>
+    <div style="text-align: left">
+      <p class="fragment">Cấu hình tham số cho PHPUnit</p>
+      <p class="fragment">Độ ưu tiên: <code>phpunit.xml</code> &gt; <code>phpunit.xml.dist</code></p>
+      <p class="fragment">=> Sử dụng <code>phpunit.xml.dist</code> làm cấu hình chung cho dự án</p>
+      <p class="fragment">=> Ignore file <code>phpunit.xml</code> để các members tự tùy biến</p>
+      <p class="fragment"><i><a href="https://phpunit.de/manual/current/en/organizing-tests.html#organizing-tests.xml-configuration">
+            Xem thêm trong tài liệu PHPUnit</a></i></p>
+    </div>
+  </section>
+  <section>
+    <p><code>bootstrap.php</code></p>
+    <pre>
+          <code class="hljs" style="max-height: 500px">
+&lt;?php
+// tests/bootstrap.php
+
+// Enable Composer autoloader
+$autoloader = require dirname(__DIR__) . '/vendor/autoload.php';
+// Register your test classes (namespace)
+$autoloader->addPsr4('YourOrg\\YourProject\\Tests\\', __DIR__);
+
+          </code>
+    </pre>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2>Begin write first test</h2>
+  </section>
+  <section>
+    <p>Class <code>Calculator</code></p>
+    <pre class="fragment" style="margin: 0 auto"><code class="hljs">&lt?php
+namespace Demo\Calculator;
+
+class Calculator
+{
+    /**
+     * @param int $a
+     * @param int $b
+     * @return int
+     */
+    public function add($a, $b)
+    {
+        return intval($a) + intval($b);
+    }
+}</code></pre>
+  </section>
+  <section>
+    <p>Cần test những gì?</p>
+    <ul>
+      <li class="fragment">return type</li>
+      <li class="fragment">return value</li>
+      <li class="fragment">check string</li>
+      <li class="fragment">check array</li>
+      <li class="fragment">check object & class</li>
+      <li class="fragment">More & more</li>
+    </ul>
+  </section>
+
+  <section>
+    <p>Dùng <code>assert*</code> methods</p>
+    <ul>
+      <li class="fragment">assertNull, assertEmpty, assertNan, assertInstanceOf, ...</li>
+      <li class="fragment">assertEquals, assertGreaterThan, assertGreaterThanOrEqual, assertSame, ...</li>
+      <li class="fragment">assertStringMatchesFormat, assertStringStartsWith, assertStringEndsWith, assertRegExp, ...</li>
+      <li class="fragment">assertArrayHasKey, assertArraySubset, assertContains, assertCount, ...</li>
+      <li class="fragment">assertInstanceOf, assertObjectHasAttribute, assertClassHasAttribute, ...</li>
+    </ul>
+    <aside class="notes">
+      <ul>
+        <li>Check return type</li>
+        <li>Compare result value</li>
+        <li>Check string</li>
+        <li>Check array</li>
+        <li>Check object & class</li>
+        <li>More and more</li>
+      </ul>
+    </aside>
+  </section>
+  <section>
+    <p>Class <code>CalculatorTest</code></p>
+    <pre class="fragment" style="margin: 0 auto"><code class="hljs">&lt?php
+namespace Demo\Calculator\Tests;
+
+class CalculatorTest extends \PHPUnit_Framework_TestCase
+{
+    public function testAdd()
+    {
+        $this->assertSame(10, Calculator::add(5, 5));
+    }
+}</code></pre>
+  </section>
+  <section>
+    <h2>Chạy PHPUnit</h2>
+    <pre class="fragment" style="margin: 0 auto"><code class="hljs">$ php vendor/bin/phpunit
+PHPUnit 5.6.4 by Sebastian Bergmann and contributors.
+
+Runtime:       PHP 5.6.23 with Xdebug 2.4.0
+Configuration: /path/to/project/phpunit.xml.dist
+
+..................................    34 / 34 (100%)
+
+Time: 114 ms, Memory: 5.75MB
+
+OK (34 tests, 87 assertions)</code></pre>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2>Một số<br>kiến thức nâng cao</h2>
+  </section>
+  <section>
+    <h3>Test dependencies</h3>
+    <pre class="fragment" style="margin: 0 auto"><code class="hljs">&lt?php
+class StackTest extends PHPUnit_Framework_TestCase
+{
+public function testEmpty()
+{
+    $stack = array();
+    $this->assertEmpty($stack);
+
+    return $stack;
+}
+
+/**
+ * @depends testEmpty
+ */
+public function testPush(array $stack)
+{
+    array_push($stack, 'foo');
+    $this->assertEquals('foo', $stack[count($stack)-1]);
+    $this->assertNotEmpty($stack);
+
+    return $stack;
+}
+
+/**
+ * @depends testPush
+ */
+public function testPop(array $stack)
+{
+    $this->assertEquals('foo', array_pop($stack));
+    $this->assertEmpty($stack);
+}
+}</code></pre>
+  </section>
+  <section>
+    <h3>Data providers</h3>
+    <pre class="fragment" style="margin: 0 auto"><code class="hljs">/**
+* @dataProvider providerMethodName
+*/</code></pre>
+    <p class="fragment"><code>providerMethodName</code> là public method</p>
+  </section>
+  <section>
+    <h3>Not using data providers</h3>
+    <pre style="margin: 0 auto"><code class="hljs">&lt?php
+namespace Demo\Calculator\Tests;
+
+class CalculatorTest extends \PHPUnit_Framework_TestCase
+{
+public function testAdd()
+{
+    $this->assertSame(10, Calculator::add(5, 5));
+    $this->assertSame(10, Calculator::add(-5, 15));
+    $this->assertSame(10, Calculator::add(0, 10));
+}
+}</code></pre>
+  </section>
+  <section>
+    <h3>Using data providers</h3>
+    <pre style="margin: 0 auto"><code class="hljs">&lt??php
+namespace Demo\Calculator\Tests;
+
+class CalculatorTest extends \PHPUnit_Framework_TestCase
+{
+/**
+ * @dataProvider dataForTestAdd
+ */
+public function testAdd($a, $b, $expected)
+{
+    $this->assertSame($expected, Calculator::add($a, $b));
+}
+
+public function dataForTestAdd
+{
+    return [
+        //[$a, $b, $expected],
+        [5, 5, 10],
+        [-5, 15, 10],
+        [0, 10, 10],
+    ];
+}
+}</code></pre>
+  </section>
+  <section>
+    <h3>Testing Exception</h3>
+    <pre class="fragment" style="margin: 0 auto"><code class="hljs">&lt;?php
+namespace Demo\Calculator\Tests;
+
+class CalculatorTest extends PHPUnit_Framework_TestCase
+{
+public function testDivByZero()
+{
+    $this->expectException(\InvalidArgumentException::class); // exception class name
+    $this->expectExceptionMessage('Division by zero');        // exception mesage
+    Calculator::div(10, 0);
+}
+}</code></pre>
+  </section>
+  <section>
+    <h3>Testing Exception with annotations</h3>
+    <pre class="fragment" style="margin: 0 auto"><code class="hljs">&lt;?php
+namespace Demo\Calculator\Tests;
+
+class CalculatorTest extends PHPUnit_Framework_TestCase
+{
+/**
+ * Test case dividing by zero
+ *
+ * @expectedException \InvalidArgumentException
+ * @expectedExceptionMessage Division by zero
+ */
+public function testDivByZero()
+{
+    Calculator::div(10, 0);
+}
+}</code></pre>
+  </section>
+  <section>
+    <h3>Testing PHP errors, warnings and notices</h3>
+    <p class="fragment" style="text-align: justify">PHPUnit chuyển các PHP errors, warnings và notices xuất hiện trong quá trình thực thi test thành các exception</p>
+    <ul style="list-style: none">
+      <li class="fragment"><code>PHPUnit_Framework_Error</code></li>
+      <li class="fragment"><code>PHPUnit_Framework_Warning</code></li>
+      <li class="fragment"><code>PHPUnit_Framework_Notice</code></li>
+    </ul>
+  </section>
+  <section>
+    <h2>Testing PHP errors</h2>
+    <pre class="fragment" style="margin: 0 auto"><code class="hljs">&lt;?php
+namespace Demo\Calculator\Tests;
+
+class CalculatorTest extends PHPUnit_Framework_TestCase
+{
+public function testDivByZero()
+{
+    $this->expectException(\InvalidArgumentException::class); // exception class name
+    $this->expectExceptionMessage('Division by zero');        // exception mesage
+    Calculator::div(10, 0);
+}
+}</code></pre>
+  </section>
+  <section>
+    <h3>Testing PHP warnings & notices</h3>
+    <p class="fragment">Tương tự với PHP error nhưng sử dụng <code>PHPUnit_Framework_Error_Notice</code>
+      và <code>PHPUnit_Framework_Error_Warning</code>.</p>
+  </section>
+
+  <section data-background="img/thinking2.gif">
+    <h3>Test PHP output</h3>
+    <p class="fragment">Làm sao để test được method có print hay echo?</p>
+    <p class="fragment">Sử dụng 2 method <code>expectOutputString()</code> và <code>expectOutputRegex()</code></p>
+  </section>
+  <section>
+    <h3>Test PHP output</h3>
+    <pre style="margin: 0 auto"><code class="hljs">&lt;?php
+class OutputTest extends PHPUnit_Framework_TestCase
+{
+public function testExpectFooActualFoo()
+{
+    $this->expectOutputString('foo');
+    print 'foo';
+}
+
+public function testExpectBarActualBaz()
+{
+    $this->expectOutputRegex('/^baz(\d*)$/');
+    print 'baz' . rand(1, 1000);
+}
+}</code></pre>
+  </section>
+  <section>
+    <h3>Test for private, protected methods & property</h3>
+  </section>
+  
+  <section>
+    <h3>Code coverage</h3>
+  </section>
+  
+  <section>
+    <h3>Stubbing & Mocking</h3>
+  </section>
+  
+  <section>
+    <h3>Fixtures & Database testing</h3>
+  </section>
+  
+  <section>
+    <h3>Skip test</h3>
+    <p>Dùng <code>markTestIncomplete()</code> để dánh dấu test sẽ hoàn thành sau</p>
+    <p>Dùng <code>markTestSkipped()</code> để dánh dấu test sẽ được bỏ qua trong một số trường hợp</p>
+    <pre><code class="hljs">if (!extension_loaded('mysqli')) {
+    $this->markTestSkipped(
+       'The MySQLi extension is not available.'
+    );
+}</code></pre>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2>Write unit in Laravel</h2>
+  </section>
+  <section>
+    <h3>Environment</h3>
+    <ul>
+      <li class="fragment">Sử dụng biến môi trường từ <code>phpunit.xml</code></li>
+      <li class="fragment"><code>APP_ENV=testing</code></li>
+      <li class="fragment">Session & cache sử dụng <code>array</code> driver</li>
+      <li class="fragment">Chạy <code>config:clear</code> để xóa cấu hình cũ</li>
+    </ul>
+  </section>
+  <section>
+    <h3>Make class test</h3>
+    <pre><code>$php artisan make:test UserTest
+</code></pre>
+  </section>
+  <section>
+    <p><code>UserTest.php</code></p>
+    <pre style="margin: 0 auto"><code class="hljs" style="min-height: 480px;">&lt?php
+
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
+
+class UserTest extends TestCase
+{
+    /**
+     * A basic test example.
+     *
+     * @return void
+     */
+    public function testExample()
+    {
+        $this->assertTrue(true);
+    }
+}
+</code></pre>
+  </section>
+  <section>
+    <h3>Application Testing</h3>
+  </section>
+  <section>
+    <h3>Interacting With Links</h3>
+    <p><code>seePageIs()</code> & <code>seeRouteIs()</code></p>
+    <pre><code class="hljs">public function testBasicExample()
+{
+    $this->visit('/')
+         ->click('About Us')
+         ->seePageIs('/about-us');
+}</code></pre>
+  </section>
+  <section>
+    <h3>Interacting With Forms</h3>
+    <pre><code class="hljs">public function testNewUserRegistration()
+{
+    $this->visit('/register')
+         ->type('Taylor', 'name')
+         ->check('terms')
+         ->press('Register')
+         ->seePageIs('/dashboard');
+}</code></pre>
+  </section>
+  <section>
+    <table>
+      <tr>
+        <th>Method</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td><code>$this-&gt;type($text, $elementName)</code></td>
+        <td>"Type" text into a given field.</td>
+      </tr>
+      <tr>
+        <td><code>$this->select($value, $elementName)</code></td>
+        <td>"Select" a radio button or drop-down field.</td>
+      </tr>
+      <tr>
+        <td><code>$this->check($elementName)</code></td>
+        <td>"Check" a checkbox field.</td>
+      </tr>
+      <tr>
+        <td><code>$this->uncheck($elementName)</code></td>
+        <td>"Uncheck" a checkbox field.</td>
+      </tr>
+      <tr>
+        <td><code>$this->attach($pathToFile, $elementName)</code></td>
+        <td>"Attach" a file to the form.</td>
+      </tr>
+      <tr>
+        <td><code>$this->press($buttonTextOrElementName)</code></td>
+        <td>"Press" a button with the given text or name.</td>
+      </tr>
+    </table>
+  </section>
+  <section>
+    <h3>Testing JSON APIs</h3>
+    <pre><code class="hljs">public function testBasicExample()
+{
+    $this->json('POST', '/user', ['name' => 'Sally'])
+         ->seeJson([
+             'created' => true,
+         ]);
+}</code></pre>
+  </section>
+  <section>
+    <table>
+      <tr>
+        <th>Method</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td><code>$this-&gt;seeJson($array)</code></td>
+        <td>Converts array into JSON, and verifies that the JSON fragment occurs anywhere within the entire JSON response</td>
+      </tr>
+      <tr>
+        <td><code>$this->seeJsonEquals($array)</code></td>
+        <td>Converts array into JSON, and verifies that the given array is an exact match for the JSON response</td>
+      </tr>
+      <tr>
+        <td><code>$this->seeJsonStructure($array)</code></td>
+        <td>Converts array into JSON, and verifies that a JSON response adheres to a specific structure</td>
+      </tr>
+    </table>
+  </section>
+  
+  <section>
+    <h3>Sessions / Authentication</h3>
+    <p>Dùng <code>withSession()</code> và <code>actingAs()</code> để test với session đã đăng nhập</p>
+    <pre><code class="hljs">public function testApplication()
+{
+    $this->withSession(['foo' => 'bar'])
+         ->visit('/');
+}</code></pre>
+  </section>
+  <section>
+    <pre><code class="hljs">public function testApplication()
+{
+    $user = factory(App\User::class)->create();
+
+    $this->actingAs($user)
+         ->withSession(['foo' => 'bar'])
+         ->visit('/')
+         ->see('Hello, '.$user->name);
+}</code></pre>
+  </section>
+  
+  <section>
+    <h2>Disabling Middleware</h2>
+    <p>Dùng trait <code>Illuminate\Foundation\Testing\WithoutMiddleware</code> để disable toàn bộ middleware cho cả test class</p>
+    <p>Dùng method <code>$this->withoutMiddleware()</code> để disable toàn bộ middleware cho một test method</p>
+  </section>
+  <section>
+    <pre><code class="hljs">&lt?php
+
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+
+class ExampleTest extends TestCase
+{
+    use WithoutMiddleware;
+
+    //
+}</code></pre>
+  </section>
+  <section>
+    <pre><code class="hljs">public function testBasicExample()
+{
+    $this->withoutMiddleware();
+
+    $this->visit('/')
+         ->see('Laravel 5');
+}</code></pre>
+  </section>
+  
+  <section>
+    <h3>Custom HTTP Requests</h3>
+    <pre><code class="hljs">public function testApplication()
+{
+    $response = $this->call('POST', '/user', ['name' => 'Taylor']);
+
+    $this->assertEquals(200, $response->status());
+}</code></pre>
+  </section>
+  
+  <section>
+    <h3>PHPUnit Assertions</h3>
+    <a href="https://laravel.com/docs/5.3/application-testing#phpunit-assertions">https://laravel.com/docs/5.3/application-testing#phpunit-assertions</a>
+  </section>
+  
+  <section>
+    <h3>Database testing</h3>
+  </section>
+  
+  <section>
+    <h3>Resetting The Database After Each Test</h3>
+  </section>
+  <section>
+    <h3>Test Event</h3>
+  </section>
+  <section>
+    <h3>Test Queue Job</h3>
+  </section>
+  <section>
+    <h3>Test Mail & Notification</h3>
+  </section>
+  <section>
+    <h3>Test Facades</h3>
+  </section>
+</section>
+
+
+<section>
+  <section>
+    <h2>TDD & CI</h2>
+    <p class="fragment">Test Driven Development</p>
+  </section>
+  <section>
+    <h2>TDD gồm các bước</h2>
+    <ol>
+      <li>Tạo script test</li>
+      <li>Chạy test và chỉnh sửa script test theo đúng spec</li>
+      <li>Viết code chương trình</li>
+      <li>Chạy test</li>
+      <li>Chỉnh sửa lại code để sửa lỗi</li>
+      <li>Lặp lại các bước khi có thêm yêu cầu</li>
+    </ol>
+  </section>
+  <section data-background="img/TDD_Global_Lifecycle.png" data-background-size="auto 90%"></section>
+  <section data-transition="zoom">
+    <h2>
+      <span style="color:yellow">TDD</span>
+      <span> + </span>
+      <span style="color:red">Automatic</span>
+      <span> = </span>
+      <span style="color:orange">CI</span>
+    </h2>
+  </section>
+  <section data-background="{{ '/assets/img/ci.jpg' | prepend: site.baseurl }}" data-background-size="auto 90%">
+    <aside class="notes">
+      Đây là sơ đồ chu trình phát triển theo phương pháp CI. Nó đc chia thành 12 bước...
+      Và để giúp phát triển nhanh hơn thì người ta thường xây dựng hệ thống để cho máy sẽ tự động làm các bước từ 2 đến 11.
+    </aside>
+  </section>
+  <section>
+    <h3>Tại sao nên dùng CI ?</h3>
+    <ul>
+      <li class="fragment">Đảm bảo code luôn build được, luôn chạy đúng</li>
+      <li class="fragment">Tăng tốc đô phát triển</li>
+    </ul>
+  </section>
+</section>
+
+<section>
+  <section>
+    <p>Trong dự án này</p>
+    <h2>Cần làm gì?</h2>
+  </section>
+  <section data-background="{{ '/slides/img/thinking2.gif' | prepend: site.baseurl }}">
+    <ul style="float: right">
+      <li class="fragment"><span class="must">Phải</span> code đúng coding conversion</li>
+      <li class="fragment"><span class="must">Phải</span> viết unit test</li>
+      <li class="fragment"><span class="must">Phải</span> đảm bảo code coverage &ge; 90%</li>
+      <li class="fragment"><span class="must">Phải</span> đảm bảo pass toàn bộ test</li>
+    </ul>
+  </section>
+</section>
+
+<section style="text-align: left;">
+  <h3>THE END</h3>
+  <p>
+    - <a href="https://phpunit.de/">PHPUnit site</a><br>
+    - <a href="https://en.wikipedia.org/wiki/PHPUnit">Wikipedia about PHPUnit</a><br>
+    - <a href="https://jtreminio.com/2013/03/unit-testing-tutorial-introduction-to-phpunit">Tutorial about PHPUnit of Juan Tremini</a>
+    - <a href="https://laravel.com/docs/5.3/testing">Laravel Testing</a>
+  </p>
+</section>
