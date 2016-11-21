@@ -355,7 +355,31 @@ sup {
 }
 .tags a.selected { background:#aaa; }
 .tags a.selected:before { border-color:transparent #aaa transparent transparent; }
-
+.post > h3 { margin: .2em 0 1em}
+.post > div:last-child {margin: -0.8em 0 1.2em; font-style: italic}
+.post > div:last-child a {float: right}
+.post .tags {
+    display: inline-block;
+    margin-bottom: 1em;
+    margin-left: -5px;
+    height: 17px;
+    line-height: 17px;
+}
+.post .tags a {
+    height: 17px;
+    line-height: 17px!important;
+    font-size: 0.75em;
+    margin-bottom: 0;
+}
+.post .tags a:before {
+    left: -8px;
+    border-width: 8px 8px 9px 0;
+}
+.post .tags a:after {
+    top: 6px;
+    width: 4px;
+    height: 4px;
+}
 .embed-container { 
     position: relative;
     padding-bottom: 56.25%;
