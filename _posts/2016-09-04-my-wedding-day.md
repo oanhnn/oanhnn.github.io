@@ -1,5 +1,5 @@
 ---
-title:    My wedding day
+title:    Ngày thành hôn của mình
 layout:   post
 category: blog
 tags:     ~

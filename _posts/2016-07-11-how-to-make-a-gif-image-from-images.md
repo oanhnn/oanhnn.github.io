@@ -1,5 +1,5 @@
 ---
-title:    How to make a gif image from images
+title:    Cách tại ảnh GIF từ một tập hợp các ảnh
 layout:   post
 category: tutorial-tips
 tags:     [linux]

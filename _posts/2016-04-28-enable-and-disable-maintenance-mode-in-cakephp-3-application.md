@@ -1,5 +1,5 @@
 ---
-title:    Enable and disable maintenance mode in CakePHP 3 application
+title:    Bật tắt chế độ bảo trì trong CakePHP3
 layout:   post
 category: tutorial-tips
 tags:     [cakephp, php]

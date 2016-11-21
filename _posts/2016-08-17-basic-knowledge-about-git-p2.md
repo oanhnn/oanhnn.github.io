@@ -1,5 +1,5 @@
 ---
-title:    Basic knowledge about Git (p2)
+title:    Hiểu biết căn bản về Git (p2)
 layout:   post
 category: tutorial-tips
 tags:     [skill, git, dev-ops]

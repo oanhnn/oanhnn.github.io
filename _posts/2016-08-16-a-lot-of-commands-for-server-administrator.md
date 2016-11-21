@@ -1,5 +1,5 @@
 ---
-title:    A lot of commands for server administrator
+title:    Một vài lệnh Linux cho các nhà quản trị máy chủ
 layout:   post
 category: tutorial-tips
 tags:     [linux]

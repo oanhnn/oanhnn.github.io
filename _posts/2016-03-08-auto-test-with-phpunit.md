@@ -1,5 +1,5 @@
 ---
-title: Auto test with PHPUnit
+title: Tự động test với PHPUnit
 layout:   post
 category: tutorial-tips
 tags:     [skill, php, unit-test, dev-ops]
@@ -11,7 +11,7 @@ bằng những dòng code (nói quá lên chút :D). Và mình cũng như các b
 không muốn sản phẩm của mình tạo ra đầy những bug, phải không? Nhưng tạo sao
 chúng ta lại ngại việc test đến như vậy? Một phần nguyên nhân là việc test tốn nhiều time,
 setup phức tạp và luôn phải lặp đi lặp lại công việc nhàn chán này. Mình đã
-đi tìm cách thực hiện việc này 1 cách tự động. Và thật tuyệt vời, mình đã tìm thấy __PHPUnit__.
+đi tìm cách thực hiện việc này một cách tự động. Và thật tuyệt vời, mình đã tìm thấy __PHPUnit__.
 
 <!--more-->
 
@@ -227,17 +227,6 @@ Các bước trong quá trình TDD:
 
 Như vậy chúng ta đã biết cách tạo script test đơn giản với PHPUnit, biết cách thêm trigger tự động test trước mỗi lần commit với git,
 và biết TDD là gì, áp dụng nó và công việc gồm những bước nào. Ở bài sau, cũng ta sẽ cùng trao đổi sâu hơn về cách viết unit test với PHPUnit.
-
-## Bài tập
-
-Mình đã tạo 1 repository trên github [https://github.com/rikkeisoft/training-phpunit-01.git][2].
-Trong đó, mình đã viết sẵn các class unit test với PHPUnit test, nhiệm vụ của các bạn là:
-
-1. Fork repository này về
-2. Setup auto test trước khi commit như đã hướng dẫn
-3. Thực hiện viết nội dung các class để thực hiện yêu cầu
-4. Test lại code với PHPUnit
-5. Cuối cùng là sẽ tạo Pull request tới repository gốc
 
 ## Resources
 

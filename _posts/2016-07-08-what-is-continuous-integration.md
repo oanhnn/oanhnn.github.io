@@ -1,5 +1,5 @@
 ---
-title:    Continuous Integration
+title:    Tích hợp liên tục (CI) là cái gì?
 layout:   post
 category: tutorial-tips
 tags:     [skill, dev-ops]
