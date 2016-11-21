@@ -233,4 +233,7 @@ or wrap each row of columns in a <div class="row"> */
     height: 0;
 }
 
-
+.u-max-full-width {
+    max-width: 100%;
+    box-sizing: border-box;
+}

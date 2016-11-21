@@ -303,9 +303,9 @@ class CalculatorTest extends PHPUnit_Framework_TestCase
 {
 public function testDivByZero()
 {
-    $this->expectException(\InvalidArgumentException::class); // exception class name
+    $this->expectException(\PHPUnit_Framework_Error::class); // exception class name
     $this->expectExceptionMessage('Division by zero');        // exception mesage
-    Calculator::div(10, 0);
+    $a = 10 / 0;
 }
 }</code></pre>
   </section>

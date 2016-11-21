@@ -17,7 +17,7 @@ title: Unit test with Laravel
 <section>
   <h2>Unit test with Laravel</h2>
   <p>
-    <small>Created by <a href="https://oanhnn.github.io">Oanh Nguyen</a> / <a href="http://twitter.com/oanhnn">@oanhnn</a></small>
+    <small>Created by <a href="https://oanhnn.github.io">Oanh Nguyen</a> / <a href="https://github.com/oanhnn">@oanhnn</a></small>
   </p>
 </section>
 
@@ -388,9 +388,9 @@ class CalculatorTest extends PHPUnit_Framework_TestCase
 {
 public function testDivByZero()
 {
-    $this->expectException(\InvalidArgumentException::class); // exception class name
+    $this->expectException(\PHPUnit_Framework_Error::class); // exception class name
     $this->expectExceptionMessage('Division by zero');        // exception mesage
-    Calculator::div(10, 0);
+    $a = 10 / 0;
 }
 }</code></pre>
   </section>
@@ -400,7 +400,7 @@ public function testDivByZero()
       và <code>PHPUnit_Framework_Error_Warning</code>.</p>
   </section>
 
-  <section data-background="img/thinking2.gif">
+  <section data-background="{{ '/slides/img/thinking2.gif' | prepend: site.baseurl }}">
     <h3>Test PHP output</h3>
     <p class="fragment">Làm sao để test được method có print hay echo?</p>
     <p class="fragment">Sử dụng 2 method <code>expectOutputString()</code> và <code>expectOutputRegex()</code></p>
@@ -516,10 +516,10 @@ class UserTest extends TestCase
 }</code></pre>
   </section>
   <section>
-    <table>
+    <table style="font-size: 22px;">
       <tr>
-        <th>Method</th>
-        <th>Description</th>
+        <th style="width: 65%">Method</th>
+        <th style="width: 35%">Description</th>
       </tr>
       <tr>
         <td><code>$this-&gt;type($text, $elementName)</code></td>
@@ -558,10 +558,10 @@ class UserTest extends TestCase
 }</code></pre>
   </section>
   <section>
-    <table>
+    <table style="font-size: 22px;">
       <tr>
-        <th>Method</th>
-        <th>Description</th>
+        <th style="width: 50%">Method</th>
+        <th style="width: 50%">Description</th>
       </tr>
       <tr>
         <td><code>$this-&gt;seeJson($array)</code></td>
@@ -580,7 +580,7 @@ class UserTest extends TestCase
   
   <section>
     <h3>Sessions / Authentication</h3>
-    <p>Dùng <code>withSession()</code> và <code>actingAs()</code> để test với session đã đăng nhập</p>
+    <p>Using <code>withSession()</code> to modify session for testing</p>
     <pre><code class="hljs">public function testApplication()
 {
     $this->withSession(['foo' => 'bar'])
@@ -588,6 +588,7 @@ class UserTest extends TestCase
 }</code></pre>
   </section>
   <section>
+    <p>Using <code>actingAs()</code> to logged user for test require login</p>
     <pre><code class="hljs">public function testApplication()
 {
     $user = factory(App\User::class)->create();
@@ -600,11 +601,8 @@ class UserTest extends TestCase
   </section>
   
   <section>
-    <h2>Disabling Middleware</h2>
-    <p>Dùng trait <code>Illuminate\Foundation\Testing\WithoutMiddleware</code> để disable toàn bộ middleware cho cả test class</p>
-    <p>Dùng method <code>$this->withoutMiddleware()</code> để disable toàn bộ middleware cho một test method</p>
-  </section>
-  <section>
+    <h3>Disabling Middleware</h3>
+    <p style="text-align: left">Dùng trait <code>Illuminate\Foundation\Testing\WithoutMiddleware</code> để disable toàn bộ middleware cho cả test class</p>
     <pre><code class="hljs">&lt?php
 
 use Illuminate\Foundation\Testing\WithoutMiddleware;
@@ -617,6 +615,7 @@ class ExampleTest extends TestCase
 }</code></pre>
   </section>
   <section>
+    <p style="text-align: left">Dùng method <code>$this->withoutMiddleware()</code> để disable toàn bộ middleware cho một test method</p>
     <pre><code class="hljs">public function testBasicExample()
 {
     $this->withoutMiddleware();
@@ -630,7 +629,9 @@ class ExampleTest extends TestCase
     <h3>Custom HTTP Requests</h3>
     <pre><code class="hljs">public function testApplication()
 {
-    $response = $this->call('POST', '/user', ['name' => 'Taylor']);
+    $response = $this->call('POST', '/user', [
+        'name' => 'Taylor'
+    ]);
 
     $this->assertEquals(200, $response->status());
 }</code></pre>
@@ -638,7 +639,9 @@ class ExampleTest extends TestCase
   
   <section>
     <h3>PHPUnit Assertions</h3>
-    <a href="https://laravel.com/docs/5.3/application-testing#phpunit-assertions">https://laravel.com/docs/5.3/application-testing#phpunit-assertions</a>
+    <a href="https://laravel.com/docs/5.3/application-testing#phpunit-assertions">
+      https://laravel.com/docs/5.3/application-testing#phpunit-assertions
+    </a>
   </section>
   
   <section>
@@ -722,9 +725,9 @@ class ExampleTest extends TestCase
 <section style="text-align: left;">
   <h3>THE END</h3>
   <p>
-    - <a href="https://phpunit.de/">PHPUnit site</a><br>
-    - <a href="https://en.wikipedia.org/wiki/PHPUnit">Wikipedia about PHPUnit</a><br>
-    - <a href="https://jtreminio.com/2013/03/unit-testing-tutorial-introduction-to-phpunit">Tutorial about PHPUnit of Juan Tremini</a>
-    - <a href="https://laravel.com/docs/5.3/testing">Laravel Testing</a>
+    <a href="https://phpunit.de/"><i class="fa fa-link fa-spin"></i> PHPUnit site</a><br>
+    <a href="https://en.wikipedia.org/wiki/PHPUnit"><i class="fa fa-link fa-spin"></i> Wikipedia about PHPUnit</a><br>
+    <a href="https://jtreminio.com/2013/03/unit-testing-tutorial-introduction-to-phpunit"><i class="fa fa-link fa-spin"></i> Tutorial about PHPUnit of Juan Tremini</a><br>
+    <a href="https://laravel.com/docs/5.3/testing"><i class="fa fa-link fa-spin"></i> Laravel Testing</a>
   </p>
 </section>

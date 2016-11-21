@@ -1,16 +1,76 @@
+---
+---
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Content table</title>
-</head>
-<body>
-<h2>Content table</h2>
-<ul>
-  <li>21 Nov 2016 >> <a href="2016-11-21-unit-test-with-laravel.html">Unit test with Laravel</a></li>
-  <li>08 Jul 2016 >> <a href="2016-07-08-continuous-integration.html">Continuous Integration</a></li>
-  <li>24 Mar 2016 >> <a href="2016-03-24-how-to-make-unit-test-with-phpunit.html">How to make unit test with PHPUnit (p1)</a></li>
-  <li>08 Mar 2016 >> <a href="2016-03-08-auto-test-with-phpunit.html">Auto test with PHPUnit</a></li>
-</ul>
-</body>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% if page.title %}{{ page.title | append: ' &middot; ' | append: site.title }}{% else %}{{ site.title | append: ' &middot; ' | append: site.subtitle }}{% endif %}</title>
+    <meta name="author" content="{% if page.author %}{{ page.author.name }}{% else %}{{ site.author.name }}{% endif %}">
+    <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+
+    {% include graph-metas.html %}
+    <!--[if lt IE 9]><script src="{{ '/assets/js/html5.js' | prepend: site.baseurl }}" type="text/javascript"></script><![endif]-->
+
+    <link rel="stylesheet" href="{{ '/assets/css/all.css' | prepend: site.baseurl }}">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+    <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ site.rss_feed | prepend: site.baseurl | prepend: site.url }}">
+
+    <link rel="shortcut icon" href="{{ '/favicon.ico' | prepend: site.baseurl }}" type="image/x-icon">
+    <link rel="apple-touch-icon" href="{{ '/assets/img/apple-touch-icon.png' | prepend: site.baseurl }}">
+    <link rel="apple-touch-icon" sizes="57x57" href="{{ '/assets/img/apple-touch-icon-57x57.png' | prepend: site.baseurl }}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{ '/assets/img/apple-touch-icon-72x72.png' | prepend: site.baseurl }}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{ '/assets/img/apple-touch-icon-76x76.png' | prepend: site.baseurl }}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{{ '/assets/img/apple-touch-icon-114x114.png' | prepend: site.baseurl }}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{{ '/assets/img/apple-touch-icon-120x120.png' | prepend: site.baseurl }}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{{ '/assets/img/apple-touch-icon-144x144.png' | prepend: site.baseurl }}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{{ '/assets/img/apple-touch-icon-152x152.png' | prepend: site.baseurl }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/img/apple-touch-icon-180x180.png' | prepend: site.baseurl }}">
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="one column">
+          <h2>My slides</h2>
+        </div>
+      </div>
+      <div class="row slides">
+
+        <a class="one-third column slide" href="2016-11-21-unit-test-with-laravel.html">
+          <img class="u-max-full-width" src="http://getskeleton.com/examples/landing/images/placeholder.png">
+          <div class="desc">
+            <p><small><i class="fa fa-calendar"></i> 21 Now 2016</small></p>
+            <p>Unit test with Laravel</p>
+          </div>
+        </a>
+        <a class="one-third column slide" href="2016-07-08-continuous-integration.html">
+          <img class="u-max-full-width" src="http://getskeleton.com/examples/landing/images/placeholder.png">
+          <div class="desc">
+            <p><small><i class="fa fa-calendar"></i> 08 Jul 2016</small></p>
+            <p>Continuous Integration</p>
+          </div>
+        </a>
+        <a class="one-third column slide" href="2016-03-24-how-to-make-unit-test-with-phpunit.html">
+          <img class="u-max-full-width" src="http://getskeleton.com/examples/landing/images/placeholder.png">
+          <div class="desc">
+            <p><small><i class="fa fa-calendar"></i> 24 Mar 2016</small></p>
+            <p>How to make unit test with PHPUnit</p>
+          </div>
+        </a>
+        <a class="one-third column slide" href="2016-03-08-auto-test-with-phpunit.html">
+          <img class="u-max-full-width" src="http://getskeleton.com/examples/landing/images/placeholder.png">
+          <div class="desc">
+            <p><small><i class="fa fa-calendar"></i> 08 Mar 2016</small></p>
+            <p>Auto test with PHPUnit</p>
+          </div>
+        </a>
+
+      </div>
+    </div>
+    {% include analytics.html %}
+  </body>
 </html>
