@@ -1,15 +1,15 @@
 <nav>
   <div id="navigation">
-      <a href="{{ '/' | prepend: site.baseurl }}"><i class="fa fa-home"></i></a>
-      <a href="{{ '/archive.html' | prepend: site.baseurl }}"><i class="fa fa-bookmark"></i></a>
-      <a href="{{ '/tags.html' | prepend: site.baseurl }}"><i class="fa fa-tags"></i></a>
-      <!--<a href="{{ '/about.html' | prepend: site.baseurl }}"><i class="fa fa-user"></i></a>-->
+      <a href="{{ '/' | relative_url }}"><i class="fa fa-home"></i></a>
+      <a href="{{ '/archive.html' | relative_url }}"><i class="fa fa-bookmark"></i></a>
+      <a href="{{ '/tags.html' | relative_url }}"><i class="fa fa-tags"></i></a>
+      <!--<a href="{{ '/about.html' | relative_url }}"><i class="fa fa-user"></i></a>-->
   </div>
-  <a href="{{ '/' | prepend: site.baseurl }}">
+  <a href="{{ '/' | relative_url }}">
     {% if site.data.author.image %}
     <img src="{{ site.data.author.image }}" id="avatar" alt="{{ site.data.author.name }}" title="{{ site.data.author.name }}"/>
     {% else %}
-    <img src="{{ '/assets/img/apple-touch-icon-180x180.png' | prepend: site.baseurl }}" id="logo" alt="Blog logo" title="{{ site.data.author.name }}"/>
+    <img src="{{ '/assets/img/apple-touch-icon-180x180.png' | relative_url }}" id="logo" alt="Blog logo" title="{{ site.data.author.name }}"/>
     {% endif %}
   </a>
   <h2 style="height: 30px">I'm {{ site.data.author.name }}</h2>

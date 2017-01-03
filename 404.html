@@ -6,7 +6,7 @@ title: 404 Page Not Found
 <div id="home">
   <h2><i class="fa fa-frown-o"></i> Whoah, that's a 404 Error</h2>
   <p>Hey, sorry, but the page you're trying to access doesn't exist.</p>
-  <p>Try going back to the <a href="{{ '/' | prepend: site.baseurl }}">homepage</a> or reading related posts:</p>
+  <p>Try going back to the <a href="{{ '/' | relative_url }}">homepage</a> or reading related posts:</p>
 </div>
 
 <div id="related">
@@ -18,8 +18,8 @@ title: 404 Page Not Found
     {% endfor %}
   </ul>
 </div>
-<!--<script src="{{ '/assets/js/jquery-1.11.2.min.js' | prepend: site.baseurl }}" type="text/javascript"></script>
-<script src="{{ '/assets/js/typed.min.js' | prepend: site.baseurl }}" type="text/javascript"></script>
+<!--<script src="{{ '/assets/js/jquery-1.11.2.min.js' | relative_url }}" type="text/javascript"></script>
+<script src="{{ '/assets/js/typed.min.js' | relative_url }}" type="text/javascript"></script>
 <script type="text/javascript">
 $(function(){
   $('nav>h2').typed({

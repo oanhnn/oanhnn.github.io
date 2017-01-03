@@ -1,8 +1,7 @@
 Introduction
 ---
 This is source code my personal blog, it is published at https://oanhnn.github.io   
-This blog is used [Lagom theme](https://github.com/swanson/lagom) and
-hosting by [Github page](https://pages.github.com)  
+This blog is used [Lagom theme](https://github.com/swanson/lagom) and hosting by [Github page](https://pages.github.com)  
 
 About me
 ---
@@ -12,4 +11,4 @@ You can see more about me in [here](https://oanhnn.github.io)
 
 Development
 ---
-Use Github page following [dependencies](https://pages.github.com/versions)
+Use Github page following [Jekyll](https://jekyllrb.com) and [dependencies](https://pages.github.com/versions)

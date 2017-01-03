@@ -4,10 +4,10 @@ layout: default
 
 <p class="meta">
   <i class="fa fa-calendar"></i> {{ page.date | date: "%B %d, %Y" }}
-  <a class="home" title="Home" href="{{'/' | prepend: site.baseurl }}">
+  <a class="home" title="Home" href="{{'/' | relative_url }}">
     <i class="fa fa-home"></i>
   </a>
-  <a class="archive" title="Archive posts" href="{{'/archive.html' | prepend: site.baseurl }}">
+  <a class="archive" title="Archive posts" href="{{'/archive.html' | relative_url }}">
     <i class="fa fa-bookmark"></i>
   </a>
 </p>
@@ -15,7 +15,7 @@ layout: default
 <h1 class="title">{{ page.title }}</h1>
 
 <p class="tags clearfix">
-  {% for tag in page.tags %}<a class="tag" href="{{ tag | replace:' ','-' | url_encode | prepend: '/tags.html#tag=' | prepend: site.baseurl }}">{{tag}}</a> {% endfor %}
+  {% for tag in page.tags %}<a class="tag" href="{{ tag | replace:' ','-' | url_encode | prepend: '/tags.html#tag=' | relative_url }}">{{tag}}</a> {% endfor %}
 </p>
 
 <div id="post">

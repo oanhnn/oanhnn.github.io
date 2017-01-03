@@ -11,7 +11,7 @@ layout: default
     {% if post.tags.size > 0 %}
     <div class="tags">
       {% for tag in post.tags %}
-        <a class="tag" href="{{ tag | replace:' ','-' | url_encode | prepend: '/tags.html#tag=' | prepend: site.baseurl }}">{{tag}}</a>
+        <a class="tag" href="{{ tag | replace:' ','-' | url_encode | prepend: '/tags.html#tag=' | relative_url }}">{{tag}}</a>
       {% endfor %}
     </div>
     {% endif %}

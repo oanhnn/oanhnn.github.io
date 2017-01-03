@@ -10,11 +10,11 @@
   <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
 
   {% include graph-metas.html %}
-  <!--[if lt IE 9]><script src="{{ '/assets/js/html5.js' | prepend: site.baseurl }}" type="text/javascript"></script><![endif]-->
+  <!--[if lt IE 9]><script src="{{ '/assets/js/html5.js' | relative_url }}" type="text/javascript"></script><![endif]-->
 
-  <link rel="stylesheet" href="{{ '/slides/reveal.js-3.3.0/css/reveal.css' | prepend: site.baseurl }}">
-  <link rel="stylesheet" href="{{ '/slides/reveal.js-3.3.0/css/theme/black.css' | prepend: site.baseurl }}">
-  <link rel="stylesheet" href="{{ '/slides/reveal.js-3.3.0/lib/css/zenburn.css' | prepend: site.baseurl }}">
+  <link rel="stylesheet" href="{{ '/slides/reveal.js-3.3.0/css/reveal.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/slides/reveal.js-3.3.0/css/theme/black.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/slides/reveal.js-3.3.0/lib/css/zenburn.css' | relative_url }}">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
   <link rel="stylesheet" href="/slides/reveal.js-3.3.0/css/print/pdf.css" type="text/css" media="print">
   <style type="text/css">
@@ -31,7 +31,7 @@
     var link = document.createElement("link");
     link.rel = "stylesheet";
     link.type = "text/css";
-    link.href = "{{ '/slides/reveal.js-3.3.0/css/print/' | prepend: site.baseurl }}" + (window.location.search.match(/print-pdf/gi) ? "pdf.css" : "paper.css");
+    link.href = "{{ '/slides/reveal.js-3.3.0/css/print/' | relative_url }}" + (window.location.search.match(/print-pdf/gi) ? "pdf.css" : "paper.css");
     document.getElementsByTagName('head')[0].appendChild(link);
   </script -->
 </head>
@@ -54,14 +54,14 @@
       {% if site.data.author.image %}
       <img src="{{ site.data.author.image }}">
       {% else %}
-      <img src="{{ '/assets/img/apple-touch-icon-180x180.png'  | prepend: site.baseurl }}">
+      <img src="{{ '/assets/img/apple-touch-icon-180x180.png'  | relative_url }}">
       {% endif %}
     </a>
   </div>
 
-  <script src="{{ '/slides/reveal.js-3.3.0/lib/js/head.min.js' | prepend: site.baseurl }}"></script>
-  <script src="{{ '/slides/reveal.js-3.3.0/js/reveal.js' | prepend: site.baseurl }}"></script>
-  <script src="{{ '/assets/js/jquery-1.11.2.min.js' | prepend: site.baseurl }}"></script>
+  <script src="{{ '/slides/reveal.js-3.3.0/lib/js/head.min.js' | relative_url }}"></script>
+  <script src="{{ '/slides/reveal.js-3.3.0/js/reveal.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/jquery-1.11.2.min.js' | relative_url }}"></script>
   <script>
     $(document).ready(function () {
       // Full list of configuration options available at:
@@ -75,31 +75,31 @@
         slideNumber: 'c/t',
         // Optional reveal.js plugins
         dependencies: [{
-            src: "{{ '/slides/reveal.js-3.3.0/lib/js/classList.js' | prepend: site.baseurl }}",
+            src: "{{ '/slides/reveal.js-3.3.0/lib/js/classList.js' | relative_url }}",
             condition: function () {
               return !document.body.classList;
             }
         }, {
-          src: "{{ '/slides/reveal.js-3.3.0/plugin/markdown/marked.js' | prepend: site.baseurl }}",
+          src: "{{ '/slides/reveal.js-3.3.0/plugin/markdown/marked.js' | relative_url }}",
           condition: function () {
             return !!document.querySelector('[data-markdown]');
           }
         }, {
-          src: "{{ '/slides/reveal.js-3.3.0/plugin/markdown/markdown.js' | prepend: site.baseurl }}",
+          src: "{{ '/slides/reveal.js-3.3.0/plugin/markdown/markdown.js' | relative_url }}",
           condition: function () {
             return !!document.querySelector('[data-markdown]');
           }
         }, {
-          src: "{{ '/slides/reveal.js-3.3.0/plugin/highlight/highlight.js' | prepend: site.baseurl }}",
+          src: "{{ '/slides/reveal.js-3.3.0/plugin/highlight/highlight.js' | relative_url }}",
           async: true,
           callback: function () {
             hljs.initHighlightingOnLoad();
           }
         }, {
-          src: "{{ '/slides/reveal.js-3.3.0/plugin/zoom-js/zoom.js' | prepend: site.baseurl }}",
+          src: "{{ '/slides/reveal.js-3.3.0/plugin/zoom-js/zoom.js' | relative_url }}",
           async: true
         }, {
-          src: "{{ '/slides/reveal.js-3.3.0/plugin/notes/notes.js' | prepend: site.baseurl }}",
+          src: "{{ '/slides/reveal.js-3.3.0/plugin/notes/notes.js' | relative_url }}",
           async: true
         }]
       });
