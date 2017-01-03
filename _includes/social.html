@@ -1,85 +1,85 @@
 <div>Follow me</div>
 <div id="stalker">
   {% if include.social.github %}
-  <a target="_blank" title="{{ include.name }} on Github" href="https://github.com/{{ include.social.github }}">
+  <a target="_blank" rel="noopener" title="{{ include.name }} on Github" href="https://github.com/{{ include.social.github }}">
     <i class="fa fa-github-square"></i>
   </a>
   {% endif %}
 
   {% if include.social.gitlab %}
-  <a target="_blank" title="{{ include.name }} on Gitlab" href="https://gitlab.com/{{ include.social.gitlab }}">
+  <a target="_blank" rel="noopener" title="{{ include.name }} on Gitlab" href="https://gitlab.com/{{ include.social.gitlab }}">
     <i class="fa fa-gitlab"></i>
   </a>
   {% endif %}
 
   {% if include.social.bitbucket %}
-  <a target="_blank" title="{{ include.name }} on Bitbucket" href="https://bitbucket.com/{{ include.social.bitbucket }}/">
+  <a target="_blank" rel="noopener" title="{{ include.name }} on Bitbucket" href="https://bitbucket.com/{{ include.social.bitbucket }}/">
     <i class="fa fa-bitbucket-square"></i>
   </a>
   {% endif %}
 
   {% if include.social.hacker_news %}
-  <a target="_blank" title="{{ include.name }} on Hacker News" href="https://news.ycombinator.com/user?id={{include.social.hacker_news }}">
+  <a target="_blank" rel="noopener" title="{{ include.name }} on Hacker News" href="https://news.ycombinator.com/user?id={{include.social.hacker_news }}">
      <i class="fa fa-hacker-news"></i>
   </a>
   {% endif %}
 
   {% if include.social.stackexchange %}
-  <a target="_blank" title="{{ include.name }} on Stack Exchange" href="https://stackexchange.com/users/{{include.social.stackexchange }}">
+  <a target="_blank" rel="noopener" title="{{ include.name }} on Stack Exchange" href="https://stackexchange.com/users/{{include.social.stackexchange }}">
     <i class="fa fa-stack-exchange"></i>
   </a>
   {% endif %}
 
   {% if include.social.stackoverflow %}
-  <a target="_blank" title="{{ include.name }} on Stack Overflow" href="http://stackoverflow.com/users/{{include.social.stackoverflow }}">
+  <a target="_blank" rel="noopener" title="{{ include.name }} on Stack Overflow" href="http://stackoverflow.com/users/{{include.social.stackoverflow }}">
     <i class="fa fa-stack-overflow"></i>
   </a>
   {% endif %}
 
   {% if include.social.twitter %}
-  <a target="_blank" title="{{ include.name }} on Twitter" href="https://twitter.com/{{ include.social.twitter }}">
+  <a target="_blank" rel="noopener" title="{{ include.name }} on Twitter" href="https://twitter.com/{{ include.social.twitter }}">
     <i class="fa fa-twitter-square"></i>
   </a>
   {% endif %}
 
   {% if include.social.facebook %}
-  <a target="_blank" title="{{ include.name }} on Facebook" href="https://facebook.com/{{ include.social.facebook }}">
+  <a target="_blank" rel="noopener" title="{{ include.name }} on Facebook" href="https://facebook.com/{{ include.social.facebook }}">
     <i class="fa fa-facebook-square"></i>
   </a>
   {% endif %}
 
   {% if include.social.tumblr %}
-  <a target="_blank" title="{{ include.name }} on tumblr" href="https://{{ include.social.tumblr }}.tumblr.com">
+  <a target="_blank" rel="noopener" title="{{ include.name }} on tumblr" href="https://{{ include.social.tumblr }}.tumblr.com">
     <i class="fa fa-tumblr-square"></i>
   </a>
   {% endif %}
 
   {% if include.social.linkedin %}
-  <a target="_blank" title="{{ include.name }} on LinkedIn" href="https://www.linkedin.com/in/{{ include.social.linkedin }}">
+  <a target="_blank" rel="noopener" title="{{ include.name }} on LinkedIn" href="https://www.linkedin.com/in/{{ include.social.linkedin }}">
     <i class="fa fa-linkedin-square"></i>
   </a>
   {% endif %}
 
   {% if include.social.gplus %}
-  <a target="_blank" title="{{ include.name }} on Google Plus" href="https://plus.google.com/{{ include.social.gplus }}">
+  <a target="_blank" rel="noopener" title="{{ include.name }} on Google Plus" href="https://plus.google.com/{{ include.social.gplus }}">
     <i class="fa fa-google-plus-square"></i>
   </a>
   {% endif %}
 
   {% if include.social.flickr %}
-  <a target="_blank" title="{{ include.name }} on Flickr" href="https://www.flickr.com/photos/{{ include.social.flickr }}">
+  <a target="_blank" rel="noopener" title="{{ include.name }} on Flickr" href="https://www.flickr.com/photos/{{ include.social.flickr }}">
     <i class="fa fa-flickr"></i>
   </a>
   {% endif %}
 
   {% if include.social.instagram %}
-  <a target="_blank" title="{{ include.name }} on Instagram" href="https://www.instagram.com/{{ include.social.instagram }}">
+  <a target="_blank" rel="noopener" title="{{ include.name }} on Instagram" href="https://www.instagram.com/{{ include.social.instagram }}">
     <i class="fa fa-instagram"></i>
   </a>
   {% endif %}
 
   {% if include.rss_feed %}
-  <a target="_blank" title="RSS feed" id="atom" href="{{ include.rss_feed }}">
+  <a target="_blank" rel="noopener" title="RSS feed" id="atom" href="{{ include.rss_feed }}">
     <i class="fa fa-rss-square"></i>
   </a>
   {% endif %}
