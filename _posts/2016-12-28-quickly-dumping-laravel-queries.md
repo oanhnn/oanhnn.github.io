@@ -6,7 +6,7 @@ tags:     [ php, skill, laravel ]
 feature:  ~
 ---
 
-Khi bạn phát triển một ứng dụng với Lảavel (hoặc với Eloquent), rất có thể bạn sẽ gặp một vài vấn đề.
+Khi bạn phát triển một ứng dụng với Laravel (hoặc với Eloquent), rất có thể bạn sẽ gặp một vài vấn đề.
 Đó có thể là bạn lấy một bản ghi rồi lấy các bản ghi khác dựa theo kết quả lấy được, ...
 Hoặc là khi bạn đang sử dụng các truy vấn phức tạp và bạn muốn xem nó đã thực hiện truy vấn như nào đến cơ sở dữ liệu.
 Để làm được điều đó thì bạn có thể sử dụng [Laravel Debugbar](https://laravel-news.com/laravel-debugbar/)
