@@ -3,7 +3,7 @@ title:    Liệt kê nhanh các câu truy vấn SQL trong Flarum
 layout:   post
 category: tutorial
 tags:     [ php, skill, laravel ]
-feature:  /assets/img/dump-queries.png
+feature:  /assets/img/flarum-preview.jpg
 ---
 
 Vừa qua mình có code một dự án với thằng [Flarum][flarum]. Phải công nhận là thằng này
