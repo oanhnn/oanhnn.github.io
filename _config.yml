@@ -76,7 +76,7 @@ kramdown:
 
 sass:
   sass_dir:           _sass
-  style:              :compact
+  style:              :compressed
 
 # Default vars
 defaults:
