@@ -131,6 +131,10 @@ nav {
 nav h1, nav h2 {
     text-align: center;
 }
+nav > form {
+  margin: 0;
+  text-align: right;
+}
 
 #bio {
     margin: 10px 0;
@@ -252,10 +256,11 @@ i.fa-hn {
 }
 
 .disclaimer p {
-    margin-top: 10px;
+    margin: 10px 0;
     font-size: 12px;
     text-align: center;
 }
+.disclaimer > form {display: none}
 
 .footnotes {
     font-size: 14px;
@@ -380,16 +385,16 @@ sup {
     width: 4px;
     height: 4px;
 }
-.embed-container { 
+.embed-container {
     position: relative;
     padding-bottom: 56.25%;
     height: 0;
     overflow: hidden;
     max-width: 100%;
-} 
-.embed-container iframe, 
-.embed-container object, 
-.embed-container embed { 
+}
+.embed-container iframe,
+.embed-container object,
+.embed-container embed {
     position: absolute;
     top: 0;
     left: 0;
@@ -397,7 +402,7 @@ sup {
     height: 100%;
 }
 .slide {
-    margin-top: 10px; 
+    margin-top: 10px;
     margin-bottom: 10px;
     position: relative;
     text-decoration: none;
