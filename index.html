@@ -19,5 +19,8 @@ layout: default
     <div class="clearfix"><a href="{{ post.url }}" title="{{ post.title }}" class=""><span>Đọc thêm &raquo;</span></a></div>
   </li>
   {% endfor %}
+  {% if site.posts.size > 10 %}
+  <li class="old-posts"><a href="{{ 'archive.html' | relative_url }}">Bài cũ hơn</a></li>
+  {% endif %}
   </ul>
 </div>

@@ -1,5 +1,5 @@
 ---
-title:    Cách tại ảnh GIF từ một tập hợp các ảnh
+title:    Cách tạo ảnh GIF từ một tập hợp các ảnh
 layout:   post
 category: tutorial-tips
 tags:     [linux]
