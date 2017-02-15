@@ -7,9 +7,9 @@ feature:  /assets/img/crontab.png
 ---
 
 I was setup new computer in my company, i installed Fedora 25 OS for it.
-After i installed `docker` following [docker's document][docs.docker.com],
+After i installed `docker` following [the Docker document][docs.docker.com],
 I has a problem about run `docker` without `sudo` (reasons are explained
-on docker's document pages linked here, I’m not going to repeat them).
+on the Docker document page linked here, I’m not going to repeat them).
 
 <!--more-->
 
@@ -49,5 +49,5 @@ For more examples and ideas, visit:
 Now, `docker` was run without `sudo`.
 
 
-[docs.docker.com]             : https://docs.docker.com/engine/installation/linux/fedora/
-[developer.fedoraproject.org] : https://developer.fedoraproject.org/tools/docker/docker-installation.html
+[docs.docker.com]:             https://docs.docker.com/engine/installation/linux/fedora/
+[developer.fedoraproject.org]: https://developer.fedoraproject.org/tools/docker/docker-installation.html
