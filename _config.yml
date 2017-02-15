@@ -35,6 +35,7 @@ exclude:
   - .git
   - .gitignore
   - .gitattribute
+  - _scripts
 
 keep_files:           []
 

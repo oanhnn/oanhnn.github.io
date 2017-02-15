@@ -1,5 +1,5 @@
 ---
-title:    Một vài kinh nghiệm với crontab 
+title:    Một vài kinh nghiệm với crontab
 layout:   post
 category: tutorial-tips
 tags:     [skill, dev-ops]
@@ -8,7 +8,7 @@ feature:  /assets/img/crontab.png
 
 Cron và crontab chắc là không còn xa lạ gì với anh em developers nhà mình rồi đúng ko?
 Tuy nhiên để lập lịch cho một công việc hay sửa đổi nó cũng không hề đơn giản, đôi khi
-cũng tốn không ít thời gian của anh em. Bản thân mình cũng vậy, nhiều lúc cũng toát 
+cũng tốn không ít thời gian của anh em. Bản thân mình cũng vậy, nhiều lúc cũng toát
 cả mồ hôi. Hôm nay mình chia sẻ với anh em một vài kinh nghiệm khi làm việc với nó.
 
 <!--more-->
@@ -31,7 +31,7 @@ Bây giờ mình sẽ giới thiệu ít kinh nghiệm với crontab
 
 ### Biến môi trường
 
-Đầu tiện bạn phải nhớ là biến môi trường của cron khi chạy một job sẽ khác với việc 
+Đầu tiện bạn phải nhớ là biến môi trường của cron khi chạy một job sẽ khác với việc
 bạn chạy job đó bằng SHELL của bạn. Đây là đáp án của đa phần các câu hỏi:
 
 > Sao mình chạy trong SHELL được mà cho vào crontab thì nó lại chết?
@@ -82,7 +82,7 @@ MAILTO=alarms@example.com
 05 * * * * /path/to/exec_script.sh
 ```
 
-Thật là gọn gàng và lại giống với SHELL của chúng ta vẫn dùng. Mặt khác, khi bạn 
+Thật là gọn gàng và lại giống với SHELL của chúng ta vẫn dùng. Mặt khác, khi bạn
 có thêm biến môi trường vào `$HOME/profile` , bạn cũng không phải vào sửa trong crontab nữa.
 Thật là tiện phải không?
 
@@ -92,7 +92,7 @@ Bạn nên tổ chức scheduled jobs của mình một cách khoa học theo c�
 
 - Viết thêm số 0 và bên trái các số có 1 chữ số trong setting thời gian của scheduled jobs
 - Viết các scheduled jobs theo nhóm chức năng hay theo chu kỳ thực hiện
-- Sử dụng comment để disable scheduled jobs thay cho việc xoá dòng đó. Như vậy bạn sẽ 
+- Sử dụng comment để disable scheduled jobs thay cho việc xoá dòng đó. Như vậy bạn sẽ
   dễ dàng sử dụng lại khi cần. Nhớ thêm ít comment vào để còn nhớ tại sao mình disable.
 
 ```
@@ -131,10 +131,10 @@ Bạn nên tổ chức scheduled jobs của mình một cách khoa học theo c�
 
 ### Lưu lại output
 
-Trong đa số trường hợp, chúng ta thường sử dụng `> /dev/null 2>&1` để có thể bỏ qua 
-output và lỗi của scheduled jobs. Tuy nhiên, trong một số trường hợp, bạn cần lưu lại 
+Trong đa số trường hợp, chúng ta thường sử dụng `> /dev/null 2>&1` để có thể bỏ qua
+output và lỗi của scheduled jobs. Tuy nhiên, trong một số trường hợp, bạn cần lưu lại
 output của chúng để tiện cho việc debug hay tìm lỗi, khắc phục sự cố, ... Lúc đó thì
-mình khuyên các bạn nên sử dụng lệnh `date` để có thể chia nhỏ file log ra. Nó sẽ rất 
+mình khuyên các bạn nên sử dụng lệnh `date` để có thể chia nhỏ file log ra. Nó sẽ rất
 tiện cho bạn đấy!
 
 ```
@@ -144,5 +144,5 @@ tiện cho bạn đấy!
 
 ### Tham khảo:
 
-http://shtylman.com/post/cron-shell-power/
-http://www.logikdev.com/2010/05/25/using-the-date-command-in-your-crontab/
+- http://shtylman.com/post/cron-shell-power/
+- http://www.logikdev.com/2010/05/25/using-the-date-command-in-your-crontab/
