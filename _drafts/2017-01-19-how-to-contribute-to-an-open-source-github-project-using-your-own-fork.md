@@ -13,14 +13,14 @@ các dự án mã nguồn mở cho mình rất nhiều kinh nghiệm bổ ích.
 
 <!--more-->
 
-##Các dự án mã nguồn mở chuyên nghiệp dạy bạn:
+## Các dự án mã nguồn mở chuyên nghiệp dạy bạn:
 
 - Quy trình phát triển chuyên nghiệp (TDD, ..) với sự kết hợp nhiều công cu tự động (CI)
 - Hiểu xâu sắc hơn về cách làm việc, thuật toán của các thư viện, tool
 - Học cách giải quyết các vấn đề khó, nâng cao tầm hiểu biết
 - Sự thích thú khi mình có thể giúp đỡ nhiều người giải quyết các vấn đề họ gặp
 
-##Vậy làm như nào để có thể contribute cho một dự án mã nguồn mở trên Github ?
+## Vậy làm như nào để có thể contribute cho một dự án mã nguồn mở trên Github ?
 
 - Đầu tiên bạn có thể tham gia report issues, erros, request features, ... Việc này
   giúp cho các nhà phát triển có thể nâng cao chất lượng của thư viện hoặc tool đó.
