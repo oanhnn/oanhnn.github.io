@@ -1,0 +1,289 @@
+---
+layout: slide
+title: Introduction to Docker
+---
+<section>
+    <h1>Why Docker?</h1>
+    <h1>
+        <img src="img/docker-1.png" border="0"/>
+    </h1>
+    <p>Introduction to Docker</p>
+    <p>
+        <small>Oanh Nguyen &lt;oanhnn.bk@gmail.com&gt; / <a href="https://oanhnn.github.io">oanhnn.github.io</a></small>
+    </p>
+</section>
+
+<section>
+    <p>
+        <img src="img/MEAN.io_vs_MEAN.JS_logos.png"/>
+    </p>
+</section>
+
+<section>
+    <a href="img/challenge.png" target="_blank">
+        <img src="img/challenge.png"/>
+    </a>
+    <aside class="notes">
+        - Works of System Admin <br/>
+        - Move code to new machine <br/>
+        - Setup production Code <br/>
+    </aside>
+</section>
+
+<section style="padding: 0; top:0 !important; margin:0!important">
+    <p>Cargo Transport Pre-1960</p>
+    <p>
+        <a href="img/cargo-transport-pre-1960.png">
+            <img src="img/cargo-transport-pre-1960.png"/>
+        </a>
+    </p>
+</section>
+
+<section>
+    <h2>Container</h2>
+    <p>
+        <img src="img/container.png"/>
+    </p>
+</section>
+
+<section>
+    <p>Solution: Intermodal Shipping Container</p>
+    <p>
+        <img src="img/container-solution.png">
+    </p>
+
+    <aside class="notes">
+        Multiplicity of Goods <br/>
+        Multiplicity of methods for transporting/storing <br/>
+        Do I worry about how goods interact (e.g. coffee beans next to spices) <br/>
+
+    </aside>
+</section>
+
+<section>
+    <p>
+        <img src="img/docker-logo.png"/>
+    </p>
+    <p>docker.io</p>
+</section>
+
+
+<section>
+    <section>
+        <h1>What is Docker?</h1>
+        <blockquote cite="http://www.docker.io">Docker is an open-source project to easily create lightweight, portable,
+            self-sufficient containers from any application
+        </blockquote>
+        <p style="text-align: right">Source: docker.io</p>
+    </section>
+
+    <section>
+        <h2>What is a Container?</h2>
+        <img src="img/container-docker-blue-whale-small.jpg" title="Source: slidedeck.io"/>
+        <ul class="fragment">
+            <li>Group of processes contained in a <span class="fragment grow">Isolated Environment</span></li>
+            <li>IsolaNon provided by Concepts like <a href="https://en.wikipedia.org/wiki/Cgroups" target="_blank">cgroups</a>
+                and <a href="https://en.wikipedia.org/wiki/Namespace" target="_blank">namespaces</a></li>
+        </ul>
+
+    </section>
+
+    <section data-background-color="#22B8EB">
+        <h1 style="color:#fff">BUILD SHIP & RUN <br/>ANY APP, ANYWHERE</h1>
+    </section>
+
+    <section>
+        <!-- <h2>Container</h2> -->
+        <a href="img/docker-platform-and-ecosystem.png">
+            <img src="img/docker-platform-and-ecosystem.png"/>
+        </a>
+    </section>
+
+</section>
+
+
+<section>
+
+    <section>
+        <h3>Brief comparison</h3>
+        <p><strong>Hypervisor</strong> vs <strong>Docker Container</strong></p>
+    </section>
+
+    <section>
+        <table>
+            <tr>
+                <td style="color:#F89933">Hypervisor</td>
+                <td style="color:#22B8EB">Docker</td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="img/vm-compair.png" target="_blank">
+                        <img src="img/vm-compair.png"/>
+                    </a>
+                </td>
+                <td>
+                    <a href="img/docker-compair.png" target="_blank">
+                        <img src="img/docker-compair.png"/>
+                    </a>
+                </td>
+            </tr>
+        </table>
+        <a href="img/docker-and-vm.png" target="_blank">[1] </a>
+        <a href="img/docker-lightweight.png" target="_blank">[2] </a>
+        <a href="img/docker-change-update.png" target="_blank">[3] </a>
+    </section>
+
+    <section>
+        <table>
+            <tr>
+                <td style="color:#F89933">Hypervisor</td>
+                <td style="color:#22B8EB">Docker</td>
+            </tr>
+            <tr>
+                <td style="color:#F89933">Runs operating systems</td>
+                <td style="color:#22B8EB">Runs processes</td>
+            </tr>
+            <tr>
+                <td style="color:#F89933">Heavyweight isolated virtual machines</td>
+                <td style="color:#22B8EB">Lightweight kernel namespaces <a href="img/docker-lightweight.png"
+                                                                           target="_blank">[*]</a></td>
+            </tr>
+            <tr>
+                <td style="color:#F89933">VMs start via a full boot-up process</td>
+                <td style="color:#22B8EB">Very fast namespace + process creation <a href="img/docker-change-update.png"
+                                                                                    target="_blank">[**]</a></td>
+            </tr>
+            <tr>
+                <td style="color:#F89933">Platform-oriented solution</td>
+                <td style="color:#22B8EB">Service-oriented solution</td>
+            </tr>
+            <tr>
+                <td style="color:#F89933">Optimized for generality</td>
+                <td style="color:#22B8EB">Optimized for minimalism and speed</td>
+            </tr>
+        </table>
+    </section>
+</section>
+
+<section>
+    <h3>Docker’s architecture</h3>
+
+    <a href="img/architecture.svg">
+        <img src="img/architecture.svg"/>
+    </a>
+</section>
+
+<section data-background-color="#22B8EB">
+    <h1 style="color:#fff">Inside Docker</h1>
+
+    <ul style="color:#fff">
+        <li class="fragment">Docker images.</li>
+        <li class="fragment">Docker registries.</li>
+        <li class="fragment">Docker containers.</li>
+    </ul>
+</section>
+
+<section>
+    <h1>Docker hub</h1>
+    <a href="https://hub.docker.com/" target="_blank">https://hub.docker.com</a>
+</section>
+
+<section>
+    <section>
+        <h1>Dockerfile</h1>
+    </section>
+
+    <section>
+						<pre><code data-trim data-noescape>
+
+FROM        ubuntu
+MAINTAINER  Victor Vieux (victor@docker.com)
+
+LABEL Description="start the foobar executable"
+
+# Apt update
+RUN apt-get update
+RUN apt-get install -y inotify-tools
+
+# Install Nginx and OpenSSH
+RUN nginx openssh-server
+RUN bash -c "./somescript.sh"
+
+# Install Nodejs, bla bla ....
+						</code></pre>
+    </section>
+
+    <section>
+						<pre><code data-noescape>
+
+FROM        node:510
+MAINTAINER  Van-Duyet Le (me@duyetdev.com)
+
+# replace this with your application's default port
+EXPOSE 8888
+						</code></pre>
+
+        <pre class="fragment"><code>
+$ docker build -t nodejs-app .
+$ docker run -it --rm --name ahihi nodejs-app
+						</code></pre>
+    </section>
+</section>
+
+<section>
+    <img src="img/docker-ecosystem.png" style="width: 120% !important"/>
+</section>
+
+
+<section>
+    <section>
+        <h3>Docker on Cloud</h3>
+    </section>
+    <section>
+        <h6>Who use?</h6>
+        <img src="img/gcp-header-logo.png"/>
+    </section>
+    <section>
+        <img src="img/aws-docker.png"/>
+    </section>
+    <section>
+        <img src="img/digital_ocean_5.png"/>
+    </section>
+    <section>
+        <p><img src="img/docker-ecosystem-on-azure-1-638.jpg"/></p>
+        <p>
+            Slide: <a href="http://www.slideshare.net/chanezon/docker-ecosystem-on-azure">Docker Ecosystem on Azure</a>
+        </p>
+    </section>
+    <section data-background="#6BAFDE">
+        <p>
+            <img src="img/ibm_docker.jpeg"/>
+        </p>
+    </section>
+    <section>
+        <p><img src="img/docker-openstack-130912190541-phpapp02-thumbnail-4.jpg"></p>
+        <p>
+            Slide: <a href="http://www.slideshare.net/dotCloud/docker-open-stack">Running Docker with OpenStack</a>
+        </p>
+    </section>
+</section>
+
+
+<!--<section style="text-align: left;">
+    <h1>DEMO</h1>
+    <p>
+    <img src="img/sticker-02-15-2.png" />
+    </p>
+</section>-->
+
+<section style="text-align: left;">
+    <h1>THANK YOU</h1>
+    <p>
+        <img src="img/tho-bay-mau-end.png"/>
+    </p>
+    <p>
+        - Docker homepage: <a href="https://www.docker.com/">https://www.docker.com</a> <br>
+        - Docker slides: <a href="http://saveto.co/t/docker">http://saveto.co/t/docker</a><br>
+        - Why docker? <a href="https://why-docker.talk.duyetdev.com">https://why-docker.talk.duyetdev.com</a><br>
+    </p>
+</section>
