@@ -26,16 +26,16 @@ layouts_dir:          _layouts
 data_dir:             _data
 include:              [.htaccess]
 exclude:
-  - LICENSE.md
-  - CNAME
-  - README.md
-  - Gemfile
-  - Gemfile.lock
   - .editorconfig
   - .git
-  - .gitignore
   - .gitattribute
-  - _scripts
+  - .gitignore
+  - CNAME
+  - docker-compose.yml
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE.md
+  - README.md
 
 keep_files:           []
 

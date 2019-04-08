@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  site:
+    image: oanhnn/gh-pages
+    command: ["bundle", "exec", "jekyll", "serve", "-H", "0.0.0.0", "-P", "4000", "--watch", "--draft"]
+    ports:
+      - 4000:4000
+    restart: unless-stopped
+    volumes:
+      - .:/site
