@@ -6,6 +6,8 @@ tags:     [skill]
 feature:  /assets/img/https.jpg
 ---
 
+**This blog is out of date**
+
 Today, I made a HTTPS site with invalid SSL certificate configuration to rank A+.
 And now, i will share my how to do.
 

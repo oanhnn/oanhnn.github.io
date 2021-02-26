@@ -21,6 +21,7 @@
 /.komodotools
 /*.sublime-project
 /*.sublime-workspace
+/.vscode
 
 # OS generated files #
 ######################
