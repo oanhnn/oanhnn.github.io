@@ -7,7 +7,7 @@ description:          >
     I hope those will make a world better.
 
 baseurl:              ""                                      # the subpath of your site, e.g. /blog
-url:                  "https://oanhnn.github.io"              # the base hostname & protocol for your site
+url:                  "https://oanhnn.com"                    # the base hostname & protocol for your site
 timezone:             Asia/Ho_Chi_Minh
 encoding:             utf-8
 locale:               vi_VN
@@ -29,6 +29,7 @@ exclude:
   - .editorconfig
   - .git
   - .gitattribute
+  - .github
   - .gitignore
   - CNAME
   - docker-compose.yml
@@ -74,6 +75,8 @@ kramdown:
 #  - jekyll-gist
 #  - jekyll-paginate
 #  - jekyll-seo-tag
+plugins:
+  - jekyll-spaceship
 
 sass:
   sass_dir:           _sass

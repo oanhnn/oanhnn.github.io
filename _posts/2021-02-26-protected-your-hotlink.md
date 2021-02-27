@@ -15,7 +15,7 @@ Không cần phải lo lắng vì chúng ta có thể ngăn chặn nó bằng ph
 ## Triển khai trong Máy chủ Web Nginx
 
 ```nginx
-valid_referers none blocked wifidabba.com *.wifidabba.com;
+valid_referers none blocked yoursite.com *.yoursite.com;
 if ($invalid_referer) {
     return   403;
 }
@@ -25,7 +25,7 @@ VD: Đoạn mã triển khai đầy đủ trong Máy chủ Web Nginx
 
 ```nginx
 location ~* \.(gif|otf|jpg|jpeg|png|css|js)$ {
-    valid_referers none blocked wifidabba.com *.wifidabba.com;
+    valid_referers none blocked yoursite.com *.yoursite.com;
     if ($invalid_referer) {
         return   403;
     }
@@ -36,4 +36,7 @@ location ~* \.(gif|otf|jpg|jpeg|png|css|js)$ {
 }
 ```
 
-> Bài gốc: https://stackcoder.in/posts/hotlink-protection-in-nginx
+## Tham khảo:
+
+- https://stackcoder.in/posts/hotlink-protection-in-nginx (bài gốc)
+- https://nginx.org/en/docs/http/ngx_http_referer_module.html#valid_referers
