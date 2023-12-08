@@ -8,7 +8,10 @@
   <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
 
   {% include graph-metas.html %}
-  <!--[if lt IE 9]><script src="{{ '/assets/js/html5.js' | relative_url }}" type="text/javascript"></script><![endif]-->
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" integrity="sha512-UDJtJXfzfsiPPgnI5S1000FPLBHMhvzAMX15I+qG2E2OAzC9P1JzUwJOfnypXiOH7MRPaqzhPbBGDNNj7zBfoA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js" integrity="sha512-RCtZMoZSQ5csGk1zBPGImR8OY+NJfe0IsaFrDD649yYrSBgCf3kYiP79AfWT9/idKbpWYteQmswChxbXC7YHig==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <![endif]-->
 
   <meta name="theme-color" content="#3498db">
 

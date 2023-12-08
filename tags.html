@@ -20,7 +20,7 @@ layout: page
     <li data-tags="{{ post.tags | join: ',' | replace:' ','-' }}"><span><i class="fa fa-calendar"></i> {{ post.date | date_to_string }} &raquo;</span><a href="{{ post.url }}">{{ post.title }}</a></li>
     {% endfor %}
   </ul>
-  <script src="{{ '/assets/js/jquery-1.11.2.min.js' | relative_url }}" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.slim.min.js" integrity="sha512-sNylduh9fqpYUK5OYXWcBleGzbZInWj8yCJAU57r1dpSK9tP2ghf/SRYCMj+KsslFkCOt3TvJrX2AV/Gc3wOqA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="{{ '/assets/js/isotope.pkgd.min.js' | relative_url }}" type="text/javascript"></script>
   <script type="text/javascript">
 $(function(){
@@ -62,7 +62,7 @@ $(function(){
     });
   }
 
-  $(window).on( 'hashchange', onHashChanged);
+  $(window).on('hashchange', onHashChanged);
   // trigger event handler to init Isotope
   onHashChanged();
 });
